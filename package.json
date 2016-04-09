@@ -1,0 +1,25 @@
+{
+  "name": "refugeeService",
+  "version": "0.0.1",
+  "description": "Backend for the RefugeeApp",
+  "author": "Julian Schmitt",
+  "private": true,
+  "dependencies": {
+    "express": "*",
+    "express-handlebars": "^3.0.0",
+    "morgan": "^1.7.0"
+  },
+  "devDependencies": {
+    "chai": "^2.0.0",
+    "grunt": "^1.0.1",
+    "grunt-contrib-jshint": "^1.0.0",
+    "grunt-contrib-watch": "^1.0.0",
+    "grunt-jsbeautifier": "^0.2.10",
+    "mocha": "^2.1.0",
+    "mocha-jshint": "0.0.9",
+    "mocha-mongo": "^0.1.1",
+    "mocha-steps": "0.0.1",
+    "q": "^1.1.2",
+    "supertest": "^0.15.0"
+  }
+}
