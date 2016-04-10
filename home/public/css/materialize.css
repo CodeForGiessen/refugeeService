@@ -2257,7 +2257,7 @@ html {
 }
 
 /**
- * Remove default margin.
+ * Set body to flexbox, so footer is always fixed to bottom of page.
  */
 body {
   margin: 0;
@@ -2278,6 +2278,7 @@ main {
  * and Firefox.
  * Correct `block` display not defined for `main` in IE 11.
  */
+
 article,
 aside,
 details,
@@ -2285,7 +2286,6 @@ figcaption,
 figure,
 footer,
 header,
-hgroup,
 menu,
 nav,
 section,
