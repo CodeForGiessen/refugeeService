@@ -15,7 +15,8 @@
     app.set('view engine', 'handlebars');
     app.set('views', __dirname + '/views');
 
-    app.use(express.static(__dirname + '/public'));
+    // static for css, js, fonts and what else is used...
+    app.use('/public', express.static(__dirname + '/public'));
 
     app.get('/', function(req, res){
         res.render('home', {
@@ -24,9 +25,11 @@
     });
 
     // route everything else back to home
+    /*
     app.get('/*', function(req, res){
         res.render('home', {
             title: 'Dashboard'
         });
     });
+    */
 })();
