@@ -17,6 +17,7 @@
 
     // static for css, js, fonts and what else is used...
     app.use('/public', express.static(__dirname + '/public'));
+    app.use('/bower_components', express.static(__dirname + '/bower_components'));
 
     app.get('/', function(req, res){
         res.render('home', {

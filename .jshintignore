@@ -1,2 +1,3 @@
 node_modules/**
 home/public/js/**
+home/bower_components/**
