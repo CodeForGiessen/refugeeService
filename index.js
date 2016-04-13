@@ -8,7 +8,7 @@
     var app = exports.app = express();
 
 
-    var hostname = 'localhost';
+    var hostname = '0.0.0.0';
     var port = 8080;
 
     app.use(morgan('dev'));

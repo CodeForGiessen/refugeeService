@@ -3,7 +3,7 @@
     module.exports = function(grunt) {
         grunt.initConfig({
             paths: {
-                js: ['*.js', 'models/**/*.js', 'api/**/*.js', 'home/*.js'],
+                js: ['*.js', 'models/**/*.js', 'api/**/*.js', 'home/*.js', 'home/public/*.js', 'home/public/controller/*.js'],
                 css: ['home/public/css/*.css', '!home/public/css/*.min.css']
             },
 
