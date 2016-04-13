@@ -1,0 +1,32 @@
+
+/*
+show a red-line under invalid inputs that are focused or not empty
+*/
+input:not([type]).ng-invalid.ng-dirty, input:not([type]):focus.ng-invalid,
+input[type=text].ng-invalid.ng-dirty,
+input[type=text]:focus.ng-invalid,
+input[type=password].ng-invalid.ng-dirty,
+input[type=password]:focus.ng-invalid,
+input[type=email].ng-invalid.ng-dirty,
+input[type=email]:focus.ng-invalid,
+input[type=url].ng-invalid.ng-dirty,
+input[type=url]:focus.ng-invalid,
+input[type=time].ng-invalid.ng-dirty,
+input[type=time]:focus.ng-invalid,
+input[type=date].ng-invalid.ng-dirty,
+input[type=date]:focus.ng-invalid,
+input[type=datetime].ng-invalid.ng-dirty,
+input[type=datetime]:focus.ng-invalid,
+input[type=datetime-local].ng-invalid.ng-dirty,
+input[type=datetime-local]:focus.ng-invalid,
+input[type=tel].ng-invalid.ng-dirty,
+input[type=tel]:focus.ng-invalid,
+input[type=number].ng-invalid.ng-dirty,
+input[type=number]:focus.ng-invalid,
+input[type=search].ng-invalid.ng-dirty,
+input[type=search]:focus.ng-invalid,
+textarea.materialize-textarea.ng-invalid.ng-dirty,
+textarea.materialize-textarea:focus.ng-invalid {
+    border-bottom: 1px solid #F44336;
+    box-shadow: 0 1px 0 0 #F44336;
+}

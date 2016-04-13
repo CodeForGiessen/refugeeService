@@ -2,7 +2,7 @@
     'use strict';
     angular.module('refugeeAuthorEnv')
         .controller('LoginCtrl', function () {
-            this.currentTab = 2; //default value = 1
+            this.currentTab = 1; //default value = 1
             this.setTab = function(newTab) {
                 this.currentTab = newTab;
             };
