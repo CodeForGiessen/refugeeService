@@ -6,7 +6,6 @@
   "private": true,
   "dependencies": {
     "express": "*",
-    "express-handlebars": "^3.0.0",
     "morgan": "^1.7.0"
   },
   "devDependencies": {
