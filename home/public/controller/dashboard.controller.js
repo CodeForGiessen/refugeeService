@@ -1,7 +1,7 @@
-(function () {
+(function() {
     'use strict';
     angular.module('refugeeAuthorEnv')
-        .controller('DashboardCtrl', function () {
+        .controller('DashboardCtrl', function() {
 
         });
 })();

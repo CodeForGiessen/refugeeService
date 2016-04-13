@@ -1,6 +1,6 @@
-(function () {
+(function() {
     angular.module('refugeeAuthorEnv')
-        .controller('LoginTabController', function () {
+        .controller('LoginTabController', function() {
             this.user = {
                 username: '',
                 password: ''

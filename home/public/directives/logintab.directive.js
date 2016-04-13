@@ -1,6 +1,6 @@
-(function () {
+(function() {
     angular.module('refugeeAuthorEnv')
-        .directive('loginTab', function () {
+        .directive('loginTab', function() {
             return {
                 restrict: 'A',
                 templateUrl: "/public/partials/login-tab.html",

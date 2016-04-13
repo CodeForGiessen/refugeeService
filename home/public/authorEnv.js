@@ -1,7 +1,7 @@
-(function () {
+(function() {
     'use strict';
     angular.module('refugeeAuthorEnv', ['ngRoute'])
-        .config(['$routeProvider', function ($routeProvider) {
+        .config(['$routeProvider', function($routeProvider) {
             $routeProvider.when('/', {
                 templateUrl: '/public/partials/main.html',
                 controller: 'MainCtrl',

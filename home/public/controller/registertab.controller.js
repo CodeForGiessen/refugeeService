@@ -1,9 +1,9 @@
-(function () {
+(function() {
     angular.module('refugeeAuthorEnv')
-        .controller('RegisterTabController',['$scope', function ($scope) {
+        .controller('RegisterTabController', ['$scope', function($scope) {
             $scope.user = {};
 
-            this.registerUser = function () {
+            this.registerUser = function() {
                 console.log($scope.user);
             };
         }]);
