@@ -1,5 +1,5 @@
 <header>
-    <nav class="teal">
+    <nav class="top-nav teal">
         <div class="container">
             <div class="nav-wrapper">
                 <a href="#" data-activates="nav-mobile" class="left button-collapse hide-on-large-only">
@@ -13,9 +13,22 @@
     <ul id="nav-mobile" class="side-nav fixed" style="overflow: auto; transform: translateX(0px);">
         <li class="center brand-logo"><i style="margin-top: 16px;" class="material-icons large">account_circle</i></li>
         <div class="divider"></div>
-        <li><a href="#/login">Login/Register</a></li>
-        <li><a href="#/lang">Language</a></li>
-        <li><a href="/api">API</a></li>
-        <li><a href="#/doc">Documentation</a></li>
+        <li><a class="waves-effect waves-orange" href="#/login">Login/Register</a></li>
+        <li class="no-padding">
+            <ul class="collapsible">
+                <li><a class="collapsible-header waves-effect waves-orange">Modify</a>
+                    <div class="collapsible-body">
+                        <ul>
+                            <li><a class="waves-effect waves-orange" href="#/list">List</a></li>
+                            <li><a class="waves-effect waves-orange" href="#/add">Add</a></li>
+                            <li><a class="waves-effect waves-orange" href="#/search">Search</a></li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </li>
+        <li><a class="waves-effect waves-orange" href="#/lang">Language</a></li>
+        <li><a class="waves-effect waves-orange" href="/api">API</a></li>
+        <li><a class="waves-effect waves-orange" href="#/doc">Documentation</a></li>
     </ul>
 </header>
