@@ -1,3 +1,6 @@
-/**
- * Created by xzf on 14.04.16.
- */
+(function () {
+    angular.module('refugeeAuthorEnv')
+        .controller('ListController', function () {
+
+        });
+})();
