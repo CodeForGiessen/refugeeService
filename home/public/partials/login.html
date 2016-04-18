@@ -1,9 +1,12 @@
 <div class="container">
-        <div class="center">
-            <a href="" class="waves-effect waves-teal btn-flat" ng-click="loginCtrl.setTab(1)">Login</a>
-            <a href="" class="waves-effect waves-teal btn-flat" ng-click="loginCtrl.setTab(2)">Register</a>
-        </div>
-    <div class="divider"></div>
-        <div login-tab ng-show="loginCtrl.isTab(1)"></div>
-        <div register-tab ng-show="loginCtrl.isTab(2)"></div>
+    <div class="center">
+        <ul class="tabs">
+            <li class="tab col s6"><a href="#login">Login</a></li>
+            <li class="tab col s6"><a href="#register">Register</a></li>
+            <div class="indicator"></div>
+        </ul>
+    </div>
+
+    <div id="login" login-tab></div>
+    <div id="register" register-tab></div>
 </div>

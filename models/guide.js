@@ -3,7 +3,6 @@
     var Schema = mongoose.Schema;
 
     var metadata = {
-        metaId: Number,
         author: {
             userId: Number,
             username: String
