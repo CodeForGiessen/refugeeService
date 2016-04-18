@@ -1,3 +1,69 @@
 <div class="container">
-    <h4>Add a new Guideline</h4>
+    <div class="row">
+        <div class="center">
+            <ul class="tabs">
+                <li class="tab col s6"><a href="#guideline">Guideline</a></li>
+                <li class="tab col s6"><a href="#category">Category</a></li>
+                <div class="indicator"></div>
+            </ul>
+        </div>
+        <div id="guideline" class="col s12">
+            <form action="#">
+                <div class="row">
+                    <div class="input-field col s12">
+                        <textarea id="guidelinetext" ng-model="guideline.text" class="materialize-textarea"></textarea>
+                        <label for="guidelinetext">Guideline</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s3">
+                        <select id="categoryselect" ng-model="guideline.category">
+                            <option value="" disabled selected>Choose a Category</option>
+                            <option value="1">Category 1</option>
+                            <option value="2">Category 2</option>
+                            <option value="3">Category 1</option>
+                        </select>
+                    </div>
+                    <div class="input-field col s3">
+                        <select id="langselect_guide" ng-model="guideline.lang">
+                            <option value="" disabled selected>Choose a Language</option>
+                            <option value="de">German</option>
+                            <option value="en">English</option>
+                            <option value="fr">French</option>
+                        </select>
+                    </div>
+                    <div class="input-field col s3">
+                        <input type="checkbox" id="check_motd" ng-model="guideline.motd">
+                        <label for="check_motd">Message of the Day</label>
+                    </div>
+                    <div class="input-field col s3">
+                        <a class="btn-large waves-effect waves-orange" ng-click="addCtrl.saveGuide()">Save</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div id="category" class="col s12">
+            <form action="#">
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input type="text" ng-model="categorytext" id="categorytext">
+                        <label for="categorytext">Category</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s4">
+                        <select id="langselect_category" ng-model="categorylang">
+                            <option value="" disabled selected>Choose a Language</option>
+                            <option value="de">German</option>
+                            <option value="en">English</option>
+                            <option value="fr">French</option>
+                        </select>
+                    </div>
+                    <div class="input-field col s4 push-s4">
+                        <a class="btn-large waves-effect waves-orange" ng-click="addCtrl.saveCategory()">Save</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
 </div>
