@@ -5,37 +5,57 @@
             $routeProvider.when('/', {
                 templateUrl: '/public/partials/main.html',
                 controller: 'MainCtrl',
-                controllerAs: 'mainCtrl'
+                controllerAs: 'mainCtrl',
+                access: {restricted: false}
             }).when('/dashboard', {
                 templateUrl: '/public/partials/dashboard.html',
                 controller: 'DashboardCtrl',
-                controllerAs: 'dashCtrl'
+                controllerAs: 'dashCtrl',
+                access: {restricted: false}
             }).when('/login', {
                 templateUrl: '/public/partials/login.html',
                 controller: 'LoginCtrl',
-                controllerAs: 'loginCtrl'
+                controllerAs: 'loginCtrl',
+                access: {restricted: false}
             }).when('/list',{
                 templateUrl: '/public/partials/list.html',
                 controller: 'ListController',
-                controllerAs: 'listCtrl'
+                controllerAs: 'listCtrl',
+                access: {restricted: true}
             }).when('/list/:id',{
                 templateUrl: '/public/partials/guidelist.html',
                 controller: 'GuideListController',
-                controllerAs: 'glistCtrl'
+                controllerAs: 'glistCtrl',
+                access: {restricted: true}
             }).when('/list/:id/:id',{
                 templateUrl: '/public/partials/guidedetails.html',
                 controller: 'DetailController',
-                controllerAs: 'detailCtrl'
+                controllerAs: 'detailCtrl',
+                access: {restricted: true}
             }).when('/add',{
                 templateUrl: '/public/partials/add.html',
                 controller: 'AddController',
-                controllerAs: 'addCtrl'
+                controllerAs: 'addCtrl',
+                access: {restricted: true}
             }).when('/search',{
                 templateUrl: '/public/partials/search.html',
                 controller: 'SearchController',
-                controllerAs: 'searchCtrl'
+                controllerAs: 'searchCtrl',
+                access: {restricted: true}
             }).otherwise({
-                redirectTo: '/'
+                redirectTo: '/',
+                access: {restricted: false}
+            });
+        }])
+        .run(['$rootScope', '$location', '$route','$window' , 'AuthService', function ($rootScope, $location, $route, $window, AuthService) {
+            $rootScope.$on('$routeChangeStart', function (event, next, current) {
+                AuthService.getUserStatus()
+                    .then(function () {
+                        if(next.access.restricted && AuthService.isLoggedIn() === false) {
+                            $location.path('/login');
+                            $route.reload();
+                        }
+                    });
             });
         }]);
 })();

@@ -5,7 +5,20 @@
                 <a href="#" data-activates="nav-mobile" class="left button-collapse hide-on-large-only">
                     <i class="material-icons">menu</i>
                 </a>
-                <a ui-sref="main" class="brand-logo center">refugeeProject</a>
+                <a href="#/" class="brand-logo center">refugeeProject</a>
+                <a href="#" class="right dropdown-btn" data-activates="account_dropdown">
+                    <i class="material-icons large">perm_identity</i>
+                </a>
+                <a href="#" class="right">
+                    <i class="material-icons large">language</i>
+                </a>
+
+                <ul id="account_dropdown" class="dropdown-content">
+                    <li><a href="#/login" class="btn-flat">Login/Register</a></li>
+                    <li><a href="#/" class="btn-flat">Settings</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#/" class="btn-flat" ng-click="logout()">Logout</a></li>
+                </ul>
             </div>
         </div>
     </nav>

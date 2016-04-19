@@ -1,19 +1,25 @@
 (function () {
     angular.module('refugeeAuthorEnv')
         .factory('AuthService', ['$q', '$timeout', '$http', function ($q, $timeout, $http) {
-            this.user = null;
+            this.user = false;
             var factory = {};
 
                 factory.isLoggedIn = function () {
-                    if (user) {
+                    if (this.user) {
                         return true;
                     } else {
-                        return null;
+                        return false;
                     }
                 };
 
                 factory.getUserStatus = function () {
-                    return user;
+                    return $http.get('/userstatus')
+                        .success(function (data) {
+                            user = data.status;
+                        })
+                        .error(function (data) {
+                            user = false;
+                        });
                 };
 
                 factory.login = function (username, password) {
@@ -21,15 +27,15 @@
                     $http.post('/login', {username: username, password: password})
                         .success(function (data, status) {
                             if (status === 200 && data.status) {
-                                user = true;
+                                this.user = true;
                                 deferred.resolve();
                             } else {
-                                user = false;
+                                this.user = false;
                                 deferred.reject();
                             }
                         })
                         .error(function (data) {
-                            user = false;
+                            this.user = false;
                             deferred.reject();
                         });
 
@@ -41,11 +47,11 @@
 
                     $http.get('/logout')
                         .success(function (data) {
-                            user = false;
+                            this.user = false;
                             deferred.resolve();
                         })
                         .error(function (data) {
-                            user = false;
+                            this.user = false;
                             deferred.reject();
                         });
 

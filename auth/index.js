@@ -69,4 +69,15 @@
             status: 'Logout success'
         });
     });
+
+    app.get('/userstatus', function (req, res) {
+        if(!req.isAuthenticated()) {
+            return res.status(200).json({
+                status: false
+            });
+        }
+        res.status(200).json({
+            status: true
+        });
+    });
 })();
