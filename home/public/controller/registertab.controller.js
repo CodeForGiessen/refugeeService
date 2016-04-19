@@ -5,6 +5,7 @@
 
             this.registerUser = function () {
                 console.log($scope.user);
+                $scope.user.role = 'newbie';
                 AuthService.register($scope.user)
                     .then(function () {
                         AuthService.login($scope.user.username, $scope.user.password)

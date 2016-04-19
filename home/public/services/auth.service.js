@@ -31,7 +31,6 @@
                             if (status === 200 && data.status) {
                                 console.log("Login: "+ data.status);
                                 that.user = true;
-                                console.log("User: "+ that.user);
                                 deferred.resolve();
                             } else {
                                 that.user = false;

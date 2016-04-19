@@ -5,19 +5,19 @@
                 <a href="#" data-activates="nav-mobile" class="left button-collapse hide-on-large-only">
                     <i class="material-icons">menu</i>
                 </a>
-                <a href="#/" class="brand-logo center">refugeeProject</a>
-                <a href="#" class="right dropdown-btn" data-activates="account_dropdown">
+                <a href="#/" class="brand-logo center">refugees Gießen</a>
+                <a href="" class="right dropdown-btn" data-activates="account_dropdown">
                     <i class="material-icons large">perm_identity</i>
                 </a>
-                <a href="#" class="right">
+                <a href="" class="right">
                     <i class="material-icons large">language</i>
                 </a>
 
                 <ul id="account_dropdown" class="dropdown-content">
-                    <li><a href="#/login" class="btn-flat" ng-class="{disabled:navCtrl.isLoggedIn()}">Login/Register</a></li>
-                    <li><a href="#/" class="btn-flat" ng-class="{disabled:!navCtrl.isLoggedIn()}">Settings</a></li>
+                    <li><a id="nav-login-btn" href="" class="btn-flat" ng-class="{disabled:isLoggedIn()}" ng-click="loginBtn()">Login/Register</a></li>
+                    <li><a id="nav-setting-btn" href="" class="btn-flat" ng-class="{disabled:!isLoggedIn()}" ng-click="settingsBtn()">Settings</a></li>
                     <li class="divider"></li>
-                    <li><a href="#/" class="btn-flat" ng-class="{disabled:!navCtrl.isLoggedIn()}" ng-click="logout()">Logout</a></li>
+                    <li><a id="nav-logout-btn" href="" class="btn-flat disabled" ng-class="{disabled:!isLoggedIn()}" ng-click="logoutBtn()">Logout</a></li>
                 </ul>
             </div>
         </div>
@@ -26,11 +26,9 @@
     <ul id="nav-mobile" class="side-nav fixed" style="overflow: auto; transform: translateX(0px);">
         <li class="center brand-logo"><i style="margin-top: 16px;" class="material-icons large">account_circle</i></li>
         <div class="divider"></div>
-        <li><a class="waves-effect waves-orange" href="#/login">Login/Register</a></li>
-        <li><a class="waves-effect waves-orange" href="#/lang">Language</a></li>
         <li class="no-padding">
             <ul class="collapsible">
-                <li><a class="collapsible-header waves-effect waves-orange">Modify</a>
+                <li><a class="collapsible-header waves-effect waves-orange"  ng-class="{disabled:!isLoggedIn()}">Content</a>
                     <div class="collapsible-body">
                         <ul>
                             <li><a class="waves-effect waves-orange" href="#/list">List</a></li>
