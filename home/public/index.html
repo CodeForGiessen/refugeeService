@@ -21,6 +21,8 @@
 <script type="text/javascript" src="/public/js/materialize.min.js"></script>
 <!--Import authorEnv.js-->
 <script type="text/javascript" src="/public/authorEnv.js"></script>
+<!--Import Config files-->
+<script type="text/javascript" src="/public/config/i18n.config.js"></script>
 <!--Import Services-->
 <script type="text/javascript" src="/public/services/auth.service.js"></script>
 <!--Import Controller-->
@@ -53,13 +55,12 @@
     <div class="container">
         <div class="row">
             <div class="col l4 push-l2 m6 s12">
-                <p class="grey-text text-lighten-4">Dies ist ein Projekt des OK Lab Gießen.</p>
+                <p class="grey-text text-lighten-4">{{'FOOTER_INFOTEXT'|translate}}</p>
             </div>
             <div class="col l2 offset-l2 push-l2 m4 offset-m2 s12">
                 <h5 class="white-text">Links</h5>
                 <ul>
-                    <li><a class="grey-text text-lighten-3" href="/">About</a></li>
-                    <li><a class="grey-text text-lighten-3" href="/">Impressum</a></li>
+                    <li><a class="grey-text text-lighten-3" href="/">{{'FOOTER_ABOUT'|translate}}</a></li>
                 </ul>
             </div>
         </div>

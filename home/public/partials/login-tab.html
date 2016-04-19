@@ -1,11 +1,11 @@
 <form ng-submit="logintabCtrl.login()">
     <div class="input-field">
         <input ng-model="logintabCtrl.user['username']" id="username" type="text">
-        <label for="username">Username</label>
+        <label for="username">{{'LOGINTAB_USERNAME'|translate}}</label>
     </div>
     <div class="input-field">
         <input ng-model="logintabCtrl.user['password']" id="password" type="password">
-        <label for="password">Password</label>
+        <label for="password">{{'LOGINTAB_PASSWORD'|translate}}</label>
     </div>
-    <a class="waves-teal waves-effect btn right" ng-click="logintabCtrl.login()" ng-disabled="disabled" type="submit">Login</a>
+    <a class="waves-teal waves-effect btn right" ng-click="logintabCtrl.login()" ng-disabled="disabled" type="submit">{{'LOGINTAB_LOGINBTN'|translate}}</a>
 </form>

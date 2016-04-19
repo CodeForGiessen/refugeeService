@@ -1,6 +1,6 @@
 (function() {
     'use strict';
-    angular.module('refugeeAuthorEnv', ['ngRoute'])
+    angular.module('refugeeAuthorEnv', ['ngRoute','pascalprecht.translate'])
         .config(['$routeProvider', function($routeProvider) {
             $routeProvider.when('/', {
                 templateUrl: '/public/partials/main.html',
@@ -47,7 +47,11 @@
                 access: {restricted: false}
             });
         }])
-        .run(['$rootScope', '$location', '$route','$window' , 'AuthService', function ($rootScope, $location, $route, $window, AuthService) {
+        .run(['$rootScope', '$location', '$route', '$window', '$translate', 'AuthService', function ($rootScope, $location, $route, $window, $translate, AuthService) {
+            var lang = localStorage.getItem('lang');
+            if(lang){
+                $translate.use(lang);
+            }
             $rootScope.$on('$routeChangeStart', function (event, next, current) {
                 AuthService.getUserStatus()
                     .then(function () {

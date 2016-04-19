@@ -1,24 +1,37 @@
 <header>
     <nav class="top-nav teal">
-        <div class="container">
-            <div class="nav-wrapper">
-                <a href="#" data-activates="nav-mobile" class="left button-collapse hide-on-large-only">
-                    <i class="material-icons">menu</i>
+        <div class="nav-wrapper">
+            <a href="#" data-activates="nav-mobile" class="left button-collapse hide-on-large-only">
+                <i class="material-icons">menu</i>
+            </a>
+            <a href="" class="brand-logo center">{{'APP_TITLE'|translate}}</a>
+            <div style="margin-right: 16px">
+                <a href="" class="right dropdown-btn" style="margin-left: 16px" data-activates="account_dropdown">
+                    <i class="material-icons left">perm_identity</i>{{'HEADER_ACCBTN'|translate}}
                 </a>
-                <a href="#/" class="brand-logo center">refugees Gießen</a>
-                <a href="" class="right dropdown-btn" data-activates="account_dropdown">
-                    <i class="material-icons large">perm_identity</i>
+                <a href="" class="right" ng-click="openLangModal()">
+                    <i class="material-icons left">language</i>{{'HEADER_LANGBTN'|translate}}
                 </a>
-                <a href="" class="right">
-                    <i class="material-icons large">language</i>
-                </a>
-
+                <!--Dropdown Content-->
                 <ul id="account_dropdown" class="dropdown-content">
-                    <li><a id="nav-login-btn" href="" class="btn-flat" ng-class="{disabled:isLoggedIn()}" ng-click="loginBtn()">Login/Register</a></li>
-                    <li><a id="nav-setting-btn" href="" class="btn-flat" ng-class="{disabled:!isLoggedIn()}" ng-click="settingsBtn()">Settings</a></li>
+                    <li><a id="nav-login-btn" href="" class="btn-block" ng-class="{disabled:isLoggedIn()}"
+                           ng-click="loginBtn()">{{'HEADER_LOGINBTN'|translate}}</a></li>
+                    <li><a id="nav-setting-btn" href="" class="btn-block" ng-class="{disabled:!isLoggedIn()}"
+                           ng-click="settingsBtn()">{{'HEADER_SETTINGSBTN'|translate}}</a></li>
                     <li class="divider"></li>
-                    <li><a id="nav-logout-btn" href="" class="btn-flat disabled" ng-class="{disabled:!isLoggedIn()}" ng-click="logoutBtn()">Logout</a></li>
+                    <li><a id="nav-logout-btn" class="btn-block" ng-class="{disabled:!isLoggedIn()}"
+                           ng-click="logoutBtn()">{{'HEADER_LOGOUTBTN'|translate}}</a></li>
                 </ul>
+                <!--Language Modal Content-->
+                <div id="lang-modal" class="modal">
+                    <div class="modal-content">
+                        <h4 class="black-text">Choose a language</h4>
+                        <div class="collection">
+                            <a class="collection-item" ng-click="chooseLang('de')">{{'LANGMODAL_DE'|translate}}</a>
+                            <a class="collection-item" ng-click="chooseLang('en')">{{'LANGMODAL_EN'|translate}}</a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </nav>
@@ -28,16 +41,16 @@
         <div class="divider"></div>
         <li class="no-padding">
             <ul class="collapsible">
-                <li><a class="collapsible-header waves-effect waves-orange"  ng-class="{disabled:!isLoggedIn()}">Content</a>
+                <li><a class="collapsible-header waves-effect waves-orange" ng-class="{disabled:!isLoggedIn()}">{{'NAVBAR_CONTENTBTN'|translate}}</a>
                     <div class="collapsible-body">
                         <ul>
-                            <li><a class="waves-effect waves-orange" href="#/list">List</a></li>
-                            <li><a class="waves-effect waves-orange" href="#/add">Add</a></li>
-                            <li><a class="waves-effect waves-orange" href="#/search">Search</a></li>
+                            <li><a class="waves-effect waves-orange" href="#/add">{{'NAVBAR_ADDBTN'|translate}}</a></li>
+                            <li><a class="waves-effect waves-orange" href="#/list">{{'NAVBAR_LISTBTN'|translate}}</a>
+                            </li>
                         </ul>
                     </div>
                 </li>
-                <li><a class="waves-effect waves-orange collapsible-header">API</a>
+                <li><a class="waves-effect waves-orange collapsible-header">{{'NAVBAR_APIBTN'|translate}}</a>
                     <div class="collapsible-body">
                         <ul>
                             <li><a class="waves-effect waves-orange" href="/api">/api/</a></li>
@@ -48,6 +61,6 @@
                 </li>
             </ul>
         </li>
-        <li><a class="waves-effect waves-orange" href="#/doc">Documentation</a></li>
+        <li><a class="waves-effect waves-orange" href="#/doc">{{'NAVBAR_DOCBTN'|translate}}</a></li>
     </ul>
 </header>
