@@ -7,7 +7,11 @@
         app = module.exports = express();
 
     app.post('/register', function (req, res) {
-        //console.log("POST on /register: " + req.body);
+        //Disable Caching for registering
+        res.header("Cache-Control", "no-cache, no-store, must-revalidate");
+        res.header("Pragma", "no-cache");
+        res.header("Expires", "0");
+
         User.register(new User({
             username: req.body.username,
             email: req.body.email,
@@ -39,6 +43,11 @@
     });
 
     app.post('/login', function (req, res, next) {
+        //Disable caching for login
+        res.header("Cache-Control", "no-cache, no-store, must-revalidate");
+        res.header("Pragma", "no-cache");
+        res.header("Expires", "0");
+
         console.log('User LogIn: ' + req.body.username + ' - ' + req.body.password);
         passport.authenticate('local', function (err, user, info) {
             if(err) {
@@ -64,6 +73,11 @@
     });
 
     app.get('/logout', function (req, res) {
+        //Disable caching for logout
+        res.header("Cache-Control", "no-cache, no-store, must-revalidate");
+        res.header("Pragma", "no-cache");
+        res.header("Expires", "0");
+
         req.logout();
         res.status(200).json({
             status: 'Logout success'
@@ -71,6 +85,11 @@
     });
 
     app.get('/userstatus', function (req, res) {
+        //Disable caching for user-status
+        res.header("Cache-Control", "no-cache, no-store, must-revalidate");
+        res.header("Pragma", "no-cache");
+        res.header("Expires", "0");
+
         if(!req.isAuthenticated()) {
             return res.status(200).json({
                 status: false

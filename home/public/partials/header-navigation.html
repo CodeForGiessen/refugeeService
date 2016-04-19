@@ -14,10 +14,10 @@
                 </a>
 
                 <ul id="account_dropdown" class="dropdown-content">
-                    <li><a href="#/login" class="btn-flat">Login/Register</a></li>
-                    <li><a href="#/" class="btn-flat">Settings</a></li>
+                    <li><a href="#/login" class="btn-flat" ng-class="{disabled:navCtrl.isLoggedIn()}">Login/Register</a></li>
+                    <li><a href="#/" class="btn-flat" ng-class="{disabled:!navCtrl.isLoggedIn()}">Settings</a></li>
                     <li class="divider"></li>
-                    <li><a href="#/" class="btn-flat" ng-click="logout()">Logout</a></li>
+                    <li><a href="#/" class="btn-flat" ng-class="{disabled:!navCtrl.isLoggedIn()}" ng-click="logout()">Logout</a></li>
                 </ul>
             </div>
         </div>

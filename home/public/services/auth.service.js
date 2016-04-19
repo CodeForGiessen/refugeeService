@@ -1,11 +1,12 @@
 (function () {
     angular.module('refugeeAuthorEnv')
         .factory('AuthService', ['$q', '$timeout', '$http', function ($q, $timeout, $http) {
+            var that = this;
             this.user = false;
             var factory = {};
 
                 factory.isLoggedIn = function () {
-                    if (this.user) {
+                    if (that.user) {
                         return true;
                     } else {
                         return false;
@@ -15,10 +16,10 @@
                 factory.getUserStatus = function () {
                     return $http.get('/userstatus')
                         .success(function (data) {
-                            user = data.status;
+                            that.user = data.status;
                         })
                         .error(function (data) {
-                            user = false;
+                            that.user = false;
                         });
                 };
 
@@ -26,16 +27,19 @@
                     var deferred = $q.defer();
                     $http.post('/login', {username: username, password: password})
                         .success(function (data, status) {
+                            console.log("Login: "+ data);
                             if (status === 200 && data.status) {
-                                this.user = true;
+                                console.log("Login: "+ data.status);
+                                that.user = true;
+                                console.log("User: "+ that.user);
                                 deferred.resolve();
                             } else {
-                                this.user = false;
+                                that.user = false;
                                 deferred.reject();
                             }
                         })
                         .error(function (data) {
-                            this.user = false;
+                            that.user = false;
                             deferred.reject();
                         });
 
@@ -47,11 +51,11 @@
 
                     $http.get('/logout')
                         .success(function (data) {
-                            this.user = false;
+                            that.user = false;
                             deferred.resolve();
                         })
                         .error(function (data) {
-                            this.user = false;
+                            that.user = false;
                             deferred.reject();
                         });
 

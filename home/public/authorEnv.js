@@ -51,6 +51,7 @@
             $rootScope.$on('$routeChangeStart', function (event, next, current) {
                 AuthService.getUserStatus()
                     .then(function () {
+                        console.log("restricted: "+next.access.restricted + " | logged in: "+AuthService.isLoggedIn());
                         if(next.access.restricted && AuthService.isLoggedIn() === false) {
                             $location.path('/login');
                             $route.reload();
