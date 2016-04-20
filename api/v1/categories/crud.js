@@ -30,7 +30,7 @@
         newCategory.save(callback);
     }
 
-    function update(query,newdata, callback) {
+    function update(query, newdata, callback) {
         Category.findOneAndUpdate(query, newdata, callback);
     }
 

@@ -11,21 +11,21 @@
             <form action="#">
                 <div class="row">
                     <div class="input-field col s12">
-                        <textarea id="guidelinetext" ng-model="guideline.text" class="materialize-textarea"></textarea>
+                        <textarea id="guidelinetext" ng-model="addCtrl.guideline.text" class="materialize-textarea"></textarea>
                         <label for="guidelinetext">{{'ADD_GUIDELINE'|translate}}</label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s3">
-                        <select id="categoryselect" ng-model="guideline.category">
+                        <select id="categoryselect" ng-model="addCtrl.guideline.category">
                             <option value="" disabled selected>{{'ADD_CATEGORYSELECT'|translate}}</option>
                             <option value="1">Category 1</option>
                             <option value="2">Category 2</option>
-                            <option value="3">Category 1</option>
+                            <option value="3">Category 3</option>
                         </select>
                     </div>
                     <div class="input-field col s3">
-                        <select id="langselect_guide" ng-model="guideline.lang">
+                        <select id="langselect_guide" ng-model="addCtrl.guideline.lang">
                             <option value="" disabled selected>{{'ADD_LANGSELECT'|translate}}</option>
                             <option value="de">{{'LANG_DE'|translate}}</option>
                             <option value="en">{{'LANG_EN'|translate}}</option>
@@ -33,7 +33,7 @@
                         </select>
                     </div>
                     <div class="input-field col s3">
-                        <input type="checkbox" id="check_motd" ng-model="guideline.motd">
+                        <input type="checkbox" id="check_motd" ng-model="addCtrl.guideline.motd">
                         <label for="check_motd">{{'ADD_MOTD'|translate}}</label>
                     </div>
                     <div class="input-field col s3">
@@ -46,13 +46,13 @@
             <form action="#">
                 <div class="row">
                     <div class="input-field col s12">
-                        <input type="text" ng-model="categorytext" id="categorytext">
+                        <input type="text" ng-model="addCtrl.categorytext" id="categorytext">
                         <label for="categorytext">{{'ADD_CATEGORY'|translate}}</label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s4">
-                        <select id="langselect_category" ng-model="categorylang">
+                        <select id="langselect_category" ng-model="addCtrl.categorylang">
                             <option value="" disabled selected>{{'ADD_LANGSELECT'|translate}}</option>
                             <option value="de">{{'LANG_DE'|translate}}</option>
                             <option value="en">{{'LANG_EN'|translate}}</option>
