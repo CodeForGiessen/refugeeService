@@ -2,8 +2,8 @@
     <div class="row">
         <div class="center">
             <ul class="tabs">
-                <li class="tab col s6"><a href="#guideline">Guideline</a></li>
-                <li class="tab col s6"><a href="#category">Category</a></li>
+                <li class="tab col s6"><a href="#guideline">{{'ADD_GUIDELINE'|translate}}</a></li>
+                <li class="tab col s6"><a href="#category">{{'ADD_CATEGORY'|translate}}</a></li>
                 <div class="indicator"></div>
             </ul>
         </div>
@@ -12,13 +12,13 @@
                 <div class="row">
                     <div class="input-field col s12">
                         <textarea id="guidelinetext" ng-model="guideline.text" class="materialize-textarea"></textarea>
-                        <label for="guidelinetext">Guideline</label>
+                        <label for="guidelinetext">{{'ADD_GUIDELINE'|translate}}</label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s3">
                         <select id="categoryselect" ng-model="guideline.category">
-                            <option value="" disabled selected>Choose a Category</option>
+                            <option value="" disabled selected>{{'ADD_CATEGORYSELECT'|translate}}</option>
                             <option value="1">Category 1</option>
                             <option value="2">Category 2</option>
                             <option value="3">Category 1</option>
@@ -26,18 +26,18 @@
                     </div>
                     <div class="input-field col s3">
                         <select id="langselect_guide" ng-model="guideline.lang">
-                            <option value="" disabled selected>Choose a Language</option>
-                            <option value="de">German</option>
-                            <option value="en">English</option>
-                            <option value="fr">French</option>
+                            <option value="" disabled selected>{{'ADD_LANGSELECT'|translate}}</option>
+                            <option value="de">{{'LANG_DE'|translate}}</option>
+                            <option value="en">{{'LANG_EN'|translate}}</option>
+                            <option value="fr">{{'LANG_FR'|translate}}</option>
                         </select>
                     </div>
                     <div class="input-field col s3">
                         <input type="checkbox" id="check_motd" ng-model="guideline.motd">
-                        <label for="check_motd">Message of the Day</label>
+                        <label for="check_motd">{{'ADD_MOTD'|translate}}</label>
                     </div>
                     <div class="input-field col s3">
-                        <a class="btn-large waves-effect waves-orange" ng-click="addCtrl.saveGuide()">Save</a>
+                        <a class="btn-large waves-effect waves-orange" ng-click="addCtrl.saveGuide()">{{'ADD_SAVEBTN'|translate}}</a>
                     </div>
                 </div>
             </form>
@@ -47,20 +47,20 @@
                 <div class="row">
                     <div class="input-field col s12">
                         <input type="text" ng-model="categorytext" id="categorytext">
-                        <label for="categorytext">Category</label>
+                        <label for="categorytext">{{'ADD_CATEGORY'|translate}}</label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s4">
                         <select id="langselect_category" ng-model="categorylang">
-                            <option value="" disabled selected>Choose a Language</option>
-                            <option value="de">German</option>
-                            <option value="en">English</option>
-                            <option value="fr">French</option>
+                            <option value="" disabled selected>{{'ADD_LANGSELECT'|translate}}</option>
+                            <option value="de">{{'LANG_DE'|translate}}</option>
+                            <option value="en">{{'LANG_EN'|translate}}</option>
+                            <option value="fr">{{'LANG_FR'|translate}}</option>
                         </select>
                     </div>
                     <div class="input-field col s4 push-s4">
-                        <a class="btn-large waves-effect waves-orange" ng-click="addCtrl.saveCategory()">Save</a>
+                        <a class="btn-large waves-effect waves-orange" ng-click="addCtrl.saveCategory()">{{'ADD_SAVEBTN'|translate}}</a>
                     </div>
                 </div>
             </form>

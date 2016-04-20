@@ -4,6 +4,9 @@
         .config(['$translateProvider', function ($translateProvider) {
             $translateProvider.translations('de', {
                     'APP_TITLE': 'Refugees Gießen',
+                    'LANG_DE': 'Deutsch',
+                    'LANG_EN': 'Englisch',
+                    'LANG_FR': 'Französisch',
                     'MAIN_TITLE': 'Willkommen.',
                     'MAIN_TEXT1': 'Diese Seite dient dazu, die Inhalte der dazugehörigen App zu erstellen, bearbeiten und löschen.',
                     'MAIN_TEXT2': 'Alle Texte können hier in unterschiedlichen Sprachen erstellt und übersetzt werden.',
@@ -16,7 +19,7 @@
                     'LOGINTOAST_SUCCESSMSG' : 'Sie sind jetzt als {{username}} angemeldet',
                     'LOGINTOAST_ERRORMSG':'Ungültiger Nutzername oder Passwort',
                     'REGISTERTOAST_ERRORMSG':'Registrierung fehlgeschlagen. Versuchen Sie s nochmal.',
-                    'REGISTERTOAST_SUCCESSMSG':'Sie sind jetzt registriert, automatische anmeldung...',
+                    'REGISTERTOAST_SUCCESSMSG':'Sie sind jetzt registriert, melde an...',
                     'REGISTERTAB_MAIL': 'E-Mail',
                     'REGISTERTAB_USERNAME': 'Nutzername',
                     'REGISTERTAB_NAME': 'Vorname',
@@ -37,12 +40,19 @@
                     'NAVBAR_DOCBTN': 'Dokumentation',
                     'FOOTER_INFOTEXT': 'Dies ist ein Projekt des OK Lab Gießen.',
                     'FOOTER_ABOUT': 'Impressum',
-                    'LANGMODAL_TITLE': 'Wähle eine Sprachen',
-                    'LANGMODAL_DE': 'Deutsch',
-                    'LANGMODAL_EN': 'Englisch'
+                    'LANGMODAL_TITLE': 'Wähle eine Sprache',
+                    'ADD_LANGSELECT':'Wähle eine Sprache',
+                    'ADD_CATEGORY':'Kategorie',
+                    'ADD_GUIDELINE':'Richtlinie',
+                    'ADD_CATEGORYSELECT':'Wähle eine Kategorie',
+                    'ADD_MOTD':'Tipp des Tages',
+                    'ADD_SAVEBTN':'Speichern'
                 })
                 .translations('en', {
                     'APP_TITLE': 'Refugees Gießen',
+                    'LANG_DE': 'German',
+                    'LANG_EN': 'English',
+                    'LANG_FR': 'French',
                     'MAIN_TITLE': 'Welcome.',
                     'MAIN_TEXT1': 'This page is used to create, update and delete the content for the companion app.',
                     'MAIN_TEXT2': 'Texts can be written in different languages or can be translated.',
@@ -77,8 +87,12 @@
                     'FOOTER_INFOTEXT': 'This is a OK Lab Gießen Project.',
                     'FOOTER_ABOUT': 'About',
                     'LANGMODAL_TITLE': 'Choose a language',
-                    'LANGMODAL_DE': 'German',
-                    'LANGMODAL_EN': 'English'
+                    'ADD_LANGSELECT':'Choose a language',
+                    'ADD_CATEGORY':'Category',
+                    'ADD_GUIDELINE':'Guideline',
+                    'ADD_CATEGORYSELECT':'Select a category',
+                    'ADD_MOTD':'Message of the Day',
+                    'ADD_SAVEBTN':'Save'
                 })
                 .preferredLanguage('en')
                 .useSanitizeValueStrategy('escape');

@@ -1,11 +1,13 @@
 (function () {
     angular.module('refugeeAuthorEnv')
-        .controller('AddController', ['$document', function ($document) {
+        .controller('AddController', ['$document', '$timeout', function ($document, $timeout) {
             $document.ready(function () {
-                $document.find('ul.tabs').tabs();
-                $document.find('select').material_select();
-                $document.find('select').material_select();
-                $document.find('select').material_select();
+                setTimeout(function () {
+                    $document.find('ul.tabs').tabs();
+                    $document.find('select').material_select();
+                    $document.find('select').material_select();
+                    $document.find('select').material_select();
+                },0);
             });
 
         }]);
