@@ -1,6 +1,7 @@
 (function () {
     angular.module('refugeeAuthorEnv')
-        .controller('RegisterTabController', ['$scope', '$location', 'AuthService', function ($scope, $location, AuthService) {
+        .controller('RegisterTabController', ['$scope', '$location', '$translate', 'AuthService',
+            function ($scope, $location, $translate, AuthService) {
             $scope.user = {};
 
             this.registerUser = function () {
@@ -8,20 +9,21 @@
                 $scope.user.role = 'newbie';
                 AuthService.register($scope.user)
                     .then(function () {
+                        Materialize.toast($translate.instant('REGISTERTOAST_SUCCESSMSG'), 3000, 'rounded');
                         AuthService.login($scope.user.username, $scope.user.password)
                             .then(function () {
                                 $location.path('/');
-                                Materialize.toast("You are now logged in as " + $scope.user.username, 3000, 'rounded');
+                                Materialize.toast($translate.instant('LOGINTOAST_SUCCESSMSG',{username: $scope.user.username}), 3000, 'rounded');
                                 $scope.user = {};
                             })
                             .catch(function () {
                                 $scope.user = {};
-                                Materialize.toast("Invalid username or password", 3000, 'rounded');
+                                Materialize.toast($translate.instant('LOGINTOAST_ERRORMSG'), 3000, 'rounded');
                             });
                     })
                     .catch(function () {
                         $scope.user = {};
-                        Materialize.toast("Could not register, maybe try another username?", 3000, 'rounded');
+                        Materialize.toast($translate.instant('REGISTERTOAST_ERRORMSG'), 3000, 'rounded');
                     });
             };
         }]);

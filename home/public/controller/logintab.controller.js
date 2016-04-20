@@ -1,6 +1,7 @@
 (function () {
     angular.module('refugeeAuthorEnv')
-        .controller('LoginTabController', ['AuthService', '$scope', '$location', function (AuthService, $scope, $location) {
+        .controller('LoginTabController', ['AuthService', '$scope', '$location','$translate', 
+            function (AuthService, $scope, $location, $translate) {
             var that = this;
             
             this.login = function () {
@@ -10,13 +11,13 @@
                     .then(function () {
                         $scope.disabled = false;
                         $location.path('/');
-                        Materialize.toast("You are now logged in as " + that.user.username, 3000, 'rounded');
+                        Materialize.toast($translate.instant('LOGINTOAST_SUCCESSMSG',{username: that.user.username}), 3000, 'rounded');
                         that.user = {};
                     })
                     .catch(function () {
                         $scope.disabled = false;
                         that.user = {};
-                        Materialize.toast("Invalid username or password", 3000, 'rounded');
+                        Materialize.toast($translate.instant('LOGINTOAST_ERRORMSG'), 3000, 'rounded');
                     });
             };
         }]);
