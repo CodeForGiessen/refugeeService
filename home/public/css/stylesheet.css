@@ -1,3 +1,19 @@
+/*
+sticky footer
+*/
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+main {
+    flex: 1 0 auto;
+}
+
+.right.copyright {
+    margin-right: 16px;
+}
 
 /*
 show a red-line under invalid inputs that are focused or not empty

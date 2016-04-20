@@ -20,7 +20,7 @@
                             $document.find('.modal-trigger').leanModal({
                                 dismissible: true,
                                 in_duration: 300,
-                                out_duration: 200
+                                out_duration: 300
                             });
                         }, 0);
                     });
@@ -31,7 +31,7 @@
                         if(!$document.find('#nav-logout-btn').hasClass('disabled')) {
                             AuthService.logout()
                                 .then(function () {
-                                    Materialize.toast("You are now logged out.", 3000, 'rounded');
+                                    Materialize.toast($translate.instant('HEADER_LOGOUTMSG'), 3000, 'rounded');
                                 });
                         }
                     };
