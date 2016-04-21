@@ -2,6 +2,7 @@
     'use strict';
     var express = require('express'),
         app = module.exports = express(),
+        passport = require('passport'),
         crud = require('./crud');
 
     /**
@@ -76,7 +77,7 @@
     /**
      * Get all guides by categoryId
      */
-    app.get('/api/v1/guides/categories/:cid', function (req, res, next) {
+    app.get('/api/v1/guides/category/:cid', function (req, res, next) {
         crud.read({
             'category': req.params.cid
         }, function (err, guides) {
@@ -162,9 +163,69 @@
                 });
             } else {
                 res.statusCode = 200;
-                res.json(guide);
+                res.json({
+                    "guide" : guide
+                });
             }
         });
     });
 
+    /*
+    post and delete requests only with authentication!
+     */
+
+    /**
+     * Create a new guide
+     */
+    app.post('/api/v1/guides/', passport.authenticate('local'), function (req, res, next) {
+        crud.create(req.body.guide, function (err, guide) {
+            if(err) {
+                res.status(500).json({
+                    'err': err
+                });
+            } else {
+                res.status(200).json({
+                    'guide':guide
+                });
+            }
+        });
+    });
+
+    /**
+     * Update guide with id :id
+     */
+    app.post('/api/v1/guides/:id', passport.authenticate('local'), function (req, res) {
+        crud.update({
+            '_id': req.params.id
+        }, req.body.guide, function (err, guide) {
+            if(err){
+                res.status(500).json({
+                    'err':err
+                });
+            } else {
+                res.status(200).json({
+                    'guide':guide
+                });
+            }
+        });
+    });
+
+    /**
+     * Delete guide with id :id
+     */
+    app.delete('/api/v1/guides/:id', passport.authenticate('local'), function (req, res) {
+        crud.del({
+            '_id':req.params.id
+        }, function (err, guide) {
+            if(err) {
+                res.status(500).json({
+                    'err':err
+                });
+            } else {
+                res.status(200).json({
+                    'guide':guide
+                });
+            }
+        });
+    });
 })();

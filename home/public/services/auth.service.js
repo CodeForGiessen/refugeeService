@@ -6,11 +6,7 @@
             var factory = {};
 
                 factory.isLoggedIn = function () {
-                    if (that.user) {
-                        return true;
-                    } else {
-                        return false;
-                    }
+                    return that.user;
                 };
 
                 factory.getUserStatus = function () {

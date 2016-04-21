@@ -28,14 +28,12 @@
                                 categories = data.categories;
                                 deferred.resolve(categories);
                             } else {
-                                categories.error = data.error;
-                                deferred.reject(categories);
+                                deferred.reject(data.error);
                             }
                         })
                         .error(function (data) {
                             console.log(data.error);
-                            categories.error = data.error;
-                            deferred.reject(categories);
+                            deferred.reject(data.error);
                         });
                     return deferred.promise;
                 },
@@ -48,14 +46,12 @@
                                 categories = data._links;
                                 deferred.resolve(categories);
                             } else {
-                                categories.error = data.error;
-                                deferred.reject(categories);
+                                deferred.reject(data.error);
                             }
                         })
                         .error(function (data) {
                             console.log(data.error);
-                            categories.error = data.error;
-                            deferred.reject(categories);
+                            deferred.reject(data.error);
                         });
                     return deferred.promise;
                 },
@@ -68,14 +64,12 @@
                             category = data.category;
                             deferred.resolve(category);
                             } else {
-                                category.error = data.error;
-                                deferred.reject(category);
+                                deferred.reject(data.error);
                             }
                         })
                         .error(function (data) {
                             console.log(data.error);
-                            category.error = data.error;
-                            deferred.reject(category);
+                            deferred.reject(data.error);
                         });
                     return deferred.promise;
                 },

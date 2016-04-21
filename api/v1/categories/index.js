@@ -100,19 +100,23 @@
         });
     });
 
-    /*************** post and delete requests only with authorization! ******************/
+    /*
+     post and delete requests only with authentication!
+     */
 
     /**
      * Create a new category
      */
     app.post('/api/v1/categories/', passport.authenticate('local'), function (req, res, next) {
-        crud.create(req.category, function (err, category) {
+        crud.create(req.body.category, function (err, category) {
             if(err) {
                 res.status(500).json({
                     'error':err
                 });
             } else {
-                res.status(200).json(category);
+                res.status(200).json({
+                    'category':category
+                });
             }
         });
     });
@@ -123,13 +127,15 @@
     app.post('/api/v1/categories/:id', passport.authenticate('local'), function (req, res, next) {
         crud.update({
             '_id':req.params.id
-        }, req.category, function (err, category) {
+        }, req.body.category, function (err, category) {
             if(err) {
                 res.status(500).json({
                     'error':err
                 });
             } else {
-                res.status(200).json(category);
+                res.status(200).json({
+                    'category':category
+                });
             }
         });
     });
@@ -143,7 +149,9 @@
                     'error':err
                 });
             } else {
-                res.status(200).json(category);
+                res.status(200).json({
+                    'category':category
+                });
             }
         });
     });
