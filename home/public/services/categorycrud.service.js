@@ -4,7 +4,7 @@
             var that = this;
 
             return {
-                'createCat': function (category) {
+                'create': function (category) {
                     var deferred = $q.defer();
                     $http.post('/api/v1/categories/', category)
                         .success(function (data, status) {
@@ -19,7 +19,7 @@
                         });
                     return deferred.promise;
                 },
-                'readCat': function () {
+                'read': function () {
                     var deferred = $q.defer();
                     var categories = {};
                     $http.get('/api/v1/categories/')
@@ -39,7 +39,7 @@
                         });
                     return deferred.promise;
                 },
-                'readCatIds': function () {
+                'readIds': function () {
                     var deferred = $q.defer();
                     var categories = {};
                     $http.get('/api/v1/categories/ids')
@@ -59,7 +59,7 @@
                         });
                     return deferred.promise;
                 },
-                'readOneCat': function (id) {
+                'readOne': function (id) {
                     var deferred = $q.defer();
                     var category = {};
                     $http.get('/api/v1/categories/'+id)
@@ -79,7 +79,7 @@
                         });
                     return deferred.promise;
                 },
-                'updateCat': function (category) {
+                'update': function (category) {
                     var deferred = $q.defer();
                     $http.post('/api/v1/categories/' + category._id, category)
                         .success(function (data, status) {
@@ -94,7 +94,7 @@
                         });
                     return deferred.promise;
                 },
-                'deleteCat': function (category) {
+                'delete': function (category) {
                     var deferred = $q.defer();
                     $http.delete('/api/v1/categories/' + category._id, category)
                         .success(function (data, status) {
