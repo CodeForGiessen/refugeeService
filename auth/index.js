@@ -7,10 +7,6 @@
         app = module.exports = express();
 
     app.post('/register', function (req, res) {
-        //Disable Caching for registering
-        res.header("Cache-Control", "no-cache, no-store, must-revalidate");
-        res.header("Pragma", "no-cache");
-        res.header("Expires", "0");
 
         User.register(new User({
             username: req.body.username,
@@ -43,11 +39,6 @@
     });
 
     app.post('/login', function (req, res, next) {
-        //Disable caching for login
-        res.header("Cache-Control", "no-cache, no-store, must-revalidate");
-        res.header("Pragma", "no-cache");
-        res.header("Expires", "0");
-
         console.log('User LogIn: ' + req.body.username + ' - ' + req.body.password);
         passport.authenticate('local', function (err, user, info) {
             if(err) {

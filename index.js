@@ -10,26 +10,27 @@
         bodyParser = require('body-parser'),
         api = require('./api'),
         auth = require('./auth'),
-        home = require('./home');
+        home = require('./home'),
+        config = require('./config');
 
     var app = exports.app = express();
 
-    var hostname = '0.0.0.0';
-    var port = 8080;
+    var hostname = config.hostname;
+    var port = config.port;
 
     app.use(morgan('dev'));
-    app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({extended: false}));
-    //app.use(cookieParser);
+    app.use(bodyParser.json());
     app.use(require('express-session')({
-        secret: 'sosecretsuchencryptionmuchwow',
+        secret: config.tokensecret,
         resave: false,
         saveUninitialized: false
     }));
     app.use(passport.initialize());
     app.use(passport.session());
 
-    app.set('port', process.env.PORT || port);
+    app.set('port', port);
+    app.set('tokensecret', config.tokensecret);
 
     app.use(api);
     app.use(auth);
@@ -42,7 +43,7 @@
     passport.deserializeUser(User.deserializeUser());
 
     //mongoose
-    var database = 'localhost:27017/refugees';
+    var database = config.database;
     mongoose.connect(database);
 
     mongoose.connection.on('connected', function () {
