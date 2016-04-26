@@ -17,7 +17,7 @@
             email: req.body.email,
             name: req.body.name,
             surname: req.body.surname,
-            role: req.body.role
+            role: 'user'
         }), req.body.password, function (err, user) {
             if(err) {
                 res.statusCode = 500;
