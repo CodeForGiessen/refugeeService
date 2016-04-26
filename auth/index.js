@@ -66,7 +66,8 @@
                 }
                 res.statusCode = 200;
                 res.json({
-                    status: 'LogIn success'
+                    status: 'LogIn success',
+                    user: user
                 });
             });
         })(req, res, next);

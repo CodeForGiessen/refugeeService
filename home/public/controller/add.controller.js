@@ -1,6 +1,6 @@
 (function () {
     angular.module('refugeeAuthorEnv')
-        .controller('AddController', ['$document', '$timeout', function ($document, $timeout) {
+        .controller('AddController', ['$document', '$timeout','CategoryCrudService', function ($document, $timeout, CategoryCrudService) {
             var that = this;
             $document.ready(function () {
                 setTimeout(function () {
@@ -17,8 +17,9 @@
                 var category = {};
                 var text = {};
                 text[that.categorylang] = that.categorytext;
-                category.push(text);
-                
+                category.text = text;
+                console.log(category);
+                CategoryCrudService.create(category);
             };
         }]);
 })();

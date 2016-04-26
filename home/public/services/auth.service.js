@@ -23,7 +23,6 @@
                     var deferred = $q.defer();
                     $http.post('/login', {username: username, password: password})
                         .success(function (data, status) {
-                            console.log("Login: "+ data);
                             if (status === 200 && data.status) {
                                 console.log("Login: "+ data.status);
                                 that.user = true;

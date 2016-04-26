@@ -38,4 +38,10 @@
         Guide.findOneAndRemove(query, callback);
     }
 
+    module.exports.read = read;
+    module.exports.readOne = readOne;
+    module.exports.getAllIds = getAllIds;
+    module.exports.create = create;
+    module.exports.update = update;
+    module.exports.del = del;
 })();

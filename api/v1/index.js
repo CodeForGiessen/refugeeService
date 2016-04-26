@@ -3,7 +3,9 @@
 
     var express = require('express'),
         app = module.exports = express(),
-        guides = require('./guides');
+        guides = require('./guides'),
+        categories = require('./categories');
+
 
     app.get('/api/v1/', function (req, res) {
         res.status = 200;
@@ -44,4 +46,5 @@
         });
     });
     app.use(guides);
+    app.use(categories);
 })();
