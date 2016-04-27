@@ -1,4 +1,4 @@
-(function() {
+(function () {
     'use strict';
     angular.module('refugeeAuthorEnv', ['ngRoute','pascalprecht.translate'])
         .config(['$routeProvider', function($routeProvider) {
@@ -17,27 +17,27 @@
                 controller: 'LoginCtrl',
                 controllerAs: 'loginCtrl',
                 access: {restricted: false}
-            }).when('/list',{
+            }).when('/list', {
                 templateUrl: '/public/partials/list.html',
                 controller: 'ListController',
                 controllerAs: 'listCtrl',
                 access: {restricted: true}
-            }).when('/list/:id',{
+            }).when('/list/:id', {
                 templateUrl: '/public/partials/guidelist.html',
                 controller: 'GuideListController',
                 controllerAs: 'glistCtrl',
                 access: {restricted: true}
-            }).when('/list/:id/:id',{
+            }).when('/list/:id/:id', {
                 templateUrl: '/public/partials/guidedetails.html',
                 controller: 'DetailController',
                 controllerAs: 'detailCtrl',
                 access: {restricted: true}
-            }).when('/add',{
+            }).when('/add', {
                 templateUrl: '/public/partials/add.html',
                 controller: 'AddController',
                 controllerAs: 'addCtrl',
                 access: {restricted: true}
-            }).when('/search',{
+            }).when('/search', {
                 templateUrl: '/public/partials/search.html',
                 controller: 'SearchController',
                 controllerAs: 'searchCtrl',
@@ -47,20 +47,28 @@
                 access: {restricted: false}
             });
         }])
-        .run(['$rootScope', '$location', '$route', '$window', '$translate', 'AuthService', function ($rootScope, $location, $route, $window, $translate, AuthService) {
-            var lang = localStorage.getItem('lang');
-            if(lang){
-                $translate.use(lang);
-            }
-            $rootScope.$on('$routeChangeStart', function (event, next, current) {
-                AuthService.getUserStatus()
-                    .then(function () {
-                        console.log("restricted: "+next.access.restricted + " | logged in: "+AuthService.isLoggedIn());
-                        if(next.access.restricted && AuthService.isLoggedIn() === false) {
-                            $location.path('/login');
-                            $route.reload();
-                        }
-                    });
-            });
-        }]);
+        .run(['$http', '$rootScope', '$location', '$route', '$window', 'AuthService',
+            function ($http, $rootScope, $location, $route, $window, AuthService) {
+                $rootScope.$on('$routeChangeStart', function (event, next, current) {
+                    var token = window.localStorage.getItem('token');
+                    //Set access token for all requests
+                    if (token) {
+                        $http.defaults.headers.common['x-access-token'] = JSON.parse(token);
+                    }
+                    if (next.access.restricted) {
+                        AuthService.getUserStatus()
+                            .then(function () {
+                                console.log("restricted: " + next.access.restricted + " | logged in: " + AuthService.isLoggedIn());
+                                if (AuthService.isLoggedIn() === false) {
+                                    $location.path('/login');
+                                    $route.reload();
+                                }
+                            })
+                            .catch(function () {
+                                $location.path('/login');
+                                $route.reload();
+                            });
+                    }
+                });
+            }]);
 })();

@@ -2,36 +2,42 @@
     angular.module('refugeeAuthorEnv')
         .factory('AuthService', ['$q', '$timeout', '$http', function ($q, $timeout, $http) {
             var that = this;
-            this.user = {};
-            this.loggedIn = false;
+            this.user = false;
             var factory = {};
 
-                factory.getUser = function () {
-                    return that.user;
-                };
-
                 factory.isLoggedIn = function () {
-                    return that.loggedIn;
+                    if (that.user) {
+                        return true;
+                    } else {
+                        return false;
+                    }
                 };
 
                 factory.getUserStatus = function () {
-                    return $http.get('/userstatus')
+                    var deferred = $q.defer();
+                     $http.get('/userstatus')
                         .success(function (data) {
-                            that.loggedIn = data.status;
+                            that.user = data.success;
+                            window.localStorage.setItem('token', JSON.stringify(data.token));
+                            deferred.resolve();
                         })
                         .error(function (data) {
-                            that.loggedIn = false;
+                            that.user = false;
+                            window.localStorage.setItem('token', false);
+                            deferred.reject();
                         });
+                    return deferred.promise;
                 };
 
                 factory.login = function (username, password) {
                     var deferred = $q.defer();
                     $http.post('/login', {username: username, password: password})
                         .success(function (data, status) {
+                            console.log("Login: "+ data);
                             if (status === 200 && data.status) {
                                 console.log("Login: "+ data.status);
-                                that.loggedIn = true;
-                                that.user = data.user;
+                                that.user = true;
+                                window.localStorage.setItem('token', JSON.stringify(data.token));
                                 deferred.resolve();
                             } else {
                                 that.user = false;
@@ -52,10 +58,12 @@
                     $http.get('/logout')
                         .success(function (data) {
                             that.user = false;
+                            window.localStorage.setItem('token', false);
                             deferred.resolve();
                         })
                         .error(function (data) {
                             that.user = false;
+                            window.localStorage.setItem('token', false);
                             deferred.reject();
                         });
 
@@ -74,7 +82,8 @@
                             password: user.password
                         })
                         .success(function (data, status) {
-                            if (status === 200 && data.status) {
+                            if (status === 200 && data.success) {
+                                window.localStorage.setItem('token',JSON.stringify(data.token));
                                 deferred.resolve();
                             } else {
                                 deferred.reject();
