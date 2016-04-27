@@ -2,20 +2,25 @@
     angular.module('refugeeAuthorEnv')
         .factory('AuthService', ['$q', '$timeout', '$http', function ($q, $timeout, $http) {
             var that = this;
-            this.user = false;
+            this.user = {};
+            this.loggedIn = false;
             var factory = {};
 
-                factory.isLoggedIn = function () {
+                factory.getUser = function () {
                     return that.user;
+                };
+
+                factory.isLoggedIn = function () {
+                    return that.loggedIn;
                 };
 
                 factory.getUserStatus = function () {
                     return $http.get('/userstatus')
                         .success(function (data) {
-                            that.user = data.status;
+                            that.loggedIn = data.status;
                         })
                         .error(function (data) {
-                            that.user = false;
+                            that.loggedIn = false;
                         });
                 };
 
@@ -25,7 +30,8 @@
                         .success(function (data, status) {
                             if (status === 200 && data.status) {
                                 console.log("Login: "+ data.status);
-                                that.user = true;
+                                that.loggedIn = true;
+                                that.user = data.user;
                                 deferred.resolve();
                             } else {
                                 that.user = false;

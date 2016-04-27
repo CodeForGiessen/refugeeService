@@ -4,7 +4,7 @@
             return {
                 'create': function (guide) {
                     var deferred = $q.defer();
-                    $http.post('/api/v1/guides/', guide)
+                    $http.post('/api/v1/guides/', {guide:guide})
                         .success(function (data, status) {
                             if(status === 200) {
                                 deferred.resolve(data.guide);
@@ -89,7 +89,7 @@
                 },
                 'update': function (guide) {
                     var deferred = $q.defer();
-                    $http.post('/api/v1/guides/'+guide._id, guide)
+                    $http.post('/api/v1/guides/'+guide._id, {guide:guide})
                         .success(function (data, status) {
                             if(status === 200) {
                                 deferred.resolve(data.guide);
@@ -103,7 +103,7 @@
                 },
                 'delete': function (guide) {
                     var deferred = $q.defer();
-                    $http.delete('/api/v1/guides/'+guide._id, guide)
+                    $http.delete('/api/v1/guides/'+guide._id, {guide:guide})
                         .success(function (data, status) {
                             if(status === 200) {
                                 deferred.resolve(data.guide);

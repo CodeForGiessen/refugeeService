@@ -5,10 +5,14 @@
 
             return {
                 'create': function (category) {
+                    console.log(category);
                     var deferred = $q.defer();
-                    $http.post('/api/v1/categories/', category)
+                    $http.post('/api/v1/categories/', {
+                        category:category
+                    })
                         .success(function (data, status) {
                             if (status === 200) {
+                                console.log('Success: '+data.category);
                                 deferred.resolve(data.category);
                             } else {
                                 deferred.reject(data.error);
@@ -75,7 +79,7 @@
                 },
                 'update': function (category) {
                     var deferred = $q.defer();
-                    $http.post('/api/v1/categories/' + category._id, category)
+                    $http.post('/api/v1/categories/' + category._id, {category:category})
                         .success(function (data, status) {
                             if (status === 200) {
                                 deferred.resolve(data.category);
@@ -90,7 +94,7 @@
                 },
                 'delete': function (category) {
                     var deferred = $q.defer();
-                    $http.delete('/api/v1/categories/' + category._id, category)
+                    $http.delete('/api/v1/categories/' + category._id, {category:category})
                         .success(function (data, status) {
                             if (status === 200) {
                                 deferred.resolve(data.category);
