@@ -26,6 +26,7 @@
                         if(!$document.find('#nav-logout-btn').hasClass('disabled')) {
                             AuthService.logout()
                                 .then(function () {
+                                    $route.reload();
                                     Materialize.toast("You are now logged out.", 3000, 'rounded');
                                 });
                         }

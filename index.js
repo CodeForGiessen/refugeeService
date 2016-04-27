@@ -21,13 +21,12 @@
     app.use(morgan('dev'));
     app.use(bodyParser.urlencoded({extended: false}));
     app.use(bodyParser.json());
-    app.use(require('express-session')({
+    /*app.use(require('express-session')({
         secret: config.tokensecret,
         resave: false,
         saveUninitialized: false
-    }));
+    }));*/
     app.use(passport.initialize());
-    app.use(passport.session());
 
     app.set('port', port);
     app.set('tokensecret', config.tokensecret);
@@ -38,9 +37,23 @@
 
     //passport config
     var User = require('./models/user').user;
-    passport.use(new LocalStrategy(User.authenticate()));
-    passport.serializeUser(User.serializeUser());
-    passport.deserializeUser(User.deserializeUser());
+    passport.use(new LocalStrategy({
+        usernameField: 'username',
+        passwordField: 'password'
+    }, function (username, password, done) {
+        User.findOne({
+            username: username
+        }, function (err, user) {
+            if(err) return done(err);
+            if(!user) {
+                return done(null, false, {message: 'No user with this username.'});
+            }
+            if(!user.authenticate(password)) {
+                return done(null, false, {message: 'Incorrect password.'});
+            }
+            return done(null, user);
+        });
+    }));
 
     //mongoose
     var database = config.database;

@@ -5,9 +5,12 @@
   "author": "Julian Schmitt",
   "private": true,
   "dependencies": {
+    "composable-middleware": "^0.3.0",
     "cookie-parser": "^1.4.1",
+    "crypto": "0.0.3",
     "express": "*",
     "express-session": "^1.13.0",
+    "jsonwebtoken": "^5.7.0",
     "mongodb": "^2.1.16",
     "mongoose": "^4.4.12",
     "morgan": "^1.7.0",
