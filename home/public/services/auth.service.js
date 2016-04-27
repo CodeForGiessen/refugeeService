@@ -14,13 +14,19 @@
                 };
 
                 factory.getUserStatus = function () {
-                    return $http.get('/userstatus')
+                    var deferred = $q.defer();
+                     $http.get('/userstatus')
                         .success(function (data) {
-                            that.user = data.status;
+                            that.user = data.success;
+                            window.localStorage.setItem('token', JSON.stringify(data.token));
+                            deferred.resolve();
                         })
                         .error(function (data) {
                             that.user = false;
+                            window.localStorage.setItem('token', false);
+                            deferred.reject();
                         });
+                    return deferred.promise;
                 };
 
                 factory.login = function (username, password) {
@@ -31,6 +37,7 @@
                             if (status === 200 && data.status) {
                                 console.log("Login: "+ data.status);
                                 that.user = true;
+                                window.localStorage.setItem('token', JSON.stringify(data.token));
                                 deferred.resolve();
                             } else {
                                 that.user = false;
@@ -51,10 +58,12 @@
                     $http.get('/logout')
                         .success(function (data) {
                             that.user = false;
+                            window.localStorage.setItem('token', false);
                             deferred.resolve();
                         })
                         .error(function (data) {
                             that.user = false;
+                            window.localStorage.setItem('token', false);
                             deferred.reject();
                         });
 
@@ -73,7 +82,8 @@
                             password: user.password
                         })
                         .success(function (data, status) {
-                            if (status === 200 && data.status) {
+                            if (status === 200 && data.success) {
+                                window.localStorage.setItem('token',JSON.stringify(data.token));
                                 deferred.resolve();
                             } else {
                                 deferred.reject();

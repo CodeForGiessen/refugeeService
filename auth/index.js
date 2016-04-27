@@ -3,51 +3,32 @@
 
     var express = require('express'),
         passport = require('passport'),
+        auth = require('./auth'),
         User = require('../models/user').user,
         app = module.exports = express();
 
     app.post('/register', function (req, res) {
-        //Disable Caching for registering
-        res.header("Cache-Control", "no-cache, no-store, must-revalidate");
-        res.header("Pragma", "no-cache");
-        res.header("Expires", "0");
-
-        User.register(new User({
+        var newUser = new User({
             username: req.body.username,
             email: req.body.email,
             name: req.body.name,
             surname: req.body.surname,
-            role: req.body.role
-        }), req.body.password, function (err, user) {
-            if(err) {
-                res.statusCode = 500;
-                res.json({
-                    "error": err
-                });
-                return res
-            }
-            passport.authenticate('local')(req, res, function (err) {
-                if(err) {
-                    res.statusCode = 404;
-                    res.json({
-                        "error": err
-                    });
-                } else {
-                    res.statusCode = 200;
-                    res.json({
-                        "status": "register success"
-                    });
-                }
+            password: req.body.password,
+            role: 'newbie'
+        });
+        newUser.save(function (err, user) {
+            if(err) return validationError(res, err);
+            var token = auth.signToken(user._id, user.username, user.role);
+            res.status(200).json({
+                success: true,
+                status: 'register success',
+                token: token
             });
         });
+
     });
 
     app.post('/login', function (req, res, next) {
-        //Disable caching for login
-        res.header("Cache-Control", "no-cache, no-store, must-revalidate");
-        res.header("Pragma", "no-cache");
-        res.header("Expires", "0");
-
         console.log('User LogIn: ' + req.body.username + ' - ' + req.body.password);
         passport.authenticate('local', function (err, user, info) {
             if(err) {
@@ -58,16 +39,12 @@
                     err: info
                 });
             }
-            req.logIn(user, function (err) {
-                if(err) {
-                    return res.status(500).json({
-                        err: 'LogInError'
-                    });
-                }
-                res.statusCode = 200;
-                res.json({
-                    status: 'LogIn success'
-                });
+            
+            var token = auth.signToken(user._id, user.username, user.role);
+            res.status(200).json({
+                success: true,
+                status: 'Login success',
+                token: token
             });
         })(req, res, next);
     });
@@ -78,25 +55,22 @@
         res.header("Pragma", "no-cache");
         res.header("Expires", "0");
 
-        req.logout();
         res.status(200).json({
             status: 'Logout success'
         });
     });
 
-    app.get('/userstatus', function (req, res) {
+    app.get('/userstatus',auth.authenticateToken(), function (req, res) {
         //Disable caching for user-status
         res.header("Cache-Control", "no-cache, no-store, must-revalidate");
         res.header("Pragma", "no-cache");
         res.header("Expires", "0");
 
-        if(!req.isAuthenticated()) {
-            return res.status(200).json({
-                status: false
+        if(req.decoded){
+            res.status(200).json({
+                success: true,
+                status: true
             });
         }
-        res.status(200).json({
-            status: true
-        });
     });
 })();

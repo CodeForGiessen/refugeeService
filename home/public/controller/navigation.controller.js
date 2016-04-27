@@ -31,6 +31,7 @@
                         if(!$document.find('#nav-logout-btn').hasClass('disabled')) {
                             AuthService.logout()
                                 .then(function () {
+                                    $route.reload();
                                     Materialize.toast($translate.instant('HEADER_LOGOUTMSG'), 3000, 'rounded');
                                 });
                         }
