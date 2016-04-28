@@ -1,6 +1,6 @@
 (function () {
     angular.module('refugeeAuthorEnv')
-        .factory('GuideCrudSerive',['$q','$timeout','$http', function ($q, $timeout, $http) {
+        .factory('GuideCrudService',['$q','$timeout','$http', function ($q, $timeout, $http) {
             return {
                 'create': function (guide) {
                     var deferred = $q.defer();

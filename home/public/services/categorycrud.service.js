@@ -29,10 +29,12 @@
                     $http.get('/api/v1/categories/')
                         .success(function (data, status) {
                             if(status === 200){
+                                console.log('200 / categories: '+ JSON.stringify(data.categories));
                                 categories = data.categories;
                                 deferred.resolve(categories);
                             } else {
-                                deferred.reject(data.error);
+                                console.log("!200");
+                                deferred.reject(categories);
                             }
                         })
                         .error(function (data) {

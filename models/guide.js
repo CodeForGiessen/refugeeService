@@ -4,7 +4,7 @@
 
     var metadata = {
         author: {
-            userId: Number,
+            userId: String,
             username: String
         },
         date: Date
@@ -12,7 +12,7 @@
 
     var guideSchema = new Schema({
         text: String,
-        category: Number,
+        category: String,
         lang: String,
         motd_flag: Boolean,
         published: Boolean,

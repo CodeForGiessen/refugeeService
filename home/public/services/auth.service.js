@@ -16,9 +16,11 @@
                 factory.getUserStatus = function () {
                     var deferred = $q.defer();
                      $http.get('/userstatus')
-                        .success(function (data) {
+                        .success(function (data, status) {
                             that.user = data.success;
-                            window.localStorage.setItem('token', JSON.stringify(data.token));
+                            if(status !== 200) {
+                                window.localStorage.setItem('token', false);
+                            }
                             deferred.resolve();
                         })
                         .error(function (data) {

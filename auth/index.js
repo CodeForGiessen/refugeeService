@@ -69,7 +69,8 @@
         if(req.decoded){
             res.status(200).json({
                 success: true,
-                status: true
+                status: true,
+                token:req.body.token
             });
         }
     });

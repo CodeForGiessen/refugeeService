@@ -2,7 +2,7 @@
     'use strict';
     var express = require('express'),
         app = module.exports = express(),
-        passport = require('passport'),
+        auth = require('../../../auth/auth'),
         crud = require('./crud');
 
     /**
@@ -107,7 +107,7 @@
     /**
      * Create a new category
      */
-    app.post('/api/v1/categories/', passport.authenticate('local'), function (req, res, next) {
+    app.post('/api/v1/categories/', auth.authenticateToken(), function (req, res, next) {
         crud.create(req.body.category, function (err, category) {
             if(err) {
                 res.status(500).json({
@@ -124,7 +124,7 @@
     /**
      * Update a category with :id
      */
-    app.post('/api/v1/categories/:id', passport.authenticate('local'), function (req, res, next) {
+    app.post('/api/v1/categories/:id', auth.authenticateToken(), function (req, res, next) {
         crud.update({
             '_id':req.params.id
         }, req.body.category, function (err, category) {
@@ -140,7 +140,7 @@
         });
     });
     
-    app.delete('/api/v1/categories/:id', passport.authenticate('local'), function (req, res, next) {
+    app.delete('/api/v1/categories/:id', auth.authenticateToken(), function (req, res, next) {
         crud.del({
             '_id':req.params.id
         }, function (err, category) {

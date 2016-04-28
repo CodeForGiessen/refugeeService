@@ -2,7 +2,7 @@
     'use strict';
     var express = require('express'),
         app = module.exports = express(),
-        passport = require('passport'),
+        auth = require('../../../auth/auth'),
         crud = require('./crud');
 
     /**
@@ -177,9 +177,22 @@
     /**
      * Create a new guide
      */
-    app.post('/api/v1/guides/', passport.authenticate('local'), function (req, res, next) {
-        crud.create(req.body.guide, function (err, guide) {
+    app.post('/api/v1/guides/', auth.authenticateToken(), function (req, res, next) {
+        console.log(JSON.stringify(req.body.guide));
+        console.log('Building metadata for guide');
+        var guide = req.body.guide;
+        var metadata = {
+            author: {
+                userId: req.decoded._id,
+                username: req.decoded.username
+            },
+            date: Date.now()
+        };
+        guide.metadata = metadata;
+        console.log('saving guide');
+        crud.create(guide, function (err, guide) {
             if(err) {
+                console.log(err);
                 res.status(500).json({
                     'err': err
                 });
@@ -194,10 +207,19 @@
     /**
      * Update guide with id :id
      */
-    app.post('/api/v1/guides/:id', passport.authenticate('local'), function (req, res) {
+    app.post('/api/v1/guides/:id', auth.authenticateToken(), function (req, res) {
+        var guide = req.body.guide;
+        var metadata = {
+            author: {
+                userId: req.decoded._id,
+                username: req.decoded.username
+            },
+            date: Date.now()
+        };
+        guide.metadata = metadata;
         crud.update({
             '_id': req.params.id
-        }, req.body.guide, function (err, guide) {
+        }, guide, function (err, guide) {
             if(err){
                 res.status(500).json({
                     'err':err
@@ -213,7 +235,7 @@
     /**
      * Delete guide with id :id
      */
-    app.delete('/api/v1/guides/:id', passport.authenticate('local'), function (req, res) {
+    app.delete('/api/v1/guides/:id', auth.authenticateToken(), function (req, res) {
         crud.del({
             '_id':req.params.id
         }, function (err, guide) {

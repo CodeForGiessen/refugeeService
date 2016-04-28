@@ -27,6 +27,7 @@
 
     function create(guide, callback) {
         var newGuide = new Guide(guide);
+        console.log('still saving...');
         newGuide.save(callback);
     }
 
