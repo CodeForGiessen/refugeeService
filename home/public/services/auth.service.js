@@ -16,14 +16,13 @@
                 factory.getUserStatus = function () {
                     var deferred = $q.defer();
                      $http.get('/userstatus')
-                        .success(function (data, status) {
-                            that.user = data.success;
-                            if(status !== 200) {
+                        .then(function (response) {
+                            that.user = response.data.success;
+                            if(response.status !== 200) {
                                 window.localStorage.setItem('token', false);
                             }
                             deferred.resolve();
-                        })
-                        .error(function (data) {
+                        }, function (response) {
                             that.user = false;
                             window.localStorage.setItem('token', false);
                             deferred.reject();
@@ -34,23 +33,20 @@
                 factory.login = function (username, password) {
                     var deferred = $q.defer();
                     $http.post('/login', {username: username, password: password})
-                        .success(function (data, status) {
-                            console.log("Login: "+ data);
-                            if (status === 200 && data.status) {
-                                console.log("Login: "+ data.status);
+                        .then(function success (response) {
+                            console.log("Login: "+ response.status);
+                            if (response.status === 200) {
                                 that.user = true;
-                                window.localStorage.setItem('token', JSON.stringify(data.token));
+                                window.localStorage.setItem('token', JSON.stringify(response.data.token));
                                 deferred.resolve();
                             } else {
                                 that.user = false;
                                 deferred.reject();
                             }
-                        })
-                        .error(function (data) {
+                        }, function error (response) {
                             that.user = false;
                             deferred.reject();
                         });
-
                     return deferred.promise;
                 };
 
@@ -58,12 +54,11 @@
                     var deferred = $q.defer();
 
                     $http.get('/logout')
-                        .success(function (data) {
+                        .then(function (response) {
                             that.user = false;
                             window.localStorage.setItem('token', false);
                             deferred.resolve();
-                        })
-                        .error(function (data) {
+                        }, function (response) {
                             that.user = false;
                             window.localStorage.setItem('token', false);
                             deferred.reject();
@@ -83,15 +78,14 @@
                             role: user.role,
                             password: user.password
                         })
-                        .success(function (data, status) {
-                            if (status === 200 && data.success) {
-                                window.localStorage.setItem('token',JSON.stringify(data.token));
+                        .then(function (response) {
+                            if (response.status === 200 && response.data.success) {
+                                window.localStorage.setItem('token',JSON.stringify(response.data.token));
                                 deferred.resolve();
                             } else {
                                 deferred.reject();
                             }
-                        })
-                        .error(function (data) {
+                        }, function (response) {
                             deferred.reject();
                         });
 

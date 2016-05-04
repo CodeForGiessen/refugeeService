@@ -25,10 +25,14 @@
                     }, 0);
                 });
                 this.saveGuide = function () {
-                    var guideline = that.guideline;
-                    guideline.published = false;
-                    console.log(guideline);
-                    GuideCrudSerive.create(guideline);
+                    var guide = that.guideline;
+                    guide.published = false;
+                    guide.guidelines = [];
+                    guide.guidelines.push(that.guidelines);
+                    guide.langs = [];
+                    guide.langs.push(that.guidelines.lang);
+                    console.log(guide);
+                    GuideCrudSerive.create(guide);
                 };
                 this.saveCategory = function () {
                     var category = {};

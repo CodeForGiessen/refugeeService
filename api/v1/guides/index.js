@@ -8,29 +8,58 @@
     /**
      * Get all Guides.
      */
-    app.get('/api/v1/guides', function(req, res, next) {
-        crud.read({}, function(err, guides) {
-            if(err) {
+    app.get('/api/v1/guides', function (req, res, next) {
+        var query = {};
+        var lang = req.query.lang;
+        var category = req.query.category;
+        if (lang) {
+            query['guidelines.lang'] = lang.toString()
+        }
+        if (category) {
+            query['category'] = category.toString()
+        }
+        crud.read(query, function (err, guides) {
+            if (err) {
                 res.statusCode = 500;
                 res.json({
-                    "error": err
+                    "error": 'An unexpected server error occurred'
                 });
-                next(err);
             }
 
-            if(guides === null) {
+            if (guides === null) {
                 res.statusCode = 404;
                 res.json({
                     "error": "GuideNotFound"
                 });
             } else {
+                var result = [];
+                if (lang || category) {
+                    result = guides.filter(function (elt) {
+                        var filteredGuidelines = {};
+                        if (lang) {
+                            filteredGuidelines = elt.guidelines.filter(function (elt) {
+                                return elt.lang === lang
+                            });
+                            console.log("guidelines"+filteredGuidelines);
+                            elt['guidelines'] = filteredGuidelines;
+                        }
+
+                        if (category) {
+                            return elt.category === category;
+                        } else {
+                            return true;
+                        }
+                    });
+                } else {
+                    result = guides;
+                }
                 res.statusCode = 200;
-                var out = { };
+                var out = {};
                 out._links = {};
                 out._links.self = {
-                    'href' : '/api/v1/guides/'
+                    'href': '/api/v1/guides/'
                 };
-                out.guides = guides;
+                out.guides = result;
                 res.json(out);
             }
         });
@@ -41,17 +70,17 @@
      */
     app.get('/api/v1/guides/ids', function (req, res, next) {
         crud.getAllIds(function (err, ids) {
-            if(err) {
+            if (err) {
                 res.statusCode = 500;
                 res.json({
-                    "error" : err
+                    "error": err
                 });
                 next(err);
             }
-            if(ids === null) {
+            if (ids === null) {
                 res.statusCode = 404;
                 res.json({
-                    "error" : "GuideNotFound"
+                    "error": "GuideNotFound"
                 });
             } else {
                 res.statusCode = 200;
@@ -60,95 +89,31 @@
                     'href': '/api/v1/guides/ids'
                 };
                 out._links = [];
-                
-                ids.forEach(function(elt){
+
+                ids.forEach(function (elt) {
                     var o = {};
                     o[elt] = {
-                        'href' : '/api/v1/guides/'+elt
+                        'href': '/api/v1/guides/' + elt
                     };
                     out._links.push(o);
                 });
-                
+
                 res.json(out);
             }
         });
-    });
-
-    /**
-     * Get all guides by categoryId
-     */
-    app.get('/api/v1/guides/category/:cid', function (req, res, next) {
-        crud.read({
-            'category': req.params.cid
-        }, function (err, guides) {
-            if(err) {
-                res.statusCode = 500;
-                res.json({
-                    "error": err
-                });
-                next(err);
-            }
-
-            if(guides === null) {
-                res.statusCode = 404;
-                res.json({
-                    "error": "GuideNotFound"
-                });
-            } else {
-                res.statusCode = 200;
-                var out = { };
-                out._links = {};
-                out._links.self = {
-                    'href' : '/api/v1/guides/categories/'+req.params.cid
-                };
-                out.guides = guides;
-                res.json(out);
-            }
-        });
-    });
-
-    /**
-     * Get all guides by lang
-     */
-    app.get('/api/v1/guides/lang/:lang', function(req, res, next) {
-        crud.read({
-            'lang': req.params.lang
-        }, function(err, guides){
-            if(err) {
-                res.statusCode = 500;
-                res.json({
-                    "error": err
-                });
-                next(err);
-            }
-
-            if(guides === null) {
-                res.statusCode = 404;
-                res.json({
-                    "error": "GuideNotFound"
-                });
-            } else {
-                res.statusCode = 200;
-                var out = { };
-                out._links = {};
-                out._links.self = {
-                    'href' : '/api/v1/guides/lang/'+req.params.lang
-                };
-                out.guides = guides;
-                res.json(out);
-            }
-        });
-
     });
 
     /**
      * Get one guide by id
      */
-    app.get('/api/v1/guides/id/:id', function (req, res, next) {
-        crud.readOne({
-            '_id': req.params.id
-        }, function(err, guide){
-            if(err) {
+    app.get('/api/v1/guides/:id', function (req, res, next) {
+        var query = {};
+        query._id = req.params.id;
+        var lang = req.query.lang;
+        if(lang) query['guidelines.lang'] = lang;
+
+        crud.readOne(query, function (err, guide) {
+            if (err) {
                 res.statusCode = 500;
                 res.json({
                     "error": err
@@ -156,22 +121,29 @@
                 next(err);
             }
 
-            if(guide === null) {
+            if (guide === null) {
                 res.statusCode = 404;
                 res.json({
                     "error": "GuideNotFound"
                 });
             } else {
+                if(lang) {
+                    var filteredGuideline = guide.guidelines.filter(function (elt) {
+                        return elt.lang === lang;
+                    });
+                    guide.guidelines = filteredGuideline;
+                }
+
                 res.statusCode = 200;
                 res.json({
-                    "guide" : guide
+                    "guide": guide
                 });
             }
         });
     });
 
     /*
-    post and delete requests only with authentication!
+     post and delete requests only with authentication!
      */
 
     /**
@@ -191,14 +163,14 @@
         guide.metadata = metadata;
         console.log('saving guide');
         crud.create(guide, function (err, guide) {
-            if(err) {
+            if (err) {
                 console.log(err);
                 res.status(500).json({
                     'err': err
                 });
             } else {
                 res.status(200).json({
-                    'guide':guide
+                    'guide': guide
                 });
             }
         });
@@ -220,13 +192,13 @@
         crud.update({
             '_id': req.params.id
         }, guide, function (err, guide) {
-            if(err){
+            if (err) {
                 res.status(500).json({
-                    'err':err
+                    'err': err
                 });
             } else {
                 res.status(200).json({
-                    'guide':guide
+                    'guide': guide
                 });
             }
         });
@@ -237,15 +209,15 @@
      */
     app.delete('/api/v1/guides/:id', auth.authenticateToken(), function (req, res) {
         crud.del({
-            '_id':req.params.id
+            '_id': req.params.id
         }, function (err, guide) {
-            if(err) {
+            if (err) {
                 res.status(500).json({
-                    'err':err
+                    'err': err
                 });
             } else {
                 res.status(200).json({
-                    'guide':guide
+                    'guide': guide
                 });
             }
         });

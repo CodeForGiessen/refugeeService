@@ -15,24 +15,27 @@
                     'href': '/api/v1'
                 },
                 'guides': {
-                    'allGuides': {
+                    'guidesAll': {
                         'href': '/api/v1/guides'
+                    },
+                    'guidesByLang': {
+                        'href': '/api/v1/guides?lang=languagecode'
+                    },
+                    'guidesByCategory': {
+                        'href': '/api/v1/guides?category=id'
+                    },
+                    'guidesByLangAndCategory': {
+                        'href': '/api/v1/guides?lang=languagecode&category=id'
                     },
                     'guidesIds' : {
                         'href': '/api/v1/guides/ids'
-                    },
-                    'guidesByCategory': {
-                        'href': '/api/v1/guides/categories/:categoryid'
-                    },
-                    'guidesByLanguage': {
-                        'href': '/api/v1/guides/lang/:langcode'
                     },
                     'guideById': {
                         'href': '/api/v1/guides/:id'
                     }
                 },
                 'categories': {
-                    'allCategories': {
+                    'categoryAll': {
                         'href': '/api/v1/categories'
                     },
                     'categoryIds' : {

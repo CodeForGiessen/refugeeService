@@ -22,14 +22,19 @@
                 controller: 'ListController',
                 controllerAs: 'listCtrl',
                 access: {restricted: true}
-            }).when('/list/:id', {
+            }).when('/list/:catid', {
                 templateUrl: '/public/partials/guidelist.html',
                 controller: 'GuideListController',
                 controllerAs: 'glistCtrl',
                 access: {restricted: true}
-            }).when('/list/:id/:id', {
+            }).when('/guide/:guideid', {
                 templateUrl: '/public/partials/guidedetails.html',
-                controller: 'DetailController',
+                controller: 'GuideDetailController',
+                controllerAs: 'detailCtrl',
+                access: {restricted: true}
+            }).when('/category/:catid', {
+                templateUrl: '/public/partials/categorydetails.html',
+                controller: 'CategoryDetailController',
                 controllerAs: 'detailCtrl',
                 access: {restricted: true}
             }).when('/add', {

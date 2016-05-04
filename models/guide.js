@@ -10,10 +10,15 @@
         date: Date
     };
 
-    var guideSchema = new Schema({
-        text: String,
-        category: String,
+    var guideline = {
         lang: String,
+        text: String
+    };
+
+    var guideSchema = new Schema({
+        guidelines: [guideline],
+        category: String,
+        langs: [String],
         motd_flag: Boolean,
         published: Boolean,
         metadata: metadata

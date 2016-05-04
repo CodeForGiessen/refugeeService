@@ -11,7 +11,7 @@
             <form action="#">
                 <div class="row">
                     <div class="input-field col s12">
-                        <textarea id="guidelinetext" ng-model="addCtrl.guideline.text" class="materialize-textarea"></textarea>
+                        <textarea id="guidelinetext" ng-model="addCtrl.guidelines.text" class="materialize-textarea"></textarea>
                         <label for="guidelinetext">{{'ADD_GUIDELINE'|translate}}</label>
                     </div>
                 </div>
@@ -23,7 +23,7 @@
                         </select>
                     </div>
                     <div class="input-field col s3">
-                        <select id="langselect_guide" ng-model="addCtrl.guideline.lang">
+                        <select id="langselect_guide" ng-model="addCtrl.guidelines.lang">
                             <option value="" disabled selected>{{'ADD_LANGSELECT'|translate}}</option>
                             <option value="de">{{'LANG_DE'|translate}}</option>
                             <option value="en">{{'LANG_EN'|translate}}</option>

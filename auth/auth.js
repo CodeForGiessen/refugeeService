@@ -43,7 +43,7 @@
 
     function signToken(id, username, role) {
         return jwt.sign({_id:id, username:username, role:role}, config.tokensecret, {
-            expiresInMinutes: 24*60
+            expiresIn: 24*60*60
         });
     }
 

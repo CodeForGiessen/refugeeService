@@ -1,25 +1,23 @@
 (function () {
+    "use strict";
     angular.module('refugeeAuthorEnv')
         .factory('CategoryCrudService', ['$q', '$timeout', '$http', function ($q, $timeout, $http) {
-            var that = this;
-
             return {
                 'create': function (category) {
                     console.log(category);
                     var deferred = $q.defer();
                     $http.post('/api/v1/categories/', {
-                        category:category
-                    })
-                        .success(function (data, status) {
-                            if (status === 200) {
-                                console.log('Success: '+data.category);
-                                deferred.resolve(data.category);
-                            } else {
-                                deferred.reject(data.error);
-                            }
+                            category: category
                         })
-                        .error(function (data) {
-                            deferred.reject(data.error);
+                        .then(function (response) {
+                            if (response.status === 200) {
+                                console.log('Success: ' + response.data.category);
+                                deferred.resolve(response.data.category);
+                            } else {
+                                deferred.reject(response.data.error);
+                            }
+                        }, function (response) {        
+                            deferred.reject(response.data.error);
                         });
                     return deferred.promise;
                 },
@@ -27,19 +25,18 @@
                     var deferred = $q.defer();
                     var categories = {};
                     $http.get('/api/v1/categories/')
-                        .success(function (data, status) {
-                            if(status === 200){
-                                console.log('200 / categories: '+ JSON.stringify(data.categories));
-                                categories = data.categories;
+                        .then(function (response) {
+                            if (response.status === 200) {
+                                console.log('200 / categories: ' + JSON.stringify(response.data.categories));
+                                categories = response.data.categories;
                                 deferred.resolve(categories);
                             } else {
                                 console.log("!200");
-                                deferred.reject(categories);
+                                deferred.reject(response.data.error);
                             }
-                        })
-                        .error(function (data) {
-                            console.log(data.error);
-                            deferred.reject(data.error);
+                        }, function (response) {
+                            console.log(response.data.error);
+                            deferred.reject(response.data.error);
                         });
                     return deferred.promise;
                 },
@@ -47,65 +44,61 @@
                     var deferred = $q.defer();
                     var categories = {};
                     $http.get('/api/v1/categories/ids')
-                        .success(function (data, status) {
-                            if(status === 200){
-                                categories = data._links;
+                        .then(function (response) {
+                            if (response.status === 200) {
+                                categories = response.data._links;
                                 deferred.resolve(categories);
                             } else {
-                                deferred.reject(data.error);
+                                deferred.reject(response.data.error);
                             }
-                        })
-                        .error(function (data) {
-                            console.log(data.error);
-                            deferred.reject(data.error);
+                        }, function (response) {
+                            console.log(response.data.error);
+                            deferred.reject(response.data.error);
                         });
                     return deferred.promise;
                 },
                 'readOne': function (id) {
                     var deferred = $q.defer();
                     var category = {};
-                    $http.get('/api/v1/categories/'+id)
-                        .success(function (data, status) {
-                            if(status === 200) {
-                            category = data.category;
-                            deferred.resolve(category);
+                    $http.get('/api/v1/categories/' + id)
+                        .then(function (response) {
+                            if (response.status === 200) {
+                                category = response.data.category;
+                                deferred.resolve(category);
                             } else {
-                                deferred.reject(data.error);
+                                deferred.reject(response.data.error);
                             }
-                        })
-                        .error(function (data) {
-                            console.log(data.error);
-                            deferred.reject(data.error);
+                        }, function (response) {
+                            console.log(response.data.error);
+                            deferred.reject(response.data.error);
                         });
                     return deferred.promise;
                 },
                 'update': function (category) {
                     var deferred = $q.defer();
-                    $http.post('/api/v1/categories/' + category._id, {category:category})
-                        .success(function (data, status) {
-                            if (status === 200) {
-                                deferred.resolve(data.category);
+                    $http.post('/api/v1/categories/' + category._id, {category: category})
+                        .then(function (response) {
+                            if (response.status === 200) {
+                                deferred.resolve(response.data.category);
                             } else {
-                                deferred.reject(data.error);
+                                deferred.reject(response.data.error);
                             }
-                        })
-                        .error(function (data) {
-                            deferred.reject(data.error);
+                        }, function (response) {
+                            deferred.reject(response.data.error);
                         });
                     return deferred.promise;
                 },
                 'delete': function (category) {
                     var deferred = $q.defer();
-                    $http.delete('/api/v1/categories/' + category._id, {category:category})
-                        .success(function (data, status) {
-                            if (status === 200) {
-                                deferred.resolve(data.category);
+                    $http.delete('/api/v1/categories/' + category._id, {category: category})
+                        .then(function (response) {
+                            if (response.status === 200) {
+                                deferred.resolve(response.data.category);
                             } else {
-                                deferred.reject(data.error);
+                                deferred.reject(response.data.error);
                             }
-                        })
-                        .error(function (data) {
-                            deferred.reject(data.error);
+                        }, function (response) {
+                            deferred.reject(response.data.error);
                         });
                     return deferred.promise;
                 }
