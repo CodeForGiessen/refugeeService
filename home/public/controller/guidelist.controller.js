@@ -1,8 +1,16 @@
 (function () {
     "use strict";
     angular.module('refugeeAuthorEnv')
-        .controller('GuideListController', ['$scope', '$location', '$routeParams', '$timeout', 'GuideCrudService',
-            function ($scope, $location, $routeParams, $timeout, GuideCrudService) {
+        .filter('lang', function () {
+            return function (input, lang) {
+                return input.filter(function (elt) {
+                    return elt.lang === lang;
+                });
+            };
+        })
+        .controller('GuideListController', 
+            ['$scope', '$location', '$routeParams', '$timeout', 'GuideCrudService','langFilter',
+            function ($scope, $location, $routeParams, $timeout, GuideCrudService, langFilter) {
                 $scope.lang = window.localStorage.getItem('lang');
                 $scope.$location = $location;
                 $scope.guideList = [];

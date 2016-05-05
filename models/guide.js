@@ -12,16 +12,16 @@
 
     var guideline = {
         lang: String,
-        text: String
+        text: String,
+        motd_flag: Boolean,
+        metadata: metadata,
+        published: Boolean
     };
 
     var guideSchema = new Schema({
         guidelines: [guideline],
         category: String,
-        langs: [String],
-        motd_flag: Boolean,
-        published: Boolean,
-        metadata: metadata
+        langs: [String]
     });
 
     var guide = mongoose.model('Guide',guideSchema);

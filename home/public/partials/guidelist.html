@@ -1,7 +1,7 @@
 <div class="container">
     <ul class="collection"><li class="collection-header"></li>
         <div ng-repeat="guide in guideList">
-            <a ng-href="#/guide/{{guide._id}}" class="collection-item">{{ text = getTextByLang(guide._id) }}</a>
+            <a ng-href="#/guide/{{guide._id}}" class="collection-item">{{(guide.guidelines|lang:lang)[0].text}}</a>
         </div>
     </ul>
 </div>

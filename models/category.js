@@ -3,11 +3,7 @@
     var Schema = mongoose.Schema;
 
     var categorySchema = new Schema({
-        text: {
-            de: String,
-            en: String,
-            fr: String
-        }
+        text: {}
     });
 
     var category = mongoose.model('Category', categorySchema);

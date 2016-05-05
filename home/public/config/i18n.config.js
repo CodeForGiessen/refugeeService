@@ -2,11 +2,15 @@
     'use strict';
     angular.module('refugeeAuthorEnv')
         .config(['$translateProvider', function ($translateProvider) {
-            $translateProvider.translations('de', {
+            $translateProvider.translations('de_DE', {
                     'APP_TITLE': 'Refugees Gießen',
+                    'LANGUAGE': 'Sprache',
                     'LANG_DE': 'Deutsch',
                     'LANG_EN': 'Englisch',
                     'LANG_FR': 'Französisch',
+                    'CATEGORY': 'Kategorie',
+                    'YES': 'Ja',
+                    'NO': 'Nein',
                     'MAIN_TITLE': 'Willkommen.',
                     'MAIN_TEXT1': 'Diese Seite dient dazu, die Inhalte der dazugehörigen App zu erstellen, bearbeiten und löschen.',
                     'MAIN_TEXT2': 'Alle Texte können hier in unterschiedlichen Sprachen erstellt und übersetzt werden.',
@@ -16,10 +20,10 @@
                     'LOGINTAB_USERNAME': 'Nutzername',
                     'LOGINTAB_PASSWORD': 'Passwort',
                     'LOGINTAB_LOGINBTN': 'Anmelden',
-                    'LOGINTOAST_SUCCESSMSG' : 'Sie sind jetzt als {{username}} angemeldet',
-                    'LOGINTOAST_ERRORMSG':'Ungültiger Nutzername oder Passwort',
-                    'REGISTERTOAST_ERRORMSG':'Registrierung fehlgeschlagen. Versuchen Sie s nochmal.',
-                    'REGISTERTOAST_SUCCESSMSG':'Sie sind jetzt registriert, melde an...',
+                    'LOGINTOAST_SUCCESSMSG': 'Sie sind jetzt als {{username}} angemeldet',
+                    'LOGINTOAST_ERRORMSG': 'Ungültiger Nutzername oder Passwort',
+                    'REGISTERTOAST_ERRORMSG': 'Registrierung fehlgeschlagen. Versuchen Sie s nochmal.',
+                    'REGISTERTOAST_SUCCESSMSG': 'Sie sind jetzt registriert, melde an...',
                     'REGISTERTAB_MAIL': 'E-Mail',
                     'REGISTERTAB_USERNAME': 'Nutzername',
                     'REGISTERTAB_NAME': 'Vorname',
@@ -32,7 +36,7 @@
                     'HEADER_LOGOUTBTN': 'Abmelden',
                     'HEADER_LANGBTN': 'Sprache',
                     'HEADER_ACCBTN': 'Nutzerkonto',
-                    'HEADER_LOGOUTMSG':'Sie sind jetzt abgemeldet.',
+                    'HEADER_LOGOUTMSG': 'Sie sind jetzt abgemeldet.',
                     'NAVBAR_CONTENTBTN': 'Inhalte',
                     'NAVBAR_LISTBTN': 'Daten Listen',
                     'NAVBAR_ADDBTN': 'Daten Hinzufügen',
@@ -41,18 +45,28 @@
                     'FOOTER_INFOTEXT': 'Dies ist ein Projekt des OK Lab Gießen.',
                     'FOOTER_ABOUT': 'Impressum',
                     'LANGMODAL_TITLE': 'Wähle eine Sprache',
-                    'ADD_LANGSELECT':'Wähle eine Sprache',
-                    'ADD_CATEGORY':'Kategorie',
-                    'ADD_GUIDELINE':'Richtlinie',
-                    'ADD_CATEGORYSELECT':'Wähle eine Kategorie',
-                    'ADD_MOTD':'Tipp des Tages',
-                    'ADD_SAVEBTN':'Speichern'
+                    'ADD_LANGSELECT': 'Wähle eine Sprache',
+                    'ADD_CATEGORY': 'Kategorie',
+                    'ADD_GUIDELINE': 'Richtlinie',
+                    'ADD_CATEGORYSELECT': 'Wähle eine Kategorie',
+                    'ADD_MOTD': 'Tipp des Tages',
+                    'ADD_SAVEBTN': 'Speichern',
+                    'DETAIL_EDIT': 'Bearbeiten',
+                    'DETAIL_DELETE': 'Löschen',
+                    'DETAIL_AUTHOR': 'Autor',
+                    'DETAIL_CREATED': 'Erstellt am',
+                    'DETAIL_MOTD': 'Ist Tipp des Tages',
+                    'DETAIL_PUBLISHED': 'Ist Veröffentlicht'
                 })
-                .translations('en', {
+                .translations('en_US', {
                     'APP_TITLE': 'Refugees Gießen',
+                    'LANGUAGE': 'Language',
                     'LANG_DE': 'German',
                     'LANG_EN': 'English',
                     'LANG_FR': 'French',
+                    'CATEGORY': 'Category',
+                    'YES': 'Yes',
+                    'NO': 'No',
                     'MAIN_TITLE': 'Welcome.',
                     'MAIN_TEXT1': 'This page is used to create, update and delete the content for the companion app.',
                     'MAIN_TEXT2': 'Texts can be written in different languages or can be translated.',
@@ -62,10 +76,10 @@
                     'LOGINTAB_USERNAME': 'Username',
                     'LOGINTAB_PASSWORD': 'Password',
                     'LOGINTAB_LOGINBTN': 'Login',
-                    'LOGINTOAST_SUCCESSMSG' : 'You are now logged in as {{username}}',
-                    'LOGINTOAST_ERRORMSG':'Invalid username or password',
-                    'REGISTERTOAST_ERRORMSG':'Could not register, maybe try another username?',
-                    'REGISTERTOAST_SUCCESSMSG':'You are now registered, logging in...',
+                    'LOGINTOAST_SUCCESSMSG': 'You are now logged in as {{username}}',
+                    'LOGINTOAST_ERRORMSG': 'Invalid username or password',
+                    'REGISTERTOAST_ERRORMSG': 'Could not register, maybe try another username?',
+                    'REGISTERTOAST_SUCCESSMSG': 'You are now registered, logging in...',
                     'REGISTERTAB_MAIL': 'E-Mail',
                     'REGISTERTAB_USERNAME': 'Username',
                     'REGISTERTAB_NAME': 'Name',
@@ -78,7 +92,7 @@
                     'HEADER_LOGOUTBTN': 'Logout',
                     'HEADER_LANGBTN': 'Language',
                     'HEADER_ACCBTN': 'Account',
-                    'HEADER_LOGOUTMSG':'You are now logged out.',
+                    'HEADER_LOGOUTMSG': 'You are now logged out.',
                     'NAVBAR_CONTENTBTN': 'Content',
                     'NAVBAR_LISTBTN': 'List data',
                     'NAVBAR_ADDBTN': 'Add data',
@@ -87,14 +101,20 @@
                     'FOOTER_INFOTEXT': 'This is a OK Lab Gießen Project.',
                     'FOOTER_ABOUT': 'About',
                     'LANGMODAL_TITLE': 'Choose a language',
-                    'ADD_LANGSELECT':'Choose a language',
-                    'ADD_CATEGORY':'Category',
-                    'ADD_GUIDELINE':'Guideline',
-                    'ADD_CATEGORYSELECT':'Select a category',
-                    'ADD_MOTD':'Message of the Day',
-                    'ADD_SAVEBTN':'Save'
+                    'ADD_LANGSELECT': 'Choose a language',
+                    'ADD_CATEGORY': 'Category',
+                    'ADD_GUIDELINE': 'Guideline',
+                    'ADD_CATEGORYSELECT': 'Select a category',
+                    'ADD_MOTD': 'Message of the Day',
+                    'ADD_SAVEBTN': 'Save',
+                    'DETAIL_EDIT': 'Edit',
+                    'DETAIL_DELETE': 'Remove',
+                    'DETAIL_AUTHOR': 'Author',
+                    'DETAIL_CREATED': 'Created at',
+                    'DETAIL_MOTD': 'Is Message of the Day',
+                    'DETAIL_PUBLISHED': 'Is published'
                 })
-                .preferredLanguage('en')
+                .preferredLanguage('en_US')
                 .useSanitizeValueStrategy('escape');
         }]);
 })();

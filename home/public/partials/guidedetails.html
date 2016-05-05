@@ -1,7 +1,26 @@
 <div class="container">
     <div class="row">
-        <div class="collection col s12" ng-repeat="guideline in guide.guidelines">
-            <div class="collection-item">{{guideline.text}}<span class="badge">{{guideline.lang}}</span></div>
+        <div class="card">
+            <div class="card-content">
+                <span class="card-title">{{'CATEGORY'}}: {{guide.category}}</span>
+            </div>
         </div>
+        <ul class="col s12" ng-repeat="guideline in guide.guidelines">
+            <li class="card">
+                <div class="card-content">
+                    <p class="card-title">{{guideline.text}}</p>
+                    <p>{{'LANGUAGE'|translate}}: {{guideline.lang.toUpperCase()}}<br/>
+                    {{'DETAIL_AUTHOR'|translate}}: {{guideline.metadata.author.username}}<br/>
+                    {{'DETAIL_CREATED'|translate}}: {{guideline.metadata.date|date:'medium'}}<br/>
+                    {{'DETAIL_MOTD'|translate}}: {{guideline.motd_flag|boolean|translate}}<br/>
+                    {{'DETAIL_PUBLISHED'|translate}}: {{guideline.published|boolean|translate}}<br/>
+                    </p>
+                </div>
+                <div class="card-action">
+                    <a href="#">{{'DETAIL_EDIT'|translate}}</a>
+                    <a href="#">{{'DETAIL_DELETE'|translate}}</a>
+                </div>
+            </li>
+        </ul>
     </div>
 </div>

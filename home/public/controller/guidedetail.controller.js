@@ -1,8 +1,16 @@
 (function () {
     "use strict";
     angular.module('refugeeAuthorEnv')
-        .controller('GuideDetailController', ['$scope', '$routeParams', 'GuideCrudService',
-            function ($scope, $routeParams, GuideCrudService) {
+        .filter('boolean', ['$translate', function ($translate) {
+            /**
+             * Filters a boolean and returns a translatable text (YES or NO)
+             */
+            return function (input) {
+                return input ? 'YES' : 'NO';
+            };
+        }])
+        .controller('GuideDetailController', ['$scope', '$routeParams', 'GuideCrudService', 'booleanFilter',
+            function ($scope, $routeParams, GuideCrudService, booleanFilter) {
                 $scope.lang = window.localStorage.getItem('lang');
                 $scope.guide = {};
                 var guideId = $routeParams.guideid;

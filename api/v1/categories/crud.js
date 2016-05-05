@@ -27,10 +27,12 @@
 
     function create(category, callback) {
         var newCategory = new Category(category);
+        newCategory.markModified('text');
         newCategory.save(callback);
     }
 
     function update(query, newdata, callback) {
+        newdata.markModified('text');
         Category.findOneAndUpdate(query, newdata, callback);
     }
 

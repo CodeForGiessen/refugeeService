@@ -160,8 +160,8 @@
             },
             date: Date.now()
         };
-        guide.metadata = metadata;
-        console.log('saving guide');
+        guide.guidelines[guide.guidelines.length-1].metadata = metadata;
+        guide.guidelines.published = false;
         crud.create(guide, function (err, guide) {
             if (err) {
                 console.log(err);

@@ -19,20 +19,26 @@
                 $document.ready(function () {
                     setTimeout(function () {
                         $document.find('ul.tabs').tabs();
-                        //$document.find('select#categoryselect').material_select();
                         $document.find('select').material_select();
                         $document.find('select').material_select();
                     }, 0);
                 });
                 this.saveGuide = function () {
                     var guide = that.guideline;
-                    guide.published = false;
                     guide.guidelines = [];
+                    that.guidelines.published = false;
                     guide.guidelines.push(that.guidelines);
                     guide.langs = [];
                     guide.langs.push(that.guidelines.lang);
                     console.log(guide);
-                    GuideCrudSerive.create(guide);
+                    GuideCrudSerive.create(guide)
+                        .then(function () {
+                            that.guidelines = {};
+                            that.guideline = {};
+                            $document.find('select').prop('selectedIndex',0);
+                            $document.find('select').material_select();
+                            $document.find('select').material_select();
+                        });
                 };
                 this.saveCategory = function () {
                     var category = {};
@@ -42,8 +48,9 @@
                     console.log(category);
                     CategoryCrudService.create(category)
                         .then(function () {
-                            that.categorylang = "";
                             that.categorytext = "";
+                            $document.find('#langselect_category').prop('selectedIndex',0);
+                            $document.find('#langselect_category').material_select();
                         });
                 };
             }]);

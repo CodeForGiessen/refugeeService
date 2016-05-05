@@ -11,7 +11,7 @@
                         })
                         .then(function (response) {
                             if (response.status === 200) {
-                                console.log('Success: ' + response.data.category);
+                                console.log('Success: ' + JSON.stringify(response.data.category));
                                 deferred.resolve(response.data.category);
                             } else {
                                 deferred.reject(response.data.error);
