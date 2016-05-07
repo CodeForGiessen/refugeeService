@@ -1,5 +1,6 @@
 <div class="container">
-    <ul class="collection"><li class="collection-header"></li>
+    <ul class="collection with-header">
+        <li class="collection-header teal white-text">{{'GUIDELINES'|translate}}</li>
         <div ng-repeat="guide in guideList">
             <a ng-href="#/guide/{{guide._id}}" class="collection-item">{{(guide.guidelines|lang:lang)[0].text}}</a>
         </div>

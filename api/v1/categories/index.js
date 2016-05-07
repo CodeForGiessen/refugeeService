@@ -95,7 +95,9 @@
                 });
             } else {
                 res.statusCode = 200;
-                res.json(category);
+                res.json({
+                    "category": category
+                });
             }
         });
     });

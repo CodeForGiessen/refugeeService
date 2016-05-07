@@ -20,6 +20,8 @@
     "angular-route": "^1.5.3",
     "jquery": "^2.2.3",
     "angular-translate": "^2.11.0",
+    "angular-translate-storage-cookie": "^2.11.0",
+    "angular-translate-storage-local": "^2.11.0",
     "Materialize": "materialize#^0.97.6"
   }
 }

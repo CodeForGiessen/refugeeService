@@ -1,5 +1,6 @@
 <div class="container">
-    <ul class="collection">
+    <ul class="collection with-header">
+        <li class="collection-header teal white-text">{{'CATEGORIES'|translate}}</li>
         <div ng-repeat="category in categories">
             <a class="collection-item" href="#/list/{{category._id}}">
                 {{category.text[lang]||"(This Category is not yet available in your language)"}}

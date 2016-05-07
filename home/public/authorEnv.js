@@ -1,6 +1,6 @@
 (function () {
     'use strict';
-    angular.module('refugeeAuthorEnv', ['ngRoute','pascalprecht.translate'])
+    angular.module('refugeeAuthorEnv', ['ngRoute','pascalprecht.translate', 'ngCookies'])
         .config(['$routeProvider', function($routeProvider) {
             $routeProvider.when('/', {
                 templateUrl: '/public/partials/main.html',

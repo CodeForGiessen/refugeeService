@@ -24,7 +24,7 @@
                 'read': function () {
                     var deferred = $q.defer();
                     var categories = {};
-                    $http.get('/api/v1/categories/')
+                    $http.get('/api/v1/categories/',{headers:{'cache-control':'no-cache'}})
                         .then(function (response) {
                             if (response.status === 200) {
                                 console.log('200 / categories: ' + JSON.stringify(response.data.categories));
@@ -43,7 +43,7 @@
                 'readIds': function () {
                     var deferred = $q.defer();
                     var categories = {};
-                    $http.get('/api/v1/categories/ids')
+                    $http.get('/api/v1/categories/ids',{headers:{'cache-control':'no-cache'}})
                         .then(function (response) {
                             if (response.status === 200) {
                                 categories = response.data._links;
@@ -60,7 +60,7 @@
                 'readOne': function (id) {
                     var deferred = $q.defer();
                     var category = {};
-                    $http.get('/api/v1/categories/' + id)
+                    $http.get('/api/v1/categories/' + id,{headers:{'cache-control':'no-cache'}})
                         .then(function (response) {
                             if (response.status === 200) {
                                 category = response.data.category;

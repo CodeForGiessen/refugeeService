@@ -1,24 +1,74 @@
 <div class="container">
     <div class="row">
-        <div class="card">
-            <div class="card-content">
-                <span class="card-title">{{'CATEGORY'}}: {{guide.category}}</span>
+        <a class="col s12 btn btn-block waves-effect waves-orange" ng-class="{disabled:!loadedData}" ng-click="detailCtrl.addTranslation()">{{'DETAIL_ADD_TRANSLATION'|translate}}</a>
+    </div>
+    <div class="row" ng-hide="loadedData">
+        <div class="col s1 push-s5">
+            <div class="preloader-wrapper active">
+                <div class="spinner-layer spinner-yellow-only">
+                    <div class="circle-clipper left">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="gap-patch">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
+                </div>
             </div>
         </div>
+    </div>
+    <div id="addTransModal" class="modal modal-fixed-footer">
+        <div class="modal-content">
+            <h4>{{'DETAIL_ADD_TRANSLATION'|translate}}</h4>
+            <div class="divider"></div>
+            <form name="translate_form" novalidate>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <textarea ng-model="translation.text" id="translationtext" class="materialize-textarea" required></textarea>
+                        <label for="translationtext">{{'ADD_GUIDELINE'|translate}}</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s4">
+                        <select id="langselect_trans" ng-model="translation.lang" required>
+                            <option value="" disabled selected>{{'ADD_LANGSELECT'|translate}}</option>
+                            <option value="de_DE">{{'LANG_DE'|translate}}</option>
+                            <option value="en_US">{{'LANG_EN'|translate}}</option>
+                            <option value="fr_FR">{{'LANG_FR'|translate}}</option>
+                        </select>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <a href=""
+               class="modal-action modal-close waves-effect waves-orange btn btn-flat"
+               ng-click="detailCtrl.saveTranslation()"
+               ng-class="{disabled:!translate_form.$valid}">
+                {{'ADD_SAVEBTN'|translate}}
+            </a>
+        </div>
+    </div>
+    <div class="row">
         <ul class="col s12" ng-repeat="guideline in guide.guidelines">
             <li class="card">
                 <div class="card-content">
+                    <i class="material-icons badge secondary-content" ng-show="guideline.published">visibility</i>
+                    <i class="material-icons badge secondary-content" ng-hide="guideline.published">visibility_off</i>
                     <p class="card-title">{{guideline.text}}</p>
                     <p>{{'LANGUAGE'|translate}}: {{guideline.lang.toUpperCase()}}<br/>
-                    {{'DETAIL_AUTHOR'|translate}}: {{guideline.metadata.author.username}}<br/>
-                    {{'DETAIL_CREATED'|translate}}: {{guideline.metadata.date|date:'medium'}}<br/>
-                    {{'DETAIL_MOTD'|translate}}: {{guideline.motd_flag|boolean|translate}}<br/>
-                    {{'DETAIL_PUBLISHED'|translate}}: {{guideline.published|boolean|translate}}<br/>
+                        {{'DETAIL_AUTHOR'|translate}}: {{guideline.metadata.author.username}}<br/>
+                        {{'DETAIL_CREATED'|translate}}: {{guideline.metadata.date|date:'medium'}}<br/>
+                        {{'DETAIL_MOTD'|translate}}: {{guideline.motd_flag|boolean|translate}}<br/>
+                        {{'DETAIL_PUBLISHED'|translate}}: {{guideline.published|boolean|translate}}<br/>
                     </p>
                 </div>
                 <div class="card-action">
-                    <a href="#">{{'DETAIL_EDIT'|translate}}</a>
-                    <a href="#">{{'DETAIL_DELETE'|translate}}</a>
+                    <a class="waves-effect waves-orange" href="">{{'DETAIL_EDIT'|translate}}</a>
+                    <a class="waves-effect waves-orange" href="">{{'DETAIL_DELETE'|translate}}</a>
+                    <a href="" class="waves-effect waves-orange right" ng-click="detailCtrl.publish($index)">{{'DETAIL_PUBLISH'|translate}}</a>
                 </div>
             </li>
         </ul>

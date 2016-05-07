@@ -9,6 +9,9 @@
                     'LANG_EN': 'Englisch',
                     'LANG_FR': 'Französisch',
                     'CATEGORY': 'Kategorie',
+                    'CATEGORIES': 'Kategorien',
+                    'GUIDELINE': 'Richtlinie',
+                    'GUIDELINES': 'Richtlinien',
                     'YES': 'Ja',
                     'NO': 'Nein',
                     'MAIN_TITLE': 'Willkommen.',
@@ -38,8 +41,8 @@
                     'HEADER_ACCBTN': 'Nutzerkonto',
                     'HEADER_LOGOUTMSG': 'Sie sind jetzt abgemeldet.',
                     'NAVBAR_CONTENTBTN': 'Inhalte',
-                    'NAVBAR_LISTBTN': 'Daten Listen',
-                    'NAVBAR_ADDBTN': 'Daten Hinzufügen',
+                    'NAVBAR_LISTBTN': 'Einträge auflisten',
+                    'NAVBAR_ADDBTN': 'Neuen Eintrag erstellen',
                     'NAVBAR_APIBTN': 'API',
                     'NAVBAR_DOCBTN': 'Dokumentation',
                     'FOOTER_INFOTEXT': 'Dies ist ein Projekt des OK Lab Gießen.',
@@ -56,7 +59,9 @@
                     'DETAIL_AUTHOR': 'Autor',
                     'DETAIL_CREATED': 'Erstellt am',
                     'DETAIL_MOTD': 'Ist Tipp des Tages',
-                    'DETAIL_PUBLISHED': 'Ist Veröffentlicht'
+                    'DETAIL_PUBLISHED': 'Ist Veröffentlicht',
+                    'DETAIL_PUBLISH': 'Veröffentlichen',
+                    'DETAIL_ADD_TRANSLATION': 'Übersetzung hinzufügen'
                 })
                 .translations('en_US', {
                     'APP_TITLE': 'Refugees Gießen',
@@ -65,6 +70,9 @@
                     'LANG_EN': 'English',
                     'LANG_FR': 'French',
                     'CATEGORY': 'Category',
+                    'CATEGORIES': 'Categories',
+                    'GUIDELINE': 'Guideline',
+                    'GUIDELINES': 'Guidelines',
                     'YES': 'Yes',
                     'NO': 'No',
                     'MAIN_TITLE': 'Welcome.',
@@ -94,8 +102,8 @@
                     'HEADER_ACCBTN': 'Account',
                     'HEADER_LOGOUTMSG': 'You are now logged out.',
                     'NAVBAR_CONTENTBTN': 'Content',
-                    'NAVBAR_LISTBTN': 'List data',
-                    'NAVBAR_ADDBTN': 'Add data',
+                    'NAVBAR_LISTBTN': 'List Entries',
+                    'NAVBAR_ADDBTN': 'Create new Entry',
                     'NAVBAR_APIBTN': 'API',
                     'NAVBAR_DOCBTN': 'Documentation',
                     'FOOTER_INFOTEXT': 'This is a OK Lab Gießen Project.',
@@ -112,9 +120,12 @@
                     'DETAIL_AUTHOR': 'Author',
                     'DETAIL_CREATED': 'Created at',
                     'DETAIL_MOTD': 'Is Message of the Day',
-                    'DETAIL_PUBLISHED': 'Is published'
+                    'DETAIL_PUBLISHED': 'Is published',
+                    'DETAIL_PUBLISH': 'Publish',
+                    'DETAIL_ADD_TRANSLATION': 'Add a new Translation'
                 })
                 .preferredLanguage('en_US')
-                .useSanitizeValueStrategy('escape');
+                .useSanitizeValueStrategy('escape')
+                .useLocalStorage();
         }]);
 })();
