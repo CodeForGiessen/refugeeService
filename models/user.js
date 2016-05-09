@@ -29,7 +29,9 @@
     userSchema.virtual('profile')
         .get(function () {
             return {
+                '_id': this._id,
                 'username': this.username,
+                'email': this.email,
                 'name' : this.name+' '+this.surname,
                 'role': this.role
             };
