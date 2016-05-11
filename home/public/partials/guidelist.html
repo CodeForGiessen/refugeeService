@@ -1,8 +1,13 @@
 <div class="container">
     <ul class="collection with-header">
-        <li class="collection-header teal white-text">{{'GUIDELINES'|translate}}</li>
+        <li class="collection-header teal white-text row">
+            <h5 class="col s10">{{'GUIDELINES'|translate}}</h5>
+            <a href="#/category/{{categoryId}}" class="btn waves-effect waves-orange col s2"><i class="material-icons">settings</i></a>
+        </li>
         <div ng-repeat="guide in guideList">
-            <a ng-href="#/guide/{{guide._id}}" class="collection-item">{{(guide.guidelines|lang:lang)[0].text}}</a>
+            <a ng-href="#/guide/{{guide._id}}" class="collection-item">{{(guide.guidelines|lang:lang)[0].text||'NOT_TRANSLATED'|translate}}
+                <span class="badge">{{guide.langs.join([' | '])}}</span>
+            </a>
         </div>
     </ul>
     <div class="row" ng-hide="loadedData">

@@ -1,12 +1,16 @@
 <div class="container">
     <ul class="collection with-header">
-        <li class="collection-header teal white-text">{{'CATEGORIES'|translate}}</li>
+        <li class="collection-header teal white-text"><h5>{{'CATEGORIES'|translate}}</h5></li>
         <div ng-repeat="category in categories">
             <a class="collection-item" href="#/list/{{category._id}}">
-                {{category.text[lang]||"(This Category is not yet available in your language)"}}
+                {{category.text[lang]||'NOT_TRANSLATED'|translate}}
             </a>
         </div>
     </ul>
+    <div id="category-modal" class="modal">
+        <div class="modal-content"></div>
+        <div class="modal-footer"></div>
+    </div>
     <div class="row" ng-hide="loadedData">
         <div class="center">
             <div class="preloader-wrapper active">

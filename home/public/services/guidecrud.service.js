@@ -79,7 +79,6 @@
                     $http.get('/api/v1/guides?category=' + categoryId)
                         .then(function (response) {
                             if (response.status === 200) {
-                                console.log('Guides: '+ JSON.stringify(response.data));
                                 deferred.resolve(response.data.guides);
                             } else {
                                 deferred.reject(response.data.error);

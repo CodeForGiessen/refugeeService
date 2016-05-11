@@ -44,7 +44,8 @@
                     };
                     $scope.settingsBtn = function () {
                         if(!$document.find('#nav-setting-btn').hasClass('disabled')) {
-                            
+                            $location.path('/user');
+                            $route.reload();
                         }
                     };
                     $scope.openLangModal = function () {
@@ -54,6 +55,7 @@
                         localStorage.setItem('lang',lang);
                         $translate.use(lang);
                         $document.find('#lang-modal').closeModal();
+                        $route.reload();
                     };
                 }]);
 })();

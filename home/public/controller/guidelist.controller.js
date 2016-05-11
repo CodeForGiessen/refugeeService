@@ -15,8 +15,8 @@
                 $scope.$location = $location;
                 $scope.guideList = [];
                 $scope.dataLoaded = false;
-                var categoryid = $routeParams.catid;
-                GuideCrudService.readByCategory(categoryid).then(function (data) {
+                $scope.categoryId = $routeParams.catid;
+                GuideCrudService.readByCategory($scope.categoryId).then(function (data) {
                     $scope.guideList = data;
                     $scope.dataLoaded = true;
                     $document.find('.preloader-wrapper').removeClass('active');

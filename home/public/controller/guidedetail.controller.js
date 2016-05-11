@@ -33,10 +33,10 @@
                     };
                     this.removeTranslation = function (idx) {
                         if (AuthService.getRole() > 2) {
+                            $scope.guide.guidelines.splice(idx, 1);
                             GuideCrudService.update($scope.guide).then(function (response) {
                                 if(response.status === 200) {
                                     Materialize.toast($translate.instant('DELETED_CONF_MSG'), 3000, 'rounded');
-                                    $scope.guide.guidelines.splice(idx, 1);
                                 } else {
                                     Materialize.toast($translate.instant('DELETED_ERR_MSG'), 3000, 'rounded');
                                 }
@@ -56,7 +56,10 @@
                             },
                             complete: function () {
                                 $scope.guide.guidelines[idx].text = $scope.translation.text;
+                                var i = $scope.guide.langs.indexOf($scope.guide.guidelines[idx].lang);
+                                $scope.guide.langs[i] = $scope.translation.lang;
                                 $scope.guide.guidelines[idx].lang = $scope.translation.lang;
+
                                 AuthService.getCurrent(function (data) {
                                     var author = {
                                         userId: data._id,
@@ -83,6 +86,7 @@
                             };
                             $scope.translation.metadata = metadata;
                             $scope.guide.guidelines.push($scope.translation);
+                            $scope.guide.langs.push($scope.translation.lang);
                             GuideCrudService.update($scope.guide);
                             $scope.translation = {};
                         });

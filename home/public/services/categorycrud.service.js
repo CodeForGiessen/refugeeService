@@ -27,7 +27,6 @@
                     $http.get('/api/v1/categories/',{headers:{'cache-control':'no-cache'}})
                         .then(function (response) {
                             if (response.status === 200) {
-                                console.log('200 / categories: ' + JSON.stringify(response.data.categories));
                                 categories = response.data.categories;
                                 deferred.resolve(categories);
                             } else {
