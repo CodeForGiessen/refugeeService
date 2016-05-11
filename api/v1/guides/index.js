@@ -12,11 +12,15 @@
         var query = {};
         var lang = req.query.lang;
         var category = req.query.category;
+        var pub = req.query.published;
         if (lang) {
-            query['guidelines.lang'] = lang.toString()
+            query['guidelines.lang'] = lang.toString();
         }
         if (category) {
-            query['category'] = category.toString()
+            query['category'] = category.toString();
+        }
+        if(pub){
+            query['guidelines.published'] = pub;
         }
         crud.read(query, function (err, guides) {
             if (err) {
@@ -35,13 +39,16 @@
                 var result = [];
                 if (lang || category) {
                     result = guides.filter(function (elt) {
-                        var filteredGuidelines = {};
                         if (lang) {
-                            filteredGuidelines = elt.guidelines.filter(function (elt) {
-                                return elt.lang === lang
+                            elt.guidelines = elt.guidelines.filter(function (elt) {
+                                return elt.lang === lang;
                             });
-                            console.log("guidelines"+filteredGuidelines);
-                            elt['guidelines'] = filteredGuidelines;
+                        }
+
+                        if(pub) {
+                            elt.guidelines = elt.guidelines.filter(function (elt) {
+                                return elt.published;
+                            });
                         }
 
                         if (category) {
