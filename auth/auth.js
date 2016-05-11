@@ -36,7 +36,10 @@
                 if(config.userRoles.indexOf(req.decoded.role) >= config.userRoles.indexOf(requiredRole)) {
                     next();
                 } else {
-                    res.send(403);
+                    res.status(403).send({
+                        success: false,
+                        message: 'not authorized'
+                    });
                 }
             });
     }

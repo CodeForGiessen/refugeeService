@@ -4,7 +4,8 @@
     var express = require('express'),
         app = module.exports = express(),
         guides = require('./guides'),
-        categories = require('./categories');
+        categories = require('./categories'),
+        users = require('./users');
 
 
     app.get('/api/v1/', function (req, res) {
@@ -50,4 +51,5 @@
     });
     app.use(guides);
     app.use(categories);
+    app.use(users);
 })();

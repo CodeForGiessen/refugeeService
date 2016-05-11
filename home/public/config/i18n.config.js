@@ -54,6 +54,7 @@
                     'ADD_CATEGORYSELECT': 'Wähle eine Kategorie',
                     'ADD_MOTD': 'Tipp des Tages',
                     'ADD_SAVEBTN': 'Speichern',
+                    'ADD_CANCELBTN': 'Abrechen',
                     'DETAIL_EDIT': 'Bearbeiten',
                     'DETAIL_DELETE': 'Löschen',
                     'DETAIL_AUTHOR': 'Autor',
@@ -61,7 +62,11 @@
                     'DETAIL_MOTD': 'Ist Tipp des Tages',
                     'DETAIL_PUBLISHED': 'Ist Veröffentlicht',
                     'DETAIL_PUBLISH': 'Veröffentlichen',
-                    'DETAIL_ADD_TRANSLATION': 'Übersetzung hinzufügen'
+                    'DETAIL_ADD_TRANSLATION': 'Übersetzung hinzufügen',
+                    'DETAIL_EDIT_TRANSLATION': 'Übersetzung bearbeiten',
+                    'WRONG_ROLE_TO_DO_THAT_MSG': 'Sie haben nicht die nötigen Rechte dafür.',
+                    'DELETED_CONF_MSG': 'Erfolgreich gelöscht.',
+                    'DELETED_ERR_MSG': 'Löschen fehlgeschlagen, versuchen Sie es später nochmal.'
                 })
                 .translations('en_US', {
                     'APP_TITLE': 'Refugees Gießen',
@@ -115,6 +120,7 @@
                     'ADD_CATEGORYSELECT': 'Select a category',
                     'ADD_MOTD': 'Message of the Day',
                     'ADD_SAVEBTN': 'Save',
+                    'ADD_CANCELBTN': 'Cancel',
                     'DETAIL_EDIT': 'Edit',
                     'DETAIL_DELETE': 'Remove',
                     'DETAIL_AUTHOR': 'Author',
@@ -122,7 +128,11 @@
                     'DETAIL_MOTD': 'Is Message of the Day',
                     'DETAIL_PUBLISHED': 'Is published',
                     'DETAIL_PUBLISH': 'Publish',
-                    'DETAIL_ADD_TRANSLATION': 'Add a new Translation'
+                    'DETAIL_ADD_TRANSLATION': 'Add a new Translation',
+                    'DETAIL_EDIT_TRANSLATION': 'Edit the Translation',
+                    'WRONG_ROLE_TO_DO_THAT_MSG': 'You do not have enough privileges to do that.',
+                    'DELETED_CONF_MSG': 'Removing successful.',
+                    'DELETED_ERR_MSG': 'Removing failed. Please try again later. '
                 })
                 .preferredLanguage('en_US')
                 .useSanitizeValueStrategy('escape')

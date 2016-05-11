@@ -19,4 +19,17 @@
         });
     });
     app.use(v1);
+    app.get('/api/*',function (req, res) {
+        res.status(404).send({
+            '_links': {
+                'self': {
+                    'href': '/api/'
+                },
+                'v1': {
+                    'href': '/api/v1'
+                }
+            },
+            'message': 'page not found'
+        });
+    });
 })();

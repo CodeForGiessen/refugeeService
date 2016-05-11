@@ -1,6 +1,7 @@
 (function () {
     var mongoose = require('mongoose');
     var crypto = require('crypto');
+    var roles = require('../config').userRoles;
     var Schema = mongoose.Schema;
 
     var userSchema = new Schema({
@@ -33,7 +34,7 @@
                 'username': this.username,
                 'email': this.email,
                 'name' : this.name+' '+this.surname,
-                'role': this.role
+                'role': roles.indexOf(this.role)
             };
         });
 

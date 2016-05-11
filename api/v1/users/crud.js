@@ -16,16 +16,16 @@
     }
 
     function update(query, newdata, callback) {
-        User.findOneAndUpdate(query, newdata, callback);
+        User.update(query, newdata, callback);
     }
 
     function del(query, callback) {
         User.findOneAndRemove(query, callback);
     }
 
-    modules.export.read = read;
-    modules.export .readOne = readOne;
-    modules.export.create = create;
-    modules.export.update = update;
-    modules.export.del = del;
+    module.exports.read = read;
+    module.exports.readOne = readOne;
+    module.exports.create = create;
+    module.exports.update = update;
+    module.exports.del = del;
 })();

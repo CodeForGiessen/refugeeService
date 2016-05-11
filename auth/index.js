@@ -44,6 +44,7 @@
             res.status(200).json({
                 success: true,
                 status: 'Login success',
+                user: user.profile,
                 token: token
             });
         })(req, res, next);
@@ -52,7 +53,7 @@
     /**
      * Logout currently does nothing major, it could be client-side only for now.
      * Later the server could store each token that has been given out for extra security,
-     * those tokens should then be removed once the user logs out.
+     * those tokens should then be removed once the users logs out.
      */
     app.get('/logout', function (req, res) {
         //Disable caching for logout
@@ -65,7 +66,7 @@
     });
 
     app.get('/userstatus',auth.authenticateToken(), function (req, res) {
-        //Disable caching for user-status
+        //Disable caching for users-status
         res.header("Cache-Control", "no-cache, no-store, must-revalidate");
         res.header("Pragma", "no-cache");
         res.header("Expires", "0");

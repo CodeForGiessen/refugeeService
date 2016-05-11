@@ -3,13 +3,13 @@
         //Token Secret
         'tokensecret': 'thisisasupersecret',
 
-        // user roles
+        // users roles
         'userRoles': [
-            'admin',
-            'mod',
-            'editor',
+            'newbie',
             'user',
-            'newbie'
+            'editor',
+            'mod',
+            'admin'
         ],
 
         // Server config
