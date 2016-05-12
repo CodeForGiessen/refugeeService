@@ -21,15 +21,17 @@
     app.use(morgan('dev'));
     app.use(bodyParser.urlencoded({extended: false}));
     app.use(bodyParser.json());
-    /*app.use(require('express-session')({
-        secret: config.tokensecret,
-        resave: false,
-        saveUninitialized: false
-    }));*/
     app.use(passport.initialize());
 
     app.set('port', port);
     app.set('tokensecret', config.tokensecret);
+
+    //CORS for express
+    app.use(function(req, res, next) {
+        res.header("Access-Control-Allow-Origin", "*");
+        res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+        next();
+    });
 
     app.use(api);
     app.use(auth);
