@@ -1,0 +1,74 @@
+<div class="container">
+    <div class="row"><a class="col s12 waves-effect waves-orange btn btn-block" ng-click="detailCtrl.addTranslation()">{{'DETAIL_ADD_TRANSLATION'|translate}}</a>
+    </div>
+    <div class="row">
+        <div class="row" ng-hide="loadedData">
+            <div class="col s1 push-s5">
+                <div class="preloader-wrapper active">
+                    <div class="spinner-layer spinner-yellow-only">
+                        <div class="circle-clipper left">
+                            <div class="circle"></div>
+                        </div>
+                        <div class="gap-patch">
+                            <div class="circle"></div>
+                        </div>
+                        <div class="circle-clipper right">
+                            <div class="circle"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div ng-repeat="lang in categories">
+            <div class="card">
+                <div class="card-content">
+                        <h5>{{lang.val}}</h5>
+                        {{'LANGUAGE'|translate}}: {{lang.lang}}
+                </div>
+                <div class="card-action">
+                    <a class="waves-effect waves-orange">{{'DETAIL_EDIT'|translate}}</a>
+                    <a class="waves-effect waves-orange">{{'DETAIL_DELETE'|translate}}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="addTransModal" class="modal modal-fixed-footer">
+    <div class="modal-content">
+        <h4>{{'DETAIL_ADD_TRANSLATION'|translate}}</h4>
+        <div class="divider"></div>
+        <form name="translate_form" novalidate>
+            <div class="row">
+                <div class="input-field col s12">
+                    <input ng-model="translation.text" id="translationtext" class="input-field" required>
+                    <label for="translationtext">{{'ADD_GUIDELINE'|translate}}</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s4">
+                    <select id="langselect_trans" ng-model="translation.lang" required>
+                        <option value="" disabled selected>{{'ADD_LANGSELECT'|translate}}</option>
+                        <option value="de_DE">{{'LANG_DE'|translate}}</option>
+                        <option value="en_US">{{'LANG_EN'|translate}}</option>
+                        <option value="fr_FR">{{'LANG_FR'|translate}}</option>
+                    </select>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <a href=""
+           class="modal-action modal-close waves-effect waves-orange btn btn-flat">
+            {{'ADD_CANCELBTN'|translate}}
+        </a>
+        <a href=""
+           class="modal-action modal-close waves-effect waves-orange btn btn-flat"
+           ng-click="detailCtrl.saveTranslation()"
+           ng-class="{disabled:!translate_form.$valid}">
+            {{'ADD_SAVEBTN'|translate}}
+        </a>
+    </div>
+</div>

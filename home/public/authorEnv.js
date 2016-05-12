@@ -63,7 +63,7 @@
                     if (next.access.restricted) {
                         AuthService.getUserStatus()
                             .then(function () {
-                                console.log("restricted: " + next.access.restricted + " | logged in: " + AuthService.isLoggedIn());
+                                //console.log("restricted: " + next.access.restricted + " | logged in: " + AuthService.isLoggedIn());
                                 if (AuthService.isLoggedIn() === false) {
                                     $location.path('/login');
                                     $route.reload();

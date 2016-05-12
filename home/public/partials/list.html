@@ -4,6 +4,7 @@
         <div ng-repeat="category in categories">
             <a class="collection-item" href="#/list/{{category._id}}">
                 {{category.text[lang]||'NOT_TRANSLATED'|translate}}
+                <span class="badge">{{languages(category.text).join(' | ')}}</span>
             </a>
         </div>
     </ul>
