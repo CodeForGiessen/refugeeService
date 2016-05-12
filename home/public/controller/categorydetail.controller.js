@@ -16,6 +16,7 @@
                         }
                         return out;
                     };
+                    $scope.categories = categories(data.text);
                     console.log($scope.categories);
                 });
 
