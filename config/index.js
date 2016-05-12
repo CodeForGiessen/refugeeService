@@ -1,7 +1,7 @@
 (function () {
     module.exports = {
         //Token Secret
-        'tokensecret': 'thisisasupersecret',
+        'tokensecret': process.env.tokenSecret||'x?kgbCrxs47!@|~',
 
         // users roles
         'userRoles': [
@@ -13,8 +13,8 @@
         ],
 
         // Server config
-        'hostname': '0.0.0.0',
+        'hostname': process.env.HOST||'0.0.0.0',
         'port': process.env.PORT||8080,
-        'database': 'mongodb://localhost:27017/refugees'
+        'database': process.env.DATABASE||'mongodb://localhost:27017/refugees'
     };
 })();
