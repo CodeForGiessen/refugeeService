@@ -8,7 +8,7 @@
                 });
             };
         })
-        .controller('GuideListController', 
+        .controller('GuideListController',
             ['$document', '$scope', '$location', '$routeParams', '$timeout', 'GuideCrudService','langFilter',
             function ($document, $scope, $location, $routeParams, $timeout, GuideCrudService, langFilter) {
                 $scope.lang = window.localStorage.getItem('lang');
@@ -29,7 +29,7 @@
                             return elt.lang === $scope.lang;
                         });
                         return guideline.text;
-                    }
+                    };
                 });
             }]);
 })();

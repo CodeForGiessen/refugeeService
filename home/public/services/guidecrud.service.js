@@ -12,8 +12,8 @@
                                 } else {
                                     deferred.reject(response.data.error);
                                 }
-                            }
-                            , function (response) {
+                            },
+                            function (response) {
                                 deferred.reject(response.data.error);
                             });
                     return deferred.promise;

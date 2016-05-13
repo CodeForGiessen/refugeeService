@@ -29,7 +29,11 @@
                         GuideCrudService.update($scope.guide);
                     };
                     this.addTranslation = function () {
-                        $document.find('#addTransModal').openModal();
+                        $document.find('#addTransModal').openModal({
+                            ready: function () {
+                                Materialize.updateTextFields();
+                            }
+                        });
                     };
                     this.removeTranslation = function (idx) {
                         if (AuthService.getRole() > 2) {
@@ -53,6 +57,7 @@
                                 $document.find('#langselect_trans_edit').val($scope.translation.lang);
                                 $document.find('#langselect_trans_edit').material_select();
                                 $document.find('#translationtext_edit').focus();
+                                Materialize.updateTextFields();
                             },
                             complete: function () {
                                 $scope.guide.guidelines[idx].text = $scope.translation.text;

@@ -50,3 +50,7 @@ textarea.materialize-textarea:focus.ng-invalid {
 nav.top-nav {
     margin-bottom: 8px;
 }
+
+.side-nav .nav-header {
+     padding-top: 1px;
+}

@@ -16,7 +16,7 @@
                             } else {
                                 deferred.reject(response.data.error);
                             }
-                        }, function (response) {        
+                        }, function (response) {
                             deferred.reject(response.data.error);
                         });
                     return deferred.promise;
@@ -92,12 +92,12 @@
                     $http.delete('/api/v1/categories/' + category._id, {category: category})
                         .then(function (response) {
                             if (response.status === 200) {
-                                deferred.resolve(response.data.category);
+                                deferred.resolve(response);
                             } else {
-                                deferred.reject(response.data.error);
+                                deferred.reject(response);
                             }
                         }, function (response) {
-                            deferred.reject(response.data.error);
+                            deferred.reject(response);
                         });
                     return deferred.promise;
                 }
