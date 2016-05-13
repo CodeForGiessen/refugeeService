@@ -18,7 +18,6 @@
                         return out;
                     };
                     $scope.categories = categories(data.text);
-                    console.log($scope.categories);
                 });
 
                 this.addTranslation = function () {
@@ -42,8 +41,8 @@
 
                 this.removeTranslation = function (idx) {
                     if (AuthService.getRole() > 2) {
-                        delete $scope.categoryObject[$scope.categories[idx].lang];
-                        $scope.categories.slice(idx, 1);
+                        delete $scope.categoryObject.text[$scope.categories[idx].lang];
+                        $scope.categories.splice(idx, 1);
                         CategoryCrudService.update($scope.categoryObject).then(function (response) {
                             if(response.status === 200) {
                                 Materialize.toast($translate.instant('DELETED_CONF_MSG'), 3000, 'rounded');
