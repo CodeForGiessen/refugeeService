@@ -11,13 +11,13 @@
                     .then(function () {
                         $scope.disabled = false;
                         $location.path('/');
-                        Materialize.toast($translate.instant('LOGINTOAST_SUCCESSMSG',{username: that.user.username}), 3000, 'rounded');
+                        Materialize.toast($translate.instant('LOGINTOAST_SUCCESSMSG',{username: that.user.username}), 3000);
                         that.user = {};
                     })
                     .catch(function () {
                         $scope.disabled = false;
                         that.user = {};
-                        Materialize.toast($translate.instant('LOGINTOAST_ERRORMSG'), 3000, 'rounded');
+                        Materialize.toast($translate.instant('LOGINTOAST_ERRORMSG'), 3000);
                     });
             };
         }]);

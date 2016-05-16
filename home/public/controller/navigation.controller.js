@@ -32,7 +32,7 @@
                             AuthService.logout()
                                 .then(function () {
                                     $route.reload();
-                                    Materialize.toast($translate.instant('HEADER_LOGOUTMSG'), 3000, 'rounded');
+                                    Materialize.toast($translate.instant('HEADER_LOGOUTMSG'), 3000);
                                 });
                         }
                     };

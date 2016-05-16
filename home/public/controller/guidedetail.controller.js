@@ -40,13 +40,13 @@
                             $scope.guide.guidelines.splice(idx, 1);
                             GuideCrudService.update($scope.guide).then(function (response) {
                                 if(response.status === 200) {
-                                    Materialize.toast($translate.instant('DELETED_CONF_MSG'), 3000, 'rounded');
+                                    Materialize.toast($translate.instant('DELETED_CONF_MSG'), 3000);
                                 } else {
-                                    Materialize.toast($translate.instant('DELETED_ERR_MSG'), 3000, 'rounded');
+                                    Materialize.toast($translate.instant('DELETED_ERR_MSG'), 3000);
                                 }
                             });
                         } else {
-                            Materialize.toast($translate.instant('WRONG_ROLE_TO_DO_THAT_MSG'), 3000, 'rounded');
+                            Materialize.toast($translate.instant('WRONG_ROLE_TO_DO_THAT_MSG'), 3000);
                         }
                     };
                     this.editTranslation = function (idx) {

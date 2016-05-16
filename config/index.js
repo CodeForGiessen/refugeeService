@@ -7,7 +7,6 @@
         'userRoles': [
             'newbie',
             'user',
-            'editor',
             'mod',
             'admin'
         ],

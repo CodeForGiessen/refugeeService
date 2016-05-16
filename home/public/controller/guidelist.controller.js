@@ -9,27 +9,21 @@
             };
         })
         .controller('GuideListController',
-            ['$document', '$scope', '$location', '$routeParams', '$timeout', 'GuideCrudService','langFilter',
-            function ($document, $scope, $location, $routeParams, $timeout, GuideCrudService, langFilter) {
+            ['$document', '$scope', '$location', '$routeParams', '$timeout', 'GuideCrudService', 'CategoryCrudService', 'langFilter',
+            function ($document, $scope, $location, $routeParams, $timeout, GuideCrudService, CategoryCrudService, langFilter) {
                 $scope.lang = window.localStorage.getItem('lang');
                 $scope.$location = $location;
                 $scope.guideList = [];
                 $scope.dataLoaded = false;
                 $scope.categoryId = $routeParams.catid;
+                $scope.category = {};
                 GuideCrudService.readByCategory($scope.categoryId).then(function (data) {
                     $scope.guideList = data;
                     $scope.dataLoaded = true;
                     $document.find('.preloader-wrapper').removeClass('active');
-                }).then(function () {
-                    $scope.getTextByLang = function (id) {
-                        var guide = $scope.guideList.filter(function (elt) {
-                            return elt._id === id;
-                        });
-                        var guideline = guide.guidelines.filter(function (elt) {
-                            return elt.lang === $scope.lang;
-                        });
-                        return guideline.text;
-                    };
+                    CategoryCrudService.readOne($scope.categoryId).then(function (data) {
+                        $scope.category = data;
+                    });
                 });
             }]);
 })();

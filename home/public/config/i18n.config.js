@@ -12,6 +12,7 @@
                     'CATEGORIES': 'Kategorien',
                     'GUIDELINE': 'Richtlinie',
                     'GUIDELINES': 'Richtlinien',
+                    'GUIDELINES_HEADER': 'Richtlinien der Kategorie ',
                     'YES': 'Ja',
                     'NO': 'Nein',
                     'NOT_TRANSLATED': 'Übersetzung fehlt noch in Ihrer Sprache.',
@@ -67,6 +68,7 @@
                     'DETAIL_EDIT_TRANSLATION': 'Übersetzung bearbeiten',
                     'DETAIL_REMOVE_CATEGORY': 'Kateogrie löschen',
                     'DETAIL_REMOVE_CONFIRMATION': 'Wollen Sie wirklich den Eintrag löschen? Dieser Vorgang ist permanent und kann nicht rückgängig gemacht werden.',
+                    'CATEGORY_SETTINGS_TOOLTIP': 'Klicken Sie hier, um dieser Kategorie mehr Übersetzungen hinzuzufügen.',
                     'WRONG_ROLE_TO_DO_THAT_MSG': 'Sie haben nicht die nötigen Rechte dafür.',
                     'DELETED_CONF_MSG': 'Erfolgreich gelöscht.',
                     'DELETED_ERR_MSG': 'Löschen fehlgeschlagen, versuchen Sie es später nochmal.'
@@ -81,6 +83,7 @@
                     'CATEGORIES': 'Categories',
                     'GUIDELINE': 'Guideline',
                     'GUIDELINES': 'Guidelines',
+                    'GUIDELINES_HEADER': 'Guidelines in Category ',
                     'YES': 'Yes',
                     'NO': 'No',
                     'NOT_TRANSLATED': 'Not yet translated in your language.',
@@ -136,6 +139,7 @@
                     'DETAIL_EDIT_TRANSLATION': 'Edit the Translation',
                     'DETAIL_REMOVE_CATEGORY': 'Remove Category',
                     'DETAIL_REMOVE_CONFIRMATION': 'Do you really want to remove this entry? The entry will be removed permanently, this cannot be undone.',
+                    'CATEGORY_SETTINGS_TOOLTIP': 'Click here to add more translations to this Category',
                     'WRONG_ROLE_TO_DO_THAT_MSG': 'You do not have enough privileges to do that.',
                     'DELETED_CONF_MSG': 'Removing successful.',
                     'DELETED_ERR_MSG': 'Removing failed. Please try again later. '

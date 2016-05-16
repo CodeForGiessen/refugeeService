@@ -26,7 +26,7 @@
                             $document.find('select').material_select();
                         },
                         complete: function () {
-                            if ($scope.translation) {
+                            if ($scope.translation.text && $scope.translation.lang) {
                                 $scope.categoryObject.text[$scope.translation.lang] = $scope.translation.text;
                                 $scope.categories.push({
                                     lang:$scope.translation.lang,
@@ -45,13 +45,13 @@
                         $scope.categories.splice(idx, 1);
                         CategoryCrudService.update($scope.categoryObject).then(function (response) {
                             if(response.status === 200) {
-                                Materialize.toast($translate.instant('DELETED_CONF_MSG'), 3000, 'rounded');
+                                Materialize.toast($translate.instant('DELETED_CONF_MSG'), 3000);
                             } else {
-                                Materialize.toast($translate.instant('DELETED_ERR_MSG'), 3000, 'rounded');
+                                Materialize.toast($translate.instant('DELETED_ERR_MSG'), 3000);
                             }
                         });
                     } else {
-                        Materialize.toast($translate.instant('WRONG_ROLE_TO_DO_THAT_MSG'), 3000, 'rounded');
+                        Materialize.toast($translate.instant('WRONG_ROLE_TO_DO_THAT_MSG'), 3000);
                     }
                 };
 
@@ -84,18 +84,18 @@
                                 if($scope.remove){
                                     CategoryCrudService.delete($scope.categoryObject).then(function (response) {
                                         if(response.status === 200) {
-                                            Materialize.toast($translate.instant('DELETED_CONF_MSG'), 3000, 'rounded');
+                                            Materialize.toast($translate.instant('DELETED_CONF_MSG'), 3000);
                                             $location.path('/list');
                                             $route.reload();
                                         } else {
-                                            Materialize.toast($translate.instant('DELETED_ERR_MSG'), 3000, 'rounded');
+                                            Materialize.toast($translate.instant('DELETED_ERR_MSG'), 3000);
                                         }
                                     });
                                 }
                             }
                         });
                     } else {
-                        Materialize.toast($translate.instant('WRONG_ROLE_TO_DO_THAT_MSG'), 3000, 'rounded');
+                        Materialize.toast($translate.instant('WRONG_ROLE_TO_DO_THAT_MSG'), 3000);
                     }
                 };
 

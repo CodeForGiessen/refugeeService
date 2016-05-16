@@ -36,14 +36,14 @@
                 <div class="card-action">
                     <a class="waves-effect waves-orange" href="" ng-click="detailCtrl.editTranslation($index)">{{'DETAIL_EDIT'|translate}}</a>
                     <a class="waves-effect waves-orange" href="" ng-click="detailCtrl.removeTranslation($index)">{{'DETAIL_DELETE'|translate}}</a>
-                    <a class="waves-effect waves-orange right" href="" ng-click="detailCtrl.publish($index)" ng-show="authService.getRole() > 3">{{'DETAIL_PUBLISH'|translate}}</a>
+                    <a class="waves-effect waves-orange right" href="" ng-click="detailCtrl.publish($index)" ng-show="authService.getRole() > 2">{{'DETAIL_PUBLISH'|translate}}</a>
                 </div>
             </li>
         </ul>
     </div>
 </div>
 <!-- Modals -->
-<div id="editTransModal" class="modal modal-fixed-footer">
+<div id="editTransModal" class="modal">
     <div class="modal-content">
         <h4>{{'DETAIL_EDIT_TRANSLATION'|translate}}</h4>
         <div class="divider"></div>
@@ -79,7 +79,7 @@
     </div>
 </div>
 
-<div id="addTransModal" class="modal modal-fixed-footer">
+<div id="addTransModal" class="modal">
     <div class="modal-content">
         <h4>{{'DETAIL_ADD_TRANSLATION'|translate}}</h4>
         <div class="divider"></div>
