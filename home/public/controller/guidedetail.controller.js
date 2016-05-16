@@ -37,6 +37,10 @@
                     };
                     this.removeTranslation = function (idx) {
                         if (AuthService.getRole() > 2) {
+                            $scope.guide.langs.splice(
+                                $scope.guide.langs.indexOf($scope.guide.guidelines[idx].lang),
+                                1
+                            );
                             $scope.guide.guidelines.splice(idx, 1);
                             GuideCrudService.update($scope.guide).then(function (response) {
                                 if(response.status === 200) {
@@ -95,6 +99,27 @@
                             GuideCrudService.update($scope.guide);
                             $scope.translation = {};
                         });
+                    };
+                    this.deleteGuide = function () {
+                        if (AuthService.getRole() > 2) {
+                            $document.find('#confModal').openModal({
+                                complete: function () {
+                                    if($scope.remove){
+                                        GuideCrudService.delete($scope.guide).then(function (response) {
+                                            if(response.status === 200) {
+                                                Materialize.toast($translate.instant('DELETED_CONF_MSG'), 3000);
+                                                $location.path('/list');
+                                                $route.reload();
+                                            } else {
+                                                Materialize.toast($translate.instant('DELETED_ERR_MSG'), 3000);
+                                            }
+                                        });
+                                    }
+                                }
+                            });
+                        } else {
+                            Materialize.toast($translate.instant('WRONG_ROLE_TO_DO_THAT_MSG'), 3000);
+                        }
                     };
                 }]);
 })();

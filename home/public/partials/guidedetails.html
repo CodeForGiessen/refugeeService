@@ -1,6 +1,7 @@
 <div class="container">
     <div class="row">
-        <a class="col s12 btn btn-block waves-effect waves-orange" ng-class="{disabled:!loadedData}" ng-click="detailCtrl.addTranslation()">{{'DETAIL_ADD_TRANSLATION'|translate}}</a>
+        <a class="col s6 btn btn-block waves-effect waves-orange" ng-class="{disabled:!loadedData}" ng-click="detailCtrl.addTranslation()">{{'DETAIL_ADD_TRANSLATION'|translate}}</a>
+        <a class="col s6 btn btn-block waves-effect waves-orange red darken-3" ng-class="{disabled:!loadedData}" ng-click="detailCtrl.deleteGuide()">{{'DETAIL_DELETE'|translate}}</a>
     </div>
     <div class="row" ng-hide="loadedData">
         <div class="col s1 push-s5">
@@ -113,5 +114,16 @@
            ng-class="{disabled:!translate_form.$valid}">
             {{'ADD_SAVEBTN'|translate}}
         </a>
+    </div>
+</div>
+
+<div id="confModal" class="modal">
+    <div class="modal-content">
+        <h4>{{'DETAIL_REMOVE_GUIDE'|translate}}</h4>
+        <p>{{'DETAIL_REMOVE_CONFIRMATION'|translate}}</p>
+    </div>
+    <div class="modal-footer">
+        <a ng-click="remove = true" class="modal-action modal-close waves-effect red darken-3 btn">{{'DETAIL_DELETE'|translate}}</a>
+        <a ng-click="remove = false" class="modal-action modal-close waves-effect btn">{{'ADD_CANCELBTN'|translate}}</a>
     </div>
 </div>
