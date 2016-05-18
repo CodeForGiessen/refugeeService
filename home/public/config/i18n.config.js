@@ -72,7 +72,17 @@
                     'CATEGORY_SETTINGS_TOOLTIP': 'Klicken Sie hier, um dieser Kategorie mehr Übersetzungen hinzuzufügen.',
                     'WRONG_ROLE_TO_DO_THAT_MSG': 'Sie haben nicht die nötigen Rechte dafür.',
                     'DELETED_CONF_MSG': 'Erfolgreich gelöscht.',
-                    'DELETED_ERR_MSG': 'Löschen fehlgeschlagen, versuchen Sie es später nochmal.'
+                    'DELETED_ERR_MSG': 'Löschen fehlgeschlagen, versuchen Sie es später nochmal.',
+                    'USERCTRL_HEADER': 'Nutzerverwaltung',
+                    'USERCTRL_NAME': 'Name',
+                    'USERCTRL_EMAIL': 'E-Mail',
+                    'USERCTRL_ROLE': 'Rolle',
+                    'USERCTRL_CHMAIL': 'E-Mail ändern',
+                    'USERCTRL_CHNAME': 'Name ändern',
+                    'USERCTRL_CHUSERNAME': 'Nutzername ändern',
+                    'USERCTRL_CHPASSWORD':'Passwort ändern',
+                    'USERCTRL_NEWPW': 'Neues Passwort',
+                    'USERCTRL_CONFIRMPW': 'Passwort bestätigen'
                 })
                 .translations('en_US', {
                     'APP_TITLE': 'Refugees Gießen',
@@ -144,9 +154,20 @@
                     'CATEGORY_SETTINGS_TOOLTIP': 'Click here to add more translations to this Category',
                     'WRONG_ROLE_TO_DO_THAT_MSG': 'You do not have enough privileges to do that.',
                     'DELETED_CONF_MSG': 'Removing successful.',
-                    'DELETED_ERR_MSG': 'Removing failed. Please try again later. '
+                    'DELETED_ERR_MSG': 'Removing failed. Please try again later. ',
+                    'USERCTRL_HEADER': 'Usercontrol',
+                    'USERCTRL_NAME': 'Name',
+                    'USERCTRL_EMAIL': 'E-Mail',
+                    'USERCTRL_ROLE': 'Role',
+                    'USERCTRL_CHMAIL': 'Change E-Mail',
+                    'USERCTRL_CHNAME': 'Change Name',
+                    'USERCTRL_CHUSERNAME': 'Change Username',
+                    'USERCTRL_CHPASSWORD': 'Change Password',
+                    'USERCTRL_NEWPW': 'New Password',
+                    'USERCTRL_CONFIRMPW': 'Confirm Password'
                 })
                 .preferredLanguage('en_US')
+                .fallbackLanguage('en_US')
                 .useSanitizeValueStrategy('escape')
                 .useLocalStorage();
         }]);

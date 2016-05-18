@@ -1,0 +1,41 @@
+<div class="container">
+    <h1>{{'USERCTRL_HEADER'|translate}}</h1>
+    <div class="card">
+        <div class="card-content">
+            <span class="card-title">{{userCtrl.userProfile.username}}</span>
+            <div class="divider"></div>
+            <p style="padding-top: 16px">
+                {{'USERCTRL_NAME'|translate}}: {{userCtrl.userProfile.name}}<br/>
+                {{'USERCTRL_EMAIL'|translate}}: {{userCtrl.userProfile.email}}<br/>
+                {{'USERCTRL_ROLE'|translate}}: {{userCtrl.getRole()}}
+            </p>
+        </div>
+        <div class="card-action">
+            <a href="" class="waves-effect">{{'USERCTRL_CHMAIL'|translate}}</a>
+            <a href="" class="waves-effect">{{'USERCTRL_CHNAME'|translate}}</a>
+            <a href="" class="waves-effect">{{'USERCTRL_CHUSERNAME'|translate}}</a>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-content">
+            <span class="card-title">{{'USERCTRL_CHPASSWORD'|translate}}</span>
+            <div class="divider"></div>
+            <form name="change_password" class="row" ng-submit="userCtrl.updatePassword()" novalidate>
+                <div class="input-field col s12 l6">
+                    <input ng-model="user.password" type="password" id="password" required minlength="6">
+                    <label for="password">{{'USERCTRL_NEWPW'|translate}}</label>
+                </div>
+                <div class="input-field col s12 l6">
+                    <input ng-model="confirmPassword" type="password" id="confpassword" validate-password>
+                    <label for="confpassword">{{'USERCTRL_CONFIRMPW'|translate}}</label>
+                </div>
+                <div class="input-field col">
+                <button type="submit" name="action" class="waves-effect waves-light btn btn-large"
+                ng-class="{disabled:!change_password.$valid}">
+                    {{'ADD_SAVEBTN'|translate}} <i class="material-icons left">done</i>
+                </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

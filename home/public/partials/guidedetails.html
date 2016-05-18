@@ -26,7 +26,7 @@
                 <div class="card-content">
                     <i class="material-icons badge secondary-content" ng-show="guideline.published">visibility</i>
                     <i class="material-icons badge secondary-content" ng-hide="guideline.published">visibility_off</i>
-                    <p class="card-title">{{guideline.text}}</p>
+                    <span class="card-title">{{guideline.text}}</span>
                     <p>{{'LANGUAGE'|translate}}: {{guideline.lang}}<br/>
                         {{'DETAIL_AUTHOR'|translate}}: {{guideline.metadata.author.username}}<br/>
                         {{'DETAIL_CREATED'|translate}}: {{guideline.metadata.date|date:'medium'}}<br/>

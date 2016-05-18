@@ -1,9 +1,9 @@
 (function () {
     'use strict';
     angular.module('refugeeAuthorEnv')
-        .controller('NavigationController',
-            ['$scope', '$document', '$timeout', '$location', '$route', '$translate', 'AuthService',
-                function ($scope, $document, $timeout, $location, $route, $translate, AuthService) {
+        .controller('NavigationController', [
+            '$scope', '$document', '$timeout', '$location', '$route', '$translate', 'AuthService',
+            function ($scope, $document, $timeout, $location, $route, $translate, AuthService) {
                     $document.ready(function () {
                         setTimeout(function () {
                             $document.find('.button-collapse').sideNav({});
@@ -44,7 +44,7 @@
                     };
                     $scope.settingsBtn = function () {
                         if(!$document.find('#nav-setting-btn').hasClass('disabled')) {
-                            $location.path('/user');
+                            $location.path('/user/'+JSON.parse(localStorage.getItem('profile'))._id);
                             $route.reload();
                         }
                     };
@@ -57,5 +57,6 @@
                         $document.find('#lang-modal').closeModal();
                         $route.reload();
                     };
-                }]);
+                }
+            ]);
 })();
