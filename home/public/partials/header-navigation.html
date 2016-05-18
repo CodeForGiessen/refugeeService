@@ -18,13 +18,13 @@
                 </a>
                 <!--Dropdown Content-->
                 <ul id="account_dropdown" class="dropdown-content">
-                    <li><a id="nav-login-btn" href="" class="btn-block" ng-class="{disabled:isLoggedIn()}"
-                           ng-click="loginBtn()">{{'HEADER_LOGINBTN'|translate}}</a></li>
-                    <li><a id="nav-setting-btn" href="" class="btn-block" ng-class="{disabled:!isLoggedIn()}"
-                           ng-click="settingsBtn()">{{'HEADER_SETTINGSBTN'|translate}}</a></li>
+                    <a id="nav-login-btn" href="" class="btn" ng-class="{disabled:isLoggedIn()}"
+                           ng-click="loginBtn()">{{'HEADER_LOGINBTN'|translate}}</a>
+                    <a id="nav-setting-btn" href="" class="btn" ng-class="{disabled:!isLoggedIn()}"
+                           ng-click="settingsBtn()">{{'HEADER_SETTINGSBTN'|translate}}</a>
                     <li class="divider"></li>
-                    <li><a id="nav-logout-btn" class="btn-block" ng-class="{disabled:!isLoggedIn()}"
-                           ng-click="logoutBtn()">{{'HEADER_LOGOUTBTN'|translate}}</a></li>
+                    <a id="nav-logout-btn" class="btn" ng-class="{disabled:!isLoggedIn()}"
+                           ng-click="logoutBtn()">{{'HEADER_LOGOUTBTN'|translate}}</a>
                 </ul>
                 <!--Language Modal Content-->
                 <div id="lang-modal" class="modal">
