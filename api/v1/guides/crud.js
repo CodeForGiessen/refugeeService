@@ -9,7 +9,7 @@
     function readOne(query, callback) {
         Guide.findOne(query, callback);
     }
-    
+
     function getAllIds(callback) {
         Guide.find({}, {
             '_id': 1
@@ -20,14 +20,13 @@
                     ids.push(elt._id);
                 });
             }
-            
+
             callback(err, ids);
         });
     }
 
     function create(guide, callback) {
         var newGuide = new Guide(guide);
-        console.log('still saving...');
         newGuide.save(callback);
     }
 

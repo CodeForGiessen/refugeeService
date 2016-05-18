@@ -141,8 +141,8 @@
             }
         });
     });
-    
-    app.delete('/api/v1/categories/:id', auth.authenticateToken(), function (req, res, next) {
+
+    app.delete('/api/v1/categories/:id', auth.hasRole('mod'), function (req, res, next) {
         crud.del({
             '_id':req.params.id
         }, function (err, category) {

@@ -17,7 +17,7 @@
             query['guidelines.lang'] = lang.toString();
         }
         if (category) {
-            query['category'] = category.toString();
+            query.category = category.toString();
         }
         if(pub){
             query['guidelines.published'] = pub;

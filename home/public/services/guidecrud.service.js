@@ -12,8 +12,8 @@
                                 } else {
                                     deferred.reject(response.data.error);
                                 }
-                            }
-                            , function (response) {
+                            },
+                            function (response) {
                                 deferred.reject(response.data.error);
                             });
                     return deferred.promise;
@@ -107,12 +107,12 @@
                     $http.delete('/api/v1/guides/' + guide._id, {guide: guide})
                         .then(function (response) {
                             if (response.status === 200) {
-                                deferred.resolve(response.data.guide);
+                                deferred.resolve(response);
                             } else {
-                                deferred.reject(response.data.error);
+                                deferred.reject(response);
                             }
                         }, function (response) {
-                            deferred.reject(response.data.error);
+                            deferred.reject(response);
                         });
                     return deferred.promise;
                 }

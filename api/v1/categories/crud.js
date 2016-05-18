@@ -5,7 +5,7 @@
     function read(query, callback) {
         Category.find(query, callback);
     }
-    
+
     function readOne(query, callback) {
         Category.findOne(query, callback);
     }
@@ -31,7 +31,21 @@
     }
 
     function update(query, newdata, callback) {
-        Category.findOneAndUpdate(query, newdata, callback);
+        Category.findOne(query, function(err, data){
+            if(err) {
+                return callback(err);
+            } else if (!data) {
+                return callback(null,data);
+            } else {
+                console.log(JSON.stringify(data.text));
+                console.log(JSON.stringify(newdata.text));
+                data.text = newdata.text;
+                console.log(JSON.stringify(data.text));
+                data.markModified('text');
+                //data.visits.$inc();
+                data.save(callback);
+            }
+        });
     }
 
     function del(query, callback) {

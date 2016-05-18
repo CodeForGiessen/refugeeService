@@ -1,7 +1,7 @@
 <div class="container">
     <ul class="collection with-header">
         <li class="collection-header teal white-text row">
-            <h5 class="col s10">{{'GUIDELINES'|translate}}</h5>
+            <h5 class="col s10">{{'GUIDELINES_HEADER'|translate}}"{{category.text[lang]||'NOT_TRANSLATED'|translate}}"</h5>
             <a href="#/category/{{categoryId}}" class="btn waves-effect waves-orange col s2"><i class="material-icons">settings</i></a>
         </li>
         <div ng-repeat="guide in guideList">

@@ -1,13 +1,15 @@
 <header>
     <nav class="top-nav teal">
         <div class="nav-wrapper">
-            <a href="#" data-activates="nav-mobile" class="left button-collapse hide-on-large-only">
+            <div class="row">
+            <a href="#" data-activates="nav-mobile" class="col left button-collapse hide-on-large-only">
                 <i class="material-icons">menu</i>
             </a>
-            <div class="center">
+                <!--div id="breadcrumb" class="col s9 push-s3">
+                    <a href="#/" class="breadcrumb">Home</a>
+                </div-->
 
-            </div>
-            <div style="margin-right: 16px">
+                <div class="col push-s9">
                 <a href="" class="right dropdown-btn" style="margin-left: 16px" data-activates="account_dropdown">
                     <i class="material-icons left">perm_identity</i>{{'HEADER_ACCBTN'|translate}}
                 </a>
@@ -35,15 +37,17 @@
                     </div>
                 </div>
             </div>
+            </div>
         </div>
     </nav>
     <!-- side navbar, is only permanent on large displays small and medium sized displays show a menu icon to slide the navbar in-->
     <ul id="nav-mobile" class="side-nav fixed" style="overflow: auto; transform: translateX(0px);">
-        <li class="center brand-logo">
-            <h4 class="center">Refugees Gießen</h4>
-            <i style="margin-top: 16px;" class="material-icons large">account_circle</i>
+        <li class="center teal nav-header">
+            <h4 class="center white-text">Refugees Gießen</h4>
+            <i class="material-icons large white-text">account_circle</i>
         </li>
         <div class="divider"></div>
+        <div id="nav-items" class="white">
         <li class="no-padding">
             <ul class="collapsible">
                 <li><a class="collapsible-header waves-effect waves-orange" ng-class="{disabled:!isLoggedIn()}">{{'NAVBAR_CONTENTBTN'|translate}}</a>
@@ -67,5 +71,6 @@
             </ul>
         </li>
         <li><a class="waves-effect waves-orange" href="#/doc">{{'NAVBAR_DOCBTN'|translate}}</a></li>
+    </div>
     </ul>
 </header>
