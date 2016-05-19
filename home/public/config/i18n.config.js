@@ -82,7 +82,9 @@
                     'USERCTRL_CHUSERNAME': 'Nutzername ändern',
                     'USERCTRL_CHPASSWORD':'Passwort ändern',
                     'USERCTRL_NEWPW': 'Neues Passwort',
-                    'USERCTRL_CONFIRMPW': 'Passwort bestätigen'
+                    'USERCTRL_CONFIRMPW': 'Passwort bestätigen',
+                    'USERCTRL_USERS': 'Nutzer',
+                    'USERCTRL_ADJROLE': 'Rolle anpassen'
                 })
                 .translations('en_US', {
                     'APP_TITLE': 'Refugees Gießen',
@@ -164,7 +166,9 @@
                     'USERCTRL_CHUSERNAME': 'Change Username',
                     'USERCTRL_CHPASSWORD': 'Change Password',
                     'USERCTRL_NEWPW': 'New Password',
-                    'USERCTRL_CONFIRMPW': 'Confirm Password'
+                    'USERCTRL_CONFIRMPW': 'Confirm Password',
+                    'USERCTRL_USERS': 'Users',
+                    'USERCTRL_ADJROLE': 'Adjust Role'
                 })
                 .preferredLanguage('en_US')
                 .fallbackLanguage('en_US')

@@ -23,13 +23,9 @@
                         'message': 'No users found'
                     });
                 } else {
-                    var resultUsers = [];
                     res.status(200);
-                    users.forEach(function (user) {
-                        resultUsers.push(user);
-                    });
                     res.json({
-                        'users': resultUsers
+                        'users': users
                     });
                 }
             }
@@ -63,7 +59,8 @@
     });
 
     /**
-     * Get the currently logged in User
+     * Get the currently logged in User,
+     * @returns users profile
      */
     app.get('/api/v1/users/me', auth.authenticateToken(), function (req, res, next) {
         crud.readOne({

@@ -2,10 +2,28 @@
     'use strict';
     angular.module('refugeeAuthorEnv')
     .controller('UserDetailController', [
-        function(){
+        '$scope', '$document','$timeout', 'UserCrudService',
+        function($scope, $document, $timeout, UserCrudService){
+            $document.ready(function () {
+
+                $document.find('#dropdown_btn').addClass('orange');
+            });
+            $scope.users = {};
             this.userProfile = JSON.parse(localStorage.getItem('profile'));
-            this.getRole = function () {
-                switch (this.userProfile.role){
+            if(this.userProfile.role > 1) {
+                UserCrudService.read()
+                    .then(function(users){
+                        $scope.users = users;
+                        $document.find('.dropdown-button').dropdown({
+                            inDuration: 300,
+                            outDuration: 200,
+                            alignment: 'right',
+                            constrain_width: false
+                        });
+                    });
+            }
+            this.getRole = function (role) {
+                switch (role){
                     case 0: return "Newbie";
                     case 1: return "Editor";
                     case 2: return "Moderator";
@@ -14,5 +32,17 @@
                 }
             };
         }
-    ]);
+    ])
+    .directive('dropdownDirective', function() {
+        return {
+            link: function(scope, elt, attrs) {
+                elt.children('.dropdown-button').dropdown({
+                    inDuration: 300,
+                    outDuration: 200,
+                    alignment: 'right'
+                });
+                elt.children('.dropdown-content').css('z-index','999999999 !important');
+            }
+        };
+    });
 })();
