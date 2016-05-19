@@ -41,7 +41,6 @@
                     outDuration: 200,
                     alignment: 'right'
                 });
-                elt.children('.dropdown-content').css('z-index','999999999 !important');
             }
         };
     });

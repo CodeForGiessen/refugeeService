@@ -40,7 +40,7 @@
     </div>
     <div class="card col s12" ng-hide="userCtrl.userProfile.role < 2">
         <div class="card-content">
-            <ul class="collection with-header">
+            <ul class="collection users with-header">
                 <li class="collection-header teal"><h5 class="white-text">{{'USERCTRL_USERS'|translate}}</h5></li>
                 <li class="collection-item" ng-repeat="user in users" dropdown-directive>
                     <span class="title">{{user.username}}</span>
