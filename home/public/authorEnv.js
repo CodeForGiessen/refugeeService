@@ -17,6 +17,11 @@
                 controller: 'LoginCtrl',
                 controllerAs: 'loginCtrl',
                 access: {restricted: false}
+            }).when('/user/:uid', {
+                templateUrl: '/public/partials/userdetails.html',
+                controller: 'UserDetailController',
+                controllerAs: 'userCtrl',
+                access: {restricted: true}
             }).when('/list', {
                 templateUrl: '/public/partials/list.html',
                 controller: 'ListController',
@@ -63,7 +68,6 @@
                     if (next.access.restricted) {
                         AuthService.getUserStatus()
                             .then(function () {
-                                //console.log("restricted: " + next.access.restricted + " | logged in: " + AuthService.isLoggedIn());
                                 if (AuthService.isLoggedIn() === false) {
                                     $location.path('/login');
                                     $route.reload();

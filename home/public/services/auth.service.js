@@ -59,7 +59,6 @@
                 var deferred = $q.defer();
                 $http.post('/login', {username: username, password: password})
                     .then(function success(response) {
-                        console.log("Login: " + response.status);
                         if (response.status === 200) {
                             that.user = true;
                             window.localStorage.setItem('profile', JSON.stringify(response.data.user));
