@@ -77,14 +77,18 @@
                     'USERCTRL_NAME': 'Name',
                     'USERCTRL_EMAIL': 'E-Mail',
                     'USERCTRL_ROLE': 'Rolle',
+                    'USERCTRL_EDIT': 'Nutzerdaten ändern',
                     'USERCTRL_CHMAIL': 'E-Mail ändern',
                     'USERCTRL_CHNAME': 'Name ändern',
+                    'USERCTRL_CHSURNAME': 'Nachname ändern',
                     'USERCTRL_CHUSERNAME': 'Nutzername ändern',
                     'USERCTRL_CHPASSWORD':'Passwort ändern',
                     'USERCTRL_NEWPW': 'Neues Passwort',
                     'USERCTRL_CONFIRMPW': 'Passwort bestätigen',
                     'USERCTRL_USERS': 'Nutzer',
-                    'USERCTRL_ADJROLE': 'Rolle anpassen'
+                    'USERCTRL_ADJROLE': 'Rolle anpassen',
+                    'USERCTRL_ADJROLESUCC': '{{username}} hat jetzt die Rolle {{role}}.',
+                    'USERCTRL_ADJROLEERR': 'Fehler beim anpassen der Rolle. {{username}} bleibt in der Rolle {{role}}.'
                 })
                 .translations('en_US', {
                     'APP_TITLE': 'Refugees Gießen',
@@ -161,14 +165,18 @@
                     'USERCTRL_NAME': 'Name',
                     'USERCTRL_EMAIL': 'E-Mail',
                     'USERCTRL_ROLE': 'Role',
+                    'USERCTRL_EDIT': 'Edit Userdata',
                     'USERCTRL_CHMAIL': 'Change E-Mail',
                     'USERCTRL_CHNAME': 'Change Name',
+                    'USERCTRL_CHSURNAME': 'Change Surname',
                     'USERCTRL_CHUSERNAME': 'Change Username',
                     'USERCTRL_CHPASSWORD': 'Change Password',
                     'USERCTRL_NEWPW': 'New Password',
                     'USERCTRL_CONFIRMPW': 'Confirm Password',
                     'USERCTRL_USERS': 'Users',
-                    'USERCTRL_ADJROLE': 'Adjust Role'
+                    'USERCTRL_ADJROLE': 'Adjust Role',
+                    'USERCTRL_ADJROLESUCC': '{{username}} has now the role {{role}}.',
+                    'USERCTRL_ADJROLEERR': 'Error while trying to adjust role. {{username}} stays in the role {{role}} for now.'
                 })
                 .preferredLanguage('en_US')
                 .fallbackLanguage('en_US')

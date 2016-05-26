@@ -17,13 +17,18 @@
             role: 'newbie'
         });
         newUser.save(function (err, user) {
-            if(err) return validationError(res, err);
-            var token = auth.signToken(user._id, user.username, user.role);
-            res.status(200).json({
-                success: true,
-                status: 'register success',
-                token: token
-            });
+            if(err){
+                res.status(500).send({
+                    err: 'internal error occurred'
+                });
+            } else {
+                var token = auth.signToken(user._id, user.username, user.role);
+                res.status(200).json({
+                    success: true,
+                    status: 'register success',
+                    token: token
+                });
+            }
         });
 
     });
@@ -39,7 +44,7 @@
                     err: info
                 });
             }
-            
+
             var token = auth.signToken(user._id, user.username, user.role);
             res.status(200).json({
                 success: true,

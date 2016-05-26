@@ -33,7 +33,8 @@
                 '_id': this._id,
                 'username': this.username,
                 'email': this.email,
-                'name' : this.name+' '+this.surname,
+                'name': this.name,
+                'surname': this.surname,
                 'role': roles.indexOf(this.role)
             };
         });

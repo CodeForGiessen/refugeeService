@@ -11,7 +11,7 @@
      * Get all Users
      * Requires Role Admin
      */
-    app.get('/api/v1/users/all', auth.hasRole('admin'), function (req, res, next) {
+    app.get('/api/v1/users/all', auth.hasRole('mod'), function (req, res, next) {
         crud.read({}, function (err, users) {
             if(err) {
                 res.status(500).send({
@@ -68,7 +68,7 @@
         }, function (err, user) {
             if(err) {
                 res.status(501).send({
-                    'error': err
+                    'error': 'Unexpected error occurred'
                 });
             } else {
                 if (!user) {
@@ -116,7 +116,7 @@
                });
            } else if(!user) {
                res.status(404).send({
-                   message: 'user not found'
+                   err: 'user not found'
                });
            } else {
                res.status(200).send({
@@ -124,5 +124,35 @@
                });
            }
         });
+    });
+
+    /**
+     * Update Userinfo of the currently logged in user.
+     */
+    app.post('/api/v1/users/me/:id', auth.authenticateToken(), function(req, res, next){
+        var id = req.params.id;
+        var decodedId = req.decoded._id;
+        if(id === decodedId){
+            var userChanges = req.body.user;
+            crud.update({_id:id}, userChanges, function(err, user) {
+                if(err) {
+                    res.status(500).send({
+                        err: 'internal error occurred'
+                    });
+                } else if(!user) {
+                    res.status(404).send({
+                        err: 'user not found'
+                    });
+                } else {
+                    res.status(200).send({
+                        message: 'ok'
+                    });
+                }
+            });
+        } else {
+            res.status(400).send({
+                err: 'not authorized'
+            });
+        }
     });
 })();

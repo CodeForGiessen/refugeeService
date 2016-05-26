@@ -2,18 +2,16 @@
     <h1>{{'USERCTRL_HEADER'|translate}}</h1>
     <div class="card col s12 l5">
         <div class="card-content">
-            <span class="card-title">{{userCtrl.userProfile.username}}</span>
+            <span class="card-title">{{userProfile.username}}</span>
             <div class="divider"></div>
             <p style="padding-top: 16px">
-                {{'USERCTRL_NAME'|translate}}: {{userCtrl.userProfile.name}}<br/>
-                {{'USERCTRL_EMAIL'|translate}}: {{userCtrl.userProfile.email}}<br/>
-                {{'USERCTRL_ROLE'|translate}}: {{userCtrl.getRole(userCtrl.userProfile.role)}}
+                {{'USERCTRL_NAME'|translate}}: {{userProfile.name}} {{userProfile.surname}}<br/>
+                {{'USERCTRL_EMAIL'|translate}}: {{userProfile.email}}<br/>
+                {{'USERCTRL_ROLE'|translate}}: {{userCtrl.getRole(userProfile.role)}}
             </p>
         </div>
         <div class="card-action">
-            <a href="" class="waves-effect">{{'USERCTRL_CHMAIL'|translate}}</a>
-            <a href="" class="waves-effect">{{'USERCTRL_CHNAME'|translate}}</a>
-            <a href="" class="waves-effect">{{'USERCTRL_CHUSERNAME'|translate}}</a>
+            <a href="" class="waves-effect" ng-click="userCtrl.editUser()">{{'USERCTRL_EDIT'|translate}}</a>
         </div>
     </div>
     <div class="card col s12 l6 push-l1">
@@ -38,13 +36,14 @@
             </form>
         </div>
     </div>
-    <div class="card col s12" ng-hide="userCtrl.userProfile.role < 2">
+    <div ng-hide="{{userProfile.role < 2}}">
+    <div class="card col s12">
         <div class="card-content">
             <ul class="collection users with-header">
                 <li class="collection-header teal"><h5 class="white-text">{{'USERCTRL_USERS'|translate}}</h5></li>
-                <li class="collection-item" ng-repeat="user in users" dropdown-directive>
+                <li class="collection-item" ng-repeat="user in users">
                     <span class="title">{{user.username}}</span>
-                    <a class="secondary-content btn dropdown-button" data-activates="role_dropdown"><i class="material-icons left">supervisor_account</i>{{'USERCTRL_ADJROLE'|translate}}</a>
+                    <a class="secondary-content btn" ng-click="userCtrl.adjustRole($index)" ng-show="{{userProfile.role == 3}}"><i class="material-icons left">supervisor_account</i>{{'USERCTRL_ADJROLE'|translate}}</a>
                     <p>
                         {{'USERCTRL_ROLE'|translate}}: {{user.role}}
                     </p>
@@ -52,11 +51,53 @@
                 <div class="divider" ng-hide="$last"></div>
             </ul>
         </div>
-        <ul id="role_dropdown" class="dropdown-content">
-            <li class="dropdown-item"><a href="#!" class="btn-flat">Newbie</a></li>
-            <li class="dropdown-item"><a href="#!" class="btn-flat">Editor</a></li>
-            <li class="dropdown-item"><a href="#!" class="btn-flat">Moderator</a></li>
-            <li class="dropdown-item"><a href="#!" class="btn-flat">Administrator</a></li>
-        </ul>
+    </div>
+    </div>
+</div>
+<div class="modal" id="rolemodal">
+    <div class="modal-content">
+        <h4>{{'USERCTRL_ADJROLE'|translate}}</h4>
+        <div class="divider"></div>
+        <form action="#">
+            <p><input name="grp1" type="radio" id="r1" value="newbie"><label for="r1">Newbie</label></p>
+            <p><input name="grp1" type="radio" id="r2" value="editor"><label for="r2">Editor</label></p>
+            <p><input name="grp1" type="radio" id="r3" value="mod"><label for="r3">Moderator</label></p>
+            <p><input name="grp1" type="radio" id="r4" value="admin"><label for="r4">Administrator</label></p>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button class="btn waves-effect waves-orange modal-action modal-close">{{'ADD_SAVEBTN'|translate}} <i class="material-icons left">done</i></button>
+        <button class="btn waves-effect waves-orange modal-action modal-close">{{'ADD_CANCELBTN'|translate}}<i class="material-icons left">not_interested</i></button>
+    </div>
+</div>
+<div class="modal" id="usermodal">
+    <div class="modal-content">
+        <h4>{{'USERCTRL_EDIT'|translate}}</h4>
+        <div class="divider"></div>
+        <form name="user_edit" ng-submit="userCtrl.updateUserdata()" novalidate>
+            <div class="row">
+                <div class="input-field col s12">
+                    <input ng-model="userProfile.username" id="username_edit" type="text" required>
+                    <label for="username_edit">{{'USERCTRL_CHUSERNAME'|translate}}</label>
+                </div>
+                <div class="input-field col s12">
+                    <input ng-model="userProfile.email" id="email_edit" type="text" required>
+                    <label for="email_edit">{{'USERCTRL_CHMAIL'|translate}}</label>
+                </div>
+                <div class="input-field col s12 m6">
+                    <input ng-model="userProfile.name" id="name_edit" type="text" required>
+                    <label for="name_edit">{{'USERCTRL_CHNAME'|translate}}</label>
+                </div>
+                <div class="input-field col s12 m6">
+                    <input ng-model="userProfile.surname" id="surname_edit" type="text" required>
+                    <label for="surname_edit">{{'USERCTRL_CHSURNAME'|translate}}</label>
+                </div>
+            </div>
+            <div class="input-field col">
+                <button type="submit" name="action" class="waves-effect waves-light btn btn-large modal-close"          ng-class="{disabled:!user_edit.$valid}">
+                {{'ADD_SAVEBTN'|translate}} <i class="material-icons left">done</i>
+            </button>
+            </div>
+        </form>
     </div>
 </div>

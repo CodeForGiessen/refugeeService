@@ -44,11 +44,27 @@
                         if(response.status === 200) {
                             deferred.resolve(response.data.user);
                         } else {
-                            deferred.reject(reponse.status);
+                            deferred.reject(reponse.data.err);
                         }
                     },
                     function(response){
-                        deferred.reject(response.status);
+                        deferred.reject(response.data.err);
+                    });
+                    return deferred.promise;
+                },
+
+                updateUserData: function (uid, changes) {
+                    var deferred = $q.defer();
+                    $http.post('/api/v1/users/me/'+uid, {user: changes})
+                    .then(function(response){
+                        if(response.status === 200) {
+                            deferred.resolve(response);
+                        } else {
+                            deferred.reject(reponse.data.err);
+                        }
+                    },
+                    function(response){
+                        deferred.reject(response.data.err);
                     });
                     return deferred.promise;
                 },

@@ -6,7 +6,7 @@
         // users roles
         'userRoles': [
             'newbie',
-            'user',
+            'editor',
             'mod',
             'admin'
         ],

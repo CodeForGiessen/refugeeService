@@ -11,6 +11,17 @@ main {
     flex: 1 0 auto;
 }
 
+.header-icon {
+    height:72px;
+    width:72px;
+    box-shadow: 0 3px 5px 0 rgba(0,0,0,0.5);
+    border-radius: 100%;
+}
+
+.header-title {
+    text-shadow: 0 3px 5px rgba(0,0,0,0.5);
+}
+
 .right.copyright {
     margin-right: 16px;
 }
@@ -74,4 +85,8 @@ nav.top-nav {
   position: relative;
   z-index: 999 !important;
   will-change: width, height;
+}
+
+#usermodal.modal {
+    padding-bottom: 2em;
 }
