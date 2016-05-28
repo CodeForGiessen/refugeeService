@@ -88,7 +88,16 @@
                     'USERCTRL_USERS': 'Nutzer',
                     'USERCTRL_ADJROLE': 'Rolle anpassen',
                     'USERCTRL_ADJROLESUCC': '{{username}} hat jetzt die Rolle {{role}}.',
-                    'USERCTRL_ADJROLEERR': 'Fehler beim anpassen der Rolle. {{username}} bleibt in der Rolle {{role}}.'
+                    'USERCTRL_ADJROLEERR': 'Fehler beim anpassen der Rolle. {{username}} bleibt in der Rolle {{role}}.',
+                    'DASH_TITLE': 'Überblick',
+                    'DASH_PUBQ': 'Veröffentlichungs Liste',
+                    'DASH_PUBQMSG': 'Alle Richtlinien sind veröffentlicht',
+                    'DASH_TRANSTOP': 'Übersetzer Rangliste',
+                    'DASH_TRANSTOPMSG': 'Es gibt keine Nutzer zum auflisten. Hier scheint ein Fehler passiert zu sein, bitte informieren Sie einen Administrator oder Moderator darüber.',
+                    'DASH_GUIDELIST': 'Richtlinien die noch nicht in Ihre Sprache übersetzt wurden',
+                    'DASH_GUIDELISTMSG':'Alle Richtlinien wurden in Ihre Sprache übersetzt.',
+                    'DASH_CATEGLIST': 'Kategorien die noch nicht in Ihre Sprache übersetzt wurden',
+                    'DASH_CATEGLISTMSG': 'Alle Kategorien wurden in Ihre Sprache übersetzt.'
                 })
                 .translations('en_US', {
                     'APP_TITLE': 'Refugees Gießen',
@@ -176,7 +185,16 @@
                     'USERCTRL_USERS': 'Users',
                     'USERCTRL_ADJROLE': 'Adjust Role',
                     'USERCTRL_ADJROLESUCC': '{{username}} has now the role {{role}}.',
-                    'USERCTRL_ADJROLEERR': 'Error while trying to adjust role. {{username}} stays in the role {{role}} for now.'
+                    'USERCTRL_ADJROLEERR': 'Error while trying to adjust role. {{username}} stays in the role {{role}} for now.',
+                    'DASH_TITLE': 'Overview',
+                    'DASH_PUBQ': 'Publish Queue',
+                    'DASH_PUBQMSG': 'All Guidelines are published',
+                    'DASH_TRANSTOP': 'Translator Toplist',
+                    'DASH_TRANSTOPMSG': 'There are no users to list. This seems to be an error, please inform your admin about this.',
+                    'DASH_GUIDELIST': 'Guidelines that are not in your language',
+                    'DASH_GUIDELISTMSG':'All guidelines have been translated to your language.',
+                    'DASH_CATEGLIST': 'Categories that are not in your language',
+                    'DASH_CATEGLISTMSG': 'All categories have been translated to your language.'
                 })
                 .preferredLanguage('en_US')
                 .fallbackLanguage('en_US')

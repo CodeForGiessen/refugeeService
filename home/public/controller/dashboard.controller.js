@@ -1,8 +1,8 @@
 (function() {
     'use strict';
     angular.module('refugeeAuthorEnv')
-        .controller('DashboardCtrl', ['$scope', '$document', 'GuideCrudService', 'CategoryCrudService', 'UserCrudService',
-            function($scope, $document, GuideCrudService, CategoryCrudService, UserCrudService) {
+        .controller('DashboardCtrl', ['$scope', '$document', '$translate', 'GuideCrudService', 'CategoryCrudService', 'UserCrudService',
+            function($scope, $document, $translate, GuideCrudService, CategoryCrudService, UserCrudService) {
                 $scope.notPublished = [];
                 $scope.users = [];
                 $scope.guidelines = [];
@@ -67,15 +67,25 @@
                 });
 
                 google.charts.setOnLoadCallback(function () {
-                    console.log('drawPieChart');
+                    var langs = $scope.guidelinesComp.reduce(function(prev, cur){
+                        return prev.concat(cur.langs);
+                    },[]);
+
+                    var getNumOfLang = function(l){
+                        return langs.reduce(function(prev, cur){
+                            if(cur === l) {
+                                return prev + 1;
+                            } else {
+                                return prev;
+                            }
+                        }, 0);
+                    };
+
                     var data = google.visualization.arrayToDataTable([
-                        ['Task', 'Hours per Day'],
-                        ['Work', 11],
-                        ['Eat', 2],
-                        ['Commute', 1],
-                        ['TV', 3],
-                        ['Internet', 5],
-                        ['Sleep', 2]
+                        ['Language', 'Number of Translations'],
+                        [$translate.instant('LANG_DE'), getNumOfLang("de_DE")],
+                        [$translate.instant('LANG_EN'), getNumOfLang("en_US")],
+                        [$translate.instant('LANG_FR'), getNumOfLang("fr_FR")]
                     ]);
 
                     var options = {
