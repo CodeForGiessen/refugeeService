@@ -15,8 +15,11 @@
                 <div class="card-content">
                     <ul class="collection with-header">
                         <li class="collection-item header teal white-text"><h5>Publish Queue</h5></li>
-                        <a class="collection-item" ng-repeat="guide in notPublished">
-                            {{guide.text}}
+                        <a class="collection-item" ng-repeat="guide in notPublished" href="#/guide/{{guide._id}}">
+                            <p>
+                                <span class="secondary-content orange-text">{{guide.lang}}</span><br/>
+                                <span class="black-text">{{guide.text}}</span>
+                            </p>
                         </a>
                         <li class="collection-item" ng-show="notPublished.length === 0">All Guidelines are published</li>
                     </ul>
@@ -28,9 +31,9 @@
                         <li class="collection-item header teal white-text"><h5>Translator Toplist</h5></li>
                         <li class="collection-item" ng-repeat="user in users">
                             <span>{{user.username}}</span>
-                            <span class="secondary-content">{{user.translations}}</span>
+                            <span class="secondary-content orange-text">{{user.translations}}</span>
                         </li>
-                        <li class="collection-item" ng-show="users.length === 0">There are no users to list</li>
+                        <li class="collection-item" ng-show="users.length === 0">There are no users to list. This seems to be an error, please inform your admin about this.</li>
                     </ul>
                 </div>
             </div>
@@ -40,8 +43,9 @@
                 <div class="card-content">
                     <ul class="collection with-header">
                         <li class="collection-item header teal white-text"><h5>Guidelines that are not in your language</h5></li>
-                        <a class="collection-item" ng-repeat="guide in guidelines">
-                            {{guide.text}}
+                        <a class="collection-item black-text" ng-repeat="guide in guidelines" href="#/guide/{{guide._id}}">
+                            <span class="secondary-content orange-text">{{guide.langs.join(", ")}}</span><br/>
+                            {{guide.guidelines[0].text}}
                         </a>
                         <li class="collection-item" ng-show="guidelines.length === 0">All guidelines have been translated to your language.</li>
                     </ul>
@@ -51,8 +55,9 @@
                 <div class="card-content">
                     <ul class="collection with-header">
                         <li class="collection-item header teal white-text"><h5>Categories that are not in your language</h5></li>
-                        <a class="collection-item" ng-repeat="category in categories">
-                            {{category[en_US]||category[de_DE]}}
+                        <a class="collection-item black-text" ng-repeat="category in categories" href="#/category/{{category._id}}">
+                            <span class="secondary-content orange-text">{{getLangCodes(category.text)}}</span><br/>
+                            {{category.text['en_US']}}
                         </a>
                         <li class="collection-item" ng-show="categories.length === 0">All categories have been translated to your language.</li>
                     </ul>

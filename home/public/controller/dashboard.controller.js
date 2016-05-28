@@ -11,10 +11,19 @@
                 $scope.lang = localStorage.getItem('lang');
 
                 GuideCrudService.read().then(function(data){
-                    $scope.notPublished = data.map(function(elt){
-                        return elt.guidelines.filter(function(elt){
-                            return elt.published;
+                    $scope.notPublished = data.map(function(guide){
+                        var filteredGuidelines = guide.guidelines.filter(function(guideline){
+                            return !guideline.published;
                         });
+                        return filteredGuidelines.map(function(guideline){
+                            return {
+                                _id: guide._id,
+                                lang: guideline.lang,
+                                text: guideline.text
+                            };
+                        });
+                    }).reduce(function(prev, cur){
+                        return prev.concat(cur);
                     });
 
                     $scope.guidelines = data.filter(function(elt){
@@ -26,7 +35,7 @@
 
                 CategoryCrudService.read().then(function(data){
                     $scope.categories = data.filter(function(elt){
-                        return elt[$scope.lang] === undefined;
+                        return elt.text[$scope.lang] === undefined;
                     });
                 });
 
@@ -41,7 +50,6 @@
                                     }
                                 }, 0);
                         }, 0);
-                        console.log(numOfTranslations);
                         return {
                             username: username,
                             translations: numOfTranslations
@@ -49,10 +57,10 @@
                     });
                     $scope.users.sort(function(a, b){
                         if(a.translations < b.translations) {
-                            return -1;
+                            return 1;
                         }
                         if(a.translations > b.translations) {
-                            return 1;
+                            return -1;
                         }
                         return 0;
                     });
@@ -77,6 +85,10 @@
 
                     chart.draw(data, options);
                 });
+
+                $scope.getLangCodes = function(obj) {
+                    return Object.keys(obj).join(", ");
+                };
             }
         ]);
 })();
