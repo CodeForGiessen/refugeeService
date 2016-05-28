@@ -11,7 +11,7 @@
                 templateUrl: '/public/partials/dashboard.html',
                 controller: 'DashboardCtrl',
                 controllerAs: 'dashCtrl',
-                access: {restricted: false}
+                access: {restricted: true}
             }).when('/login', {
                 templateUrl: '/public/partials/login.html',
                 controller: 'LoginCtrl',
