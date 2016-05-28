@@ -33,6 +33,32 @@
     });
 
     /**
+     * Get only Usernames
+     */
+    app.get('/api/v1/users/limited', auth.authenticateToken(), function(req, res, next) {
+        crud.read({}, function(err, users){
+            if(err){
+                res.status(500).send({
+                    err: 'internal error occurred'
+                });
+            } else {
+                if(!users){
+                    res.status(404).send({
+                        err: 'no users found'
+                    });
+                } else {
+                    var usersLimited = users.map(function(elt){
+                        return elt.username;
+                    });
+                    res.status(200).send({
+                        users: usersLimited
+                    });
+                }
+            }
+        });
+    });
+
+    /**
      * Get one User by ID
      * Requires Role Admin
      */

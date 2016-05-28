@@ -37,6 +37,21 @@
                     return deferred.promise;
                 },
 
+                readUsernames: function() {
+                    var deferred = $q.defer();
+                    $http.get('/api/v1/users/limited')
+                    .then(function(response){
+                        if(response.status === 200) {
+                            deferred.resolve(response.data.users);
+                        } else {
+                            deferred.reject(response.status);
+                        }
+                    }, function(response){
+                        deferred.reject(response.status);
+                    });
+                    return deferred.promise;
+                },
+
                 updateUserRole: function (uid, role) {
                     var deferred = $q.defer();
                     $http.post('/api/v1/users/id/'+uid+'?role='+role)
