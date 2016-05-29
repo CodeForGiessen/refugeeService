@@ -8,6 +8,9 @@
                     'LANG_DE': 'Deutsch',
                     'LANG_EN': 'Englisch',
                     'LANG_FR': 'Französisch',
+                    'LANG_TR': 'Türkisch',
+                    'LANG_AR': 'Arabisch',
+                    'LANG_AF': 'Farsi',
                     'CATEGORY': 'Kategorie',
                     'CATEGORIES': 'Kategorien',
                     'GUIDELINE': 'Richtlinie',
@@ -43,6 +46,7 @@
                     'HEADER_ACCBTN': 'Nutzerkonto',
                     'HEADER_LOGOUTMSG': 'Sie sind jetzt abgemeldet.',
                     'NAVBAR_CONTENTBTN': 'Inhalte',
+                    'NAVBAR_DASHBTN': 'Überblick',
                     'NAVBAR_LISTBTN': 'Einträge auflisten',
                     'NAVBAR_ADDBTN': 'Neuen Eintrag erstellen',
                     'NAVBAR_APIBTN': 'API',
@@ -105,6 +109,9 @@
                     'LANG_DE': 'German',
                     'LANG_EN': 'English',
                     'LANG_FR': 'French',
+                    'LANG_TR': 'Turkish',
+                    'LANG_AR': 'Arabic',
+                    'LANG_AF': 'Farsi',
                     'CATEGORY': 'Category',
                     'CATEGORIES': 'Categories',
                     'GUIDELINE': 'Guideline',
@@ -140,6 +147,7 @@
                     'HEADER_ACCBTN': 'Account',
                     'HEADER_LOGOUTMSG': 'You are now logged out.',
                     'NAVBAR_CONTENTBTN': 'Content',
+                    'NAVBAR_DASHBTN': 'Overview',
                     'NAVBAR_LISTBTN': 'List Entries',
                     'NAVBAR_ADDBTN': 'Create new Entry',
                     'NAVBAR_APIBTN': 'API',
@@ -196,6 +204,10 @@
                     'DASH_CATEGLIST': 'Categories that are not in your language',
                     'DASH_CATEGLISTMSG': 'All categories have been translated to your language.'
                 })
+                .translations('fr_FR', {})
+                .translations('tr_TR', {})
+                .translations('fa_AF', {})
+                .translations('ar_SY', {})
                 .preferredLanguage('en_US')
                 .fallbackLanguage('en_US')
                 .useSanitizeValueStrategy('escape')

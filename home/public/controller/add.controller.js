@@ -6,7 +6,6 @@
                 this.categories= {};
                 CategoryCrudService.read()
                     .then(function (data) {
-                        console.log(data);
                         var lang = window.localStorage.getItem('lang');
                         that.categories = data;
                         that.categories.forEach(function (elt) {
@@ -30,7 +29,6 @@
                     guide.guidelines.push(that.guidelines);
                     guide.langs = [];
                     guide.langs.push(that.guidelines.lang);
-                    console.log(guide);
                     GuideCrudSerive.create(guide)
                         .then(function () {
                             that.guidelines = {};
@@ -45,7 +43,6 @@
                     var text = {};
                     text[that.categorylang] = that.categorytext;
                     category.text = text;
-                    console.log(category);
                     CategoryCrudService.create(category)
                         .then(function () {
                             that.categorytext = "";

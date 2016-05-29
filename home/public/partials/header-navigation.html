@@ -25,10 +25,32 @@
                 <!--Language Modal Content-->
                 <div id="lang-modal" class="modal">
                     <div class="modal-content">
-                        <h4 class="black-text">Choose a language</h4>
+                        <h4 class="black-text">{{'LANGMODAL_TITLE'|translate}}</h4>
                         <div class="collection">
-                            <a class="collection-item" ng-click="chooseLang('de_DE')">{{'LANG_DE'|translate}}</a>
-                            <a class="collection-item" ng-click="chooseLang('en_US')">{{'LANG_EN'|translate}}</a>
+                            <a class="collection-item" ng-click="chooseLang('de_DE')">
+                                <span class="flag-icon flag-icon-de flag-icon-squared"></span>
+                                Deutsch
+                            </a>
+                            <a class="collection-item" ng-click="chooseLang('en_US')">
+                                <span class="flag-icon flag-icon-gb flag-icon-squared"></span>
+                                English
+                            </a>
+                            <a class="collection-item" ng-click="chooseLang('fr_FR')">
+                                <span class="flag-icon flag-icon-fr flag-icon-squared"></span>
+                                Français
+                            </a>
+                            <a class="collection-item" ng-click="chooseLang('fa_AF')">
+                                <span class="flag-icon flag-icon-af flag-icon-squared"></span>
+                                فارسی
+                            </a>
+                            <a class="collection-item" ng-click="chooseLang('ar_SY')">
+                                <span class="flag-icon flag-icon-sy flag-icon-squared"></span>
+                                العربية
+                            </a>
+                            <a class="collection-item" ng-click="chooseLang('tr_TR')">
+                                <span class="flag-icon flag-icon-tr flag-icon-squared "></span>
+                                Türkçe
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -43,29 +65,23 @@
         </li>
         <div class="divider"></div>
         <div id="nav-items" class="white">
-        <li class="no-padding">
-            <ul class="collapsible">
-                <li><a class="collapsible-header waves-effect waves-orange" ng-class="{disabled:!isLoggedIn()}">{{'NAVBAR_CONTENTBTN'|translate}}</a>
-                    <div class="collapsible-body">
-                        <ul>
-                            <li><a class="waves-effect waves-orange" href="#/add">{{'NAVBAR_ADDBTN'|translate}}</a></li>
-                            <li><a class="waves-effect waves-orange" href="#/list">{{'NAVBAR_LISTBTN'|translate}}</a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
-                <li><a class="waves-effect waves-orange collapsible-header">{{'NAVBAR_APIBTN'|translate}}</a>
-                    <div class="collapsible-body">
-                        <ul>
-                            <li><a class="waves-effect waves-orange" href="/api">/api/</a></li>
-                            <li><a class="waves-effect waves-orange" href="/api/v1">/api/v1</a></li>
-                            <li><a class="waves-effect waves-orange" href="/api/v1/">/api/v1/guides</a></li>
-                        </ul>
-                    </div>
-                </li>
-            </ul>
-        </li>
-        <li><a class="waves-effect waves-orange" href="#/doc">{{'NAVBAR_DOCBTN'|translate}}</a></li>
-    </div>
+            <li><a class="waves-effect waves-orange" href="#/dashboard">{{'NAVBAR_DASHBTN'|translate}}</a></li>
+            <li><a class="waves-effect waves-orange" href="#/add">{{'NAVBAR_ADDBTN'|translate}}</a></li>
+            <li><a class="waves-effect waves-orange" href="#/list">{{'NAVBAR_LISTBTN'|translate}}</a></li>
+            <li class="no-padding">
+                <ul class="collapsible">
+                    <li><a class="waves-effect waves-orange collapsible-header">{{'NAVBAR_APIBTN'|translate}}</a>
+                        <div class="collapsible-body">
+                            <ul>
+                                <li><a class="waves-effect waves-orange" href="/api">/api/</a></li>
+                                <li><a class="waves-effect waves-orange" href="/api/v1">/api/v1</a></li>
+                                <li><a class="waves-effect waves-orange" href="/api/v1/">/api/v1/guides</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </li>
+            <li><a class="waves-effect waves-orange" href="#/doc">{{'NAVBAR_DOCBTN'|translate}}</a></li>
+        </div>
     </ul>
 </header>

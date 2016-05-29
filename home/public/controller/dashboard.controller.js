@@ -31,6 +31,7 @@
                     });
 
                     $scope.guidelinesComp = data;
+                    google.charts.setOnLoadCallback(drawChart);
                 });
 
                 CategoryCrudService.read().then(function(data){
@@ -66,7 +67,7 @@
                     });
                 });
 
-                google.charts.setOnLoadCallback(function () {
+                var drawChart = function () {
                     var langs = $scope.guidelinesComp.reduce(function(prev, cur){
                         return prev.concat(cur.langs);
                     },[]);
@@ -85,7 +86,10 @@
                         ['Language', 'Number of Translations'],
                         [$translate.instant('LANG_DE'), getNumOfLang("de_DE")],
                         [$translate.instant('LANG_EN'), getNumOfLang("en_US")],
-                        [$translate.instant('LANG_FR'), getNumOfLang("fr_FR")]
+                        [$translate.instant('LANG_FR'), getNumOfLang("fr_FR")],
+                        [$translate.instant('LANG_TR'), getNumOfLang("tr_TR")],
+                        [$translate.instant('LANG_AF'), getNumOfLang("fa_AF")],
+                        [$translate.instant('LANG_AR'), getNumOfLang("ar_SY")]
                     ]);
 
                     var options = {
@@ -94,7 +98,7 @@
                     var chart = new google.visualization.PieChart(document.getElementById('guidelangchart'));
 
                     chart.draw(data, options);
-                });
+                };
 
                 $scope.getLangCodes = function(obj) {
                     return Object.keys(obj).join(", ");
