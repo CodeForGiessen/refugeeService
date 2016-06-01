@@ -7,8 +7,8 @@
         <li class="collection-header teal white-text"><h5>{{'CATEGORIES'|translate}}</h5></li>
         <div ng-repeat="category in categories">
             <a class="collection-item" href="#/list/{{category._id}}">
+                <span class="badge orange-text">{{languages(category.text).join(' | ')}}</span><br/>
                 {{category.text[lang]||'NOT_TRANSLATED'|translate}}
-                <span class="badge">{{languages(category.text).join(' | ')}}</span>
             </a>
         </div>
     </ul>

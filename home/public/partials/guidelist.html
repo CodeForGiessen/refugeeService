@@ -9,9 +9,10 @@
                 <a href="#/category/{{categoryId}}" class="btn waves-effect waves-orange col s2"><i class="material-icons">settings</i></a>
             </li>
             <div ng-repeat="guide in guideList">
-                <a ng-href="#/guide/{{guide._id}}" class="collection-item">{{(guide.guidelines|lang:lang)[0].text||'NOT_TRANSLATED'|translate}}
-                <span class="badge">{{guide.langs.join([' | '])}}</span>
-            </a>
+                <a ng-href="#/guide/{{guide._id}}" class="collection-item">
+                    <span class="badge orange-text">{{guide.langs.join([' | '])}}</span><br/>
+                    <br/> {{(guide.guidelines|lang:lang)[0].text||'NOT_TRANSLATED'|translate}}
+                </a>
             </div>
         </ul>
         <div id="addModal" class="modal">
