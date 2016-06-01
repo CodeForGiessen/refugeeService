@@ -4,14 +4,12 @@
         .factory('CategoryCrudService', ['$q', '$timeout', '$http', function ($q, $timeout, $http) {
             return {
                 'create': function (category) {
-                    console.log(category);
                     var deferred = $q.defer();
                     $http.post('/api/v1/categories/', {
                             category: category
                         })
                         .then(function (response) {
                             if (response.status === 200) {
-                                console.log('Success: ' + JSON.stringify(response.data.category));
                                 deferred.resolve(response.data.category);
                             } else {
                                 deferred.reject(response.data.error);
@@ -34,7 +32,6 @@
                                 deferred.reject(response.data.error);
                             }
                         }, function (response) {
-                            console.log(response.data.error);
                             deferred.reject(response.data.error);
                         });
                     return deferred.promise;
@@ -51,7 +48,6 @@
                                 deferred.reject(response.data.error);
                             }
                         }, function (response) {
-                            console.log(response.data.error);
                             deferred.reject(response.data.error);
                         });
                     return deferred.promise;

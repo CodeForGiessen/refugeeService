@@ -1,4 +1,8 @@
 <div class="container">
+    <div class="row">
+    <div class="btn col s12" ng-click="listCtrl.addCategory()">{{'ADD_CATEGORY_BTN'|translate}}</div>
+    </div>
+    <div class="row">
     <ul class="collection with-header">
         <li class="collection-header teal white-text"><h5>{{'CATEGORIES'|translate}}</h5></li>
         <div ng-repeat="category in categories">
@@ -8,9 +12,33 @@
             </a>
         </div>
     </ul>
-    <div id="category-modal" class="modal">
-        <div class="modal-content"></div>
-        <div class="modal-footer"></div>
+    <div id="addModal" class="modal modal-fixed-footer">
+        <div id="category" class="modal-content">
+            <form action="#">
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input type="text" ng-model="categorytext" id="categorytext">
+                        <label for="categorytext">{{'ADD_CATEGORY'|translate}}</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s6 push-s3">
+                        <select id="langselect_category" ng-model="categorylang">
+                            <option value="" disabled selected>{{'ADD_LANGSELECT'|translate}}</option>
+                            <option value="de_DE">{{'LANG_DE'|translate}}</option>
+                            <option value="en_US">{{'LANG_EN'|translate}}</option>
+                            <option value="fr_FR">{{'LANG_FR'|translate}}</option>
+                            <option value="tr_TR">{{'LANG_TR'|translate}}</option>
+                            <option value="fa_AF">{{'LANG_AF'|translate}}</option>
+                            <option value="ar_SY">{{'LANG_AR'|translate}}</option>
+                        </select>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <a class="modal-action modal-close btn waves-effect waves-orange" ng-click="listCtrl.saveCategory()">{{'ADD_SAVEBTN'|translate}}</a>
+        </div>
     </div>
     <div class="row" ng-hide="loadedData">
         <div class="center">
@@ -28,5 +56,6 @@
                 </div>
             </div>
         </div>
+    </div>
     </div>
 </div>

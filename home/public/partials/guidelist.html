@@ -1,27 +1,64 @@
 <div class="container">
-    <ul class="collection with-header">
-        <li class="collection-header teal white-text row">
-            <h5 class="col s10">{{'GUIDELINES_HEADER'|translate}}"{{category.text[lang]||'NOT_TRANSLATED'|translate}}"</h5>
-            <a href="#/category/{{categoryId}}" class="btn waves-effect waves-orange col s2"><i class="material-icons">settings</i></a>
-        </li>
-        <div ng-repeat="guide in guideList">
-            <a ng-href="#/guide/{{guide._id}}" class="collection-item">{{(guide.guidelines|lang:lang)[0].text||'NOT_TRANSLATED'|translate}}
+    <div class="row">
+        <div class="btn col s12" ng-click="glistCtrl.addGuide()">{{'ADD_GUIDELINE_BTN'|translate}}</div>
+    </div>
+    <div class="row">
+        <ul class="collection with-header">
+            <li class="collection-header teal white-text row">
+                <h5 class="col s10">{{'GUIDELINES_HEADER'|translate}}"{{category.text[lang]||'NOT_TRANSLATED'|translate}}"</h5>
+                <a href="#/category/{{categoryId}}" class="btn waves-effect waves-orange col s2"><i class="material-icons">settings</i></a>
+            </li>
+            <div ng-repeat="guide in guideList">
+                <a ng-href="#/guide/{{guide._id}}" class="collection-item">{{(guide.guidelines|lang:lang)[0].text||'NOT_TRANSLATED'|translate}}
                 <span class="badge">{{guide.langs.join([' | '])}}</span>
             </a>
+            </div>
+        </ul>
+        <div id="addModal" class="modal">
+            <div id="guideline" class="modal-content">
+                <form action="#">
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <textarea id="guidelinetext" ng-model="guidelines.text" class="materialize-textarea"></textarea>
+                            <label for="guidelinetext">{{'ADD_GUIDELINE'|translate}}</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <select id="langselect_guide" ng-model="guidelines.lang">
+                                <option value="" disabled selected>{{'ADD_LANGSELECT'|translate}}</option>
+                                <option value="de_DE">{{'LANG_DE'|translate}}</option>
+                                <option value="en_US">{{'LANG_EN'|translate}}</option>
+                                <option value="fr_FR">{{'LANG_FR'|translate}}</option>
+                                <option value="tr_TR">{{'LANG_TR'|translate}}</option>
+                                <option value="fa_AF">{{'LANG_AF'|translate}}</option>
+                                <option value="ar_SY">{{'LANG_AR'|translate}}</option>
+                            </select>
+                        </div>
+                        <div class="input-field col s6">
+                            <input type="checkbox" id="check_motd" ng-model="guidelines.motd_flag">
+                            <label for="check_motd">{{'ADD_MOTD'|translate}}</label>
+                        </div>
+                    </div>
+                </form>
+                <div class="modal-footer">
+                    <a class="modal-action modal-close btn waves-effect waves-orange" ng-click="glistCtrl.saveGuide()">{{'ADD_SAVEBTN'|translate}}</a>
+                </div>
+            </div>
         </div>
-    </ul>
-    <div class="row" ng-hide="loadedData">
-        <div class="center">
-            <div class="preloader-wrapper active">
-                <div class="spinner-layer spinner-yellow-only">
-                    <div class="circle-clipper left">
-                        <div class="circle"></div>
-                    </div>
-                    <div class="gap-patch">
-                        <div class="circle"></div>
-                    </div>
-                    <div class="circle-clipper right">
-                        <div class="circle"></div>
+        <div class="row" ng-hide="loadedData">
+            <div class="center">
+                <div class="preloader-wrapper active">
+                    <div class="spinner-layer spinner-yellow-only">
+                        <div class="circle-clipper left">
+                            <div class="circle"></div>
+                        </div>
+                        <div class="gap-patch">
+                            <div class="circle"></div>
+                        </div>
+                        <div class="circle-clipper right">
+                            <div class="circle"></div>
+                        </div>
                     </div>
                 </div>
             </div>

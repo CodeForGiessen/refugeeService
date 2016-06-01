@@ -57,7 +57,7 @@
                         <li class="collection-item header teal white-text"><h5>{{'DASH_CATEGLIST'|translate}}</h5></li>
                         <a class="collection-item black-text" ng-repeat="category in categories" href="#/category/{{category._id}}">
                             <span class="secondary-content orange-text">{{getLangCodes(category.text)}}</span><br/>
-                            {{category.text['en_US']}}
+                            {{category.text['en_US']||category.text['de_DE']||category.text['fr_FR']}}
                         </a>
                         <li class="collection-item" ng-show="categories.length === 0">{{'DASH_CATEGLISTMSG'|translate}}</li>
                     </ul>
