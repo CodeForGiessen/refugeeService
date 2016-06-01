@@ -1,7 +1,7 @@
 <div class="container">
-    <div class="row"><a class="col s6 waves-effect waves-orange btn btn-block" ng-click="detailCtrl.addTranslation()">{{'DETAIL_ADD_TRANSLATION'|translate}}</a>
+    <div class="row"><a class="col s6 waves-effect waves-orange btn btn-block" ng-click="detailCtrl.addTranslation()" ng-show="authService.getRole() > 1">{{'DETAIL_ADD_TRANSLATION'|translate}}</a>
         <a class="col s6 waves-effect waves-orange btn btn-block red darken-3"
-        ng-click="detailCtrl.removeCategory()">{{'DETAIL_REMOVE_CATEGORY'|translate}}</a>
+        ng-click="detailCtrl.removeCategory()" ng-show="authService.getRole() > 2">{{'DETAIL_REMOVE_CATEGORY'|translate}}</a>
     </div>
     <div class="row">
         <div class="row" ng-hide="loadedData">
@@ -30,8 +30,8 @@
                         {{'LANGUAGE'|translate}}: {{lang.lang}}
                 </div>
                 <div class="card-action">
-                    <a class="waves-effect waves-orange" ng-click="detailCtrl.editTranslation($index)">{{'DETAIL_EDIT'|translate}}</a>
-                    <a class="waves-effect waves-orange" ng-click="detailCtrl.removeTranslation($index)">{{'DETAIL_DELETE'|translate}}</a>
+                    <a class="waves-effect waves-orange" ng-click="detailCtrl.editTranslation($index)" ng-show="authService.getRole() > 1">{{'DETAIL_EDIT'|translate}}</a>
+                    <a class="waves-effect waves-orange" ng-click="detailCtrl.removeTranslation($index)" ng-show="authService.getRole() > 1">{{'DETAIL_DELETE'|translate}}</a>
                 </div>
             </div>
         </div>

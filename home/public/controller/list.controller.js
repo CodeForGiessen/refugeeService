@@ -1,8 +1,9 @@
 (function () {
     "use strict";
     angular.module('refugeeAuthorEnv')
-        .controller('ListController', ['$scope', '$document', 'CategoryCrudService',
-            function ($scope, $document, CategoryCrudService) {
+        .controller('ListController', ['$scope', '$document', 'CategoryCrudService', 'AuthService',
+            function ($scope, $document, CategoryCrudService, AuthService) {
+                $scope.authService = AuthService;
                 $scope.lang = localStorage.getItem('lang');
                 $scope.categories = [];
                 $scope.languages = function (obj) {

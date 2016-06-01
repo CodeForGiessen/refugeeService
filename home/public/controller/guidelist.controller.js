@@ -9,8 +9,9 @@
             };
         })
         .controller('GuideListController',
-            ['$document', '$scope', '$location', '$routeParams', '$timeout', 'GuideCrudService', 'CategoryCrudService', 'langFilter',
-            function ($document, $scope, $location, $routeParams, $timeout, GuideCrudService, CategoryCrudService, langFilter) {
+            ['$document', '$scope', '$location', '$routeParams', '$timeout', 'GuideCrudService', 'CategoryCrudService', 'langFilter', 'AuthService',
+            function ($document, $scope, $location, $routeParams, $timeout, GuideCrudService, CategoryCrudService, langFilter, AuthService) {
+                $scope.authService = AuthService;
                 $scope.lang = window.localStorage.getItem('lang');
                 $scope.$location = $location;
                 $scope.guideList = [];
