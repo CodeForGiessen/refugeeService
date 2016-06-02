@@ -9,9 +9,12 @@
     };
 
     var feedbackSchema = new Schema({
-        email: String,
-        rating: Number,
-        text: String,
+        feedback: {
+            email: String,
+            rating: Number,
+            text: String,
+            created_at: Date
+        },
         comments: [comment]
     });
 

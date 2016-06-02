@@ -12,7 +12,7 @@
     app.post('/api/v1/stats/', function(req, res, next){
         crud.create({
             device: req.body.device,
-            created_at: Date().now
+            created_at: Date.now()
         }, function(err, data){
             if(err) {
                 res.send(500).json({
@@ -20,11 +20,11 @@
                 });
             } else {
                 if(!data) {
-                    res.send(404).json({
+                    res.send(400).json({
                         err: 'not created'
                     });
                 } else {
-                    res.send(201).json();
+                    res.send(201).send();
                 }
             }
         });

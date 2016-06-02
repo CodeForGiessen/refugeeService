@@ -10,16 +10,22 @@
      * @return {json} returns a status code (200, 400, 404, 500, ...)
      */
     app.post('/api/v1/feedback/', function(req, res, next){
-        crud.create(req.body.feedback, function(err, data){
+        var feedback = req.body.feedback;
+        feedback.created_at = Date.now();
+        crud.create({
+            feedback: feedback
+        }, function(err, data){
             if(err) {
                 res.status(500).send({
                     err: 'unexpected error occurred'
                 });
             } else {
                 if(!data) {
-                    res.status(404);
+                    res.status(400).send({
+                        err: 'not created'
+                    });
                 } else {
-                    res.status(201);
+                    res.status(201).send();
                 }
             }
         });
