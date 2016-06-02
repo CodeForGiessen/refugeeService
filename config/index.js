@@ -3,6 +3,8 @@
         //Token Secret
         'tokensecret': process.env.tokenSecret||'x?kgbCrxs47!@|~',
 
+        'letsencryptPath': process.env.letsencryptPath||'/etc/letsencrypt',
+
         // users roles
         'userRoles': [
             'newbie',

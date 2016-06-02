@@ -156,7 +156,7 @@
     /**
      * Create a new guide
      */
-    app.post('/api/v1/guides/', auth.authenticateToken(), function (req, res, next) {
+    app.post('/api/v1/guides/', auth.hasRole('editor'), function (req, res, next) {
         console.log(JSON.stringify(req.body.guide));
         console.log('Building metadata for guide');
         var guide = req.body.guide;
@@ -186,7 +186,7 @@
     /**
      * Update guide with id :id
      */
-    app.post('/api/v1/guides/:id', auth.authenticateToken(), function (req, res) {
+    app.post('/api/v1/guides/:id', auth.hasRole('editor'), function (req, res) {
         var guide = req.body.guide;
         var metadata = {
             author: {
@@ -214,7 +214,7 @@
     /**
      * Delete guide with id :id
      */
-    app.delete('/api/v1/guides/:id', auth.authenticateToken(), function (req, res) {
+    app.delete('/api/v1/guides/:id', auth.hasRole('mod'), function (req, res) {
         crud.del({
             '_id': req.params.id
         }, function (err, guide) {

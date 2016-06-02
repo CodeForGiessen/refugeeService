@@ -19,7 +19,9 @@
     var port = config.port;
 
     app.use(morgan('dev'));
-    app.use(bodyParser.urlencoded({extended: false}));
+    app.use(bodyParser.urlencoded({
+        extended: false
+    }));
     app.use(bodyParser.json());
     app.use(passport.initialize());
 
@@ -29,7 +31,7 @@
     //CORS for express
     app.use(function(req, res, next) {
         res.header("Access-Control-Allow-Origin", "*");
-        res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+        res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, If-Modified-Since");
         next();
     });
 
@@ -42,16 +44,20 @@
     passport.use(new LocalStrategy({
         usernameField: 'username',
         passwordField: 'password'
-    }, function (username, password, done) {
+    }, function(username, password, done) {
         User.findOne({
             username: username
-        }, function (err, user) {
-            if(err) return done(err);
-            if(!user) {
-                return done(null, false, {message: 'No user with this username.'});
+        }, function(err, user) {
+            if (err) return done(err);
+            if (!user) {
+                return done(null, false, {
+                    message: 'No user with this username.'
+                });
             }
-            if(!user.authenticate(password)) {
-                return done(null, false, {message: 'Incorrect password.'});
+            if (!user.authenticate(password)) {
+                return done(null, false, {
+                    message: 'Incorrect password.'
+                });
             }
             return done(null, user);
         });
@@ -61,17 +67,45 @@
     var database = config.database;
     mongoose.connect(database);
 
-    mongoose.connection.on('connected', function () {
+    mongoose.connection.on('connected', function() {
         console.log('Mongoose connected to database');
     });
-    mongoose.connection.on('error', function (err) {
+    mongoose.connection.on('error', function(err) {
         console.log(err);
     });
-    mongoose.connection.on('disconnected', function () {
+    mongoose.connection.on('disconnected', function() {
         console.log('Mongoose disconnected');
     });
 
-    http.createServer(app).listen(port, hostname, function() {
-        console.log('Server started and listening at http://' + hostname + ':' + port + '/');
+    // https via letsencrypt
+/*    var LEX = require('letsencrypt-express');
+    var lex = LEX.create({
+        configDir: config.letsencryptPath,
+        onRequest: app,
+        approveRegistration: function(hostname, cb) {
+            
+            cb(null, {
+                domains: [hostname],
+                email: '',
+                agreeTos: true
+            });
+
+        }
     });
+
+    lex.listen(
+        [port],
+        [443, 5001],
+        function onListening() {
+            var server = this;
+            var protocol = ('requestCert' in server) ? 'https' : 'http';
+            console.log("Listening at " + protocol + '://localhost:' + this.address().port);
+        }
+    );
+*/
+
+        http.createServer(app).listen(port, hostname, function() {
+            console.log('Server started and listening at http://' + hostname + ':' + port + '/');
+        });
+
 })();

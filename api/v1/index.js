@@ -5,7 +5,9 @@
         app = module.exports = express(),
         guides = require('./guides'),
         categories = require('./categories'),
-        users = require('./users');
+        users = require('./users'),
+        stats = require('./stats'),
+        feedback = require('./feedback');
 
 
     app.get('/api/v1/', function (req, res) {
@@ -52,4 +54,6 @@
     app.use(guides);
     app.use(categories);
     app.use(users);
+    app.use(stats);
+    app.use(feedback);
 })();

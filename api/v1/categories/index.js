@@ -109,7 +109,7 @@
     /**
      * Create a new category
      */
-    app.post('/api/v1/categories/', auth.authenticateToken(), function (req, res, next) {
+    app.post('/api/v1/categories/', auth.hasRole('editor'), function (req, res, next) {
         crud.create(req.body.category, function (err, category) {
             if(err) {
                 res.status(500).json({
@@ -126,7 +126,7 @@
     /**
      * Update a category with :id
      */
-    app.post('/api/v1/categories/:id', auth.authenticateToken(), function (req, res, next) {
+    app.post('/api/v1/categories/:id', auth.hasRole('editor'), function (req, res, next) {
         crud.update({
             '_id':req.params.id
         }, req.body.category, function (err, category) {
