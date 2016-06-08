@@ -1,9 +1,12 @@
 (function () {
     module.exports = {
-        //Token Secret
-        'tokensecret': process.env.tokenSecret||'x?kgbCrxs47!@|~',
+        //environment
+        'environment': process.env.ENVIRONMENT || 'dev',
 
-        'letsencryptPath': process.env.letsencryptPath||'/etc/letsencrypt',
+        //Token Secret
+        'tokensecret': process.env.TOKENSECRET||'x?kgbCrxs47!@|~',
+
+        'letsencryptPath': process.env.LEXPATH||'/etc/letsencrypt',
 
         // users roles
         'userRoles': [

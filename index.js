@@ -1,6 +1,9 @@
 (function() {
     'use strict';
     var http = require('http'),
+        fs = require('fs'),
+        path = require('path'),
+        FileStreamRotator = require('file-stream-rotator'),
         express = require('express'),
         passport = require('passport'),
         mongoose = require('mongoose'),
@@ -18,7 +21,39 @@
     var hostname = config.hostname;
     var port = config.port;
 
-    app.use(morgan('dev'));
+    // setup the logger
+    console.log(config.environment);
+    switch (config.environment) {
+        case 'dev':
+            {
+                app.use(morgan('dev'));
+                break;
+            }
+        case 'prod':
+            {
+                var logDirectory = path.join(__dirname, 'logs');
+
+                // ensure log directory exists
+                if(!fs.existsSync(logDirectory)){ fs.mkdirSync(logDirectory); }
+
+                // create a rotating write stream
+                var accessLogStream = FileStreamRotator.getStream({
+                    date_format: 'YYYYMMDD',
+                    filename: path.join(logDirectory, 'refugees-%DATE%.log'),
+                    frequency: 'daily',
+                    verbose: false
+                });
+                console.log('Logging in', logDirectory);
+                app.use(morgan('combined', {
+                    stream: accessLogStream
+                }));
+                break;
+            }
+        default: {
+            console.log('no logger...');
+            break;
+        }
+    }
     app.use(bodyParser.urlencoded({
         extended: false
     }));
@@ -78,34 +113,34 @@
     });
 
     // https via letsencrypt
-/*    var LEX = require('letsencrypt-express');
-    var lex = LEX.create({
-        configDir: config.letsencryptPath,
-        onRequest: app,
-        approveRegistration: function(hostname, cb) {
-            
-            cb(null, {
-                domains: [hostname],
-                email: '',
-                agreeTos: true
-            });
+    /*    var LEX = require('letsencrypt-express');
+        var lex = LEX.create({
+            configDir: config.letsencryptPath,
+            onRequest: app,
+            approveRegistration: function(hostname, cb) {
 
-        }
-    });
+                cb(null, {
+                    domains: [hostname],
+                    email: '',
+                    agreeTos: true
+                });
 
-    lex.listen(
-        [port],
-        [443, 5001],
-        function onListening() {
-            var server = this;
-            var protocol = ('requestCert' in server) ? 'https' : 'http';
-            console.log("Listening at " + protocol + '://localhost:' + this.address().port);
-        }
-    );
-*/
-
-        http.createServer(app).listen(port, hostname, function() {
-            console.log('Server started and listening at http://' + hostname + ':' + port + '/');
+            }
         });
+
+        lex.listen(
+            [port],
+            [443, 5001],
+            function onListening() {
+                var server = this;
+                var protocol = ('requestCert' in server) ? 'https' : 'http';
+                console.log("Listening at " + protocol + '://localhost:' + this.address().port);
+            }
+        );
+    */
+
+    http.createServer(app).listen(port, hostname, function() {
+        console.log('Server started and listening at http://' + hostname + ':' + port + '/');
+    });
 
 })();

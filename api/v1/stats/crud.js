@@ -3,8 +3,18 @@
     var Statistic = require('../../../models/statistic.js').statistic;
 
     function create(stats, callback) {
-        var newfb =  new Statistic(stats);
-        newfb.save(callback);
+        Statistic.findOne({'device.uuid': stats.device.uuid}, function(err, data) {
+            if(err){
+                return callback(err);
+            } else {
+                if(data) {
+                    callback('entry already exists');
+                } else {
+                    var newstat =  new Statistic(stats);
+                    newstat.save(callback);
+                }
+            }
+        });
     }
 
     function read(query, callback) {

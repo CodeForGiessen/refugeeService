@@ -11,6 +11,7 @@
     "crypto": "0.0.3",
     "express": "*",
     "express-session": "^1.13.0",
+    "file-stream-rotator": "0.0.6",
     "jsonwebtoken": "^5.7.0",
     "letsencrypt-express": "^1.1.5",
     "mongodb": "^2.1.16",
