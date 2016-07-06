@@ -70,11 +70,13 @@
                                 $scope.guide.guidelines[idx].lang = $scope.translation.lang;
 
                                 AuthService.getCurrent(function (data) {
+                                    /*
                                     var author = {
                                         userId: data._id,
                                         username: data.username
                                     };
                                     $scope.guide.guidelines[idx].metadata.author= author;
+                                    */
                                     GuideCrudService.update($scope.guide);
                                     $scope.translation = {};
                                 });
