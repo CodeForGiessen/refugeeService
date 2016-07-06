@@ -39,7 +39,7 @@
      * 		androidVersions: [],
      * 		iosDeviceNum: [],
      * 	}
-     * 	complete: {
+     * 	complete: { // removed for now... needs to be filtered, so that private data is not shown.
      * 		[{
      * 			device: {
      *   			platform: String,
@@ -72,7 +72,7 @@
                     var totalDeviceNum = data.length;
 
                     var androidDevices = data.filter(function(elt){
-                        return elt.device.platform.toLowerCase === 'android';
+                        return elt.device.platform.toLowerCase() === 'android';
                     });
                     var androidDeviceNum = androidDevices.length;
                     var androidVersions = androidDevices.map(function(elt, idx, arr) {
@@ -105,13 +105,10 @@
                     statistics.iosDeviceNum = iosDeviceNum;
                     statistics.devicesByDate = devicesByDate;
                     var result = {
-                        statistics: statistics,
-                        complete: data
+                        statistics: statistics
                     };
 
-                    res.status(200).send({
-                        data: result
-                    });
+                    res.status(200).send(result);
                 }
             }
         });

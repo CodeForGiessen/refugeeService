@@ -19,6 +19,7 @@
             };
 
             factory.getRole = function () {
+                console.log(JSON.parse(window.localStorage.getItem('profile')).role);
                 return JSON.parse(window.localStorage.getItem('profile')).role || -1;
             };
 

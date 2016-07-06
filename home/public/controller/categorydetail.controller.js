@@ -3,6 +3,7 @@
     angular.module("refugeeAuthorEnv")
         .controller("CategoryDetailController", ['$scope', '$document', '$routeParams', '$route', '$location', '$translate', 'CategoryCrudService', 'AuthService',
             function ($scope, $document, $routeParams, $route, $location, $translate, CategoryCrudService, AuthService) {
+                $scope.authService = AuthService;
                 $scope.loadedData = false;
                 $scope.translation = {};
                 $scope.categories = [];
