@@ -52,6 +52,9 @@
                 controller: 'SearchController',
                 controllerAs: 'searchCtrl',
                 access: {restricted: true}
+            }).when('/about', {
+                templateUrl: '/public/partials/about.html',
+                access: {restricted: false}
             }).otherwise({
                 redirectTo: '/',
                 access: {restricted: false}

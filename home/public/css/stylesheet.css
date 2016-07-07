@@ -90,3 +90,8 @@ nav.top-nav {
 #usermodal.modal {
     padding-bottom: 2em;
 }
+
+.logo {
+  width: 30%;
+  height: auto;
+}
